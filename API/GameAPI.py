@@ -22,8 +22,6 @@ print("Enter Gamen name: ")
 game=input()
 url+="&search_exact=true&search_precise=true&search="+game
 
-#print(url)
-
 response = requests.get(url, headers=headers)
 
 data=response.json()
