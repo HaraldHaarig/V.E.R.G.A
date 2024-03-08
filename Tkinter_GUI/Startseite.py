@@ -24,8 +24,8 @@ for data in get_monitors():
     print(str(data))
     
 
-
-
+frame1 = customtkinter.CTkFrame(master=app, width=200, height=250,corner_radius=20,fg_color="#250454")
+frame1.pack()
 
 
 
