@@ -3,6 +3,8 @@ from dotenv import load_dotenv
 import os
 import webbrowser
 
+from zmq import NULL
+
 #print(data['results'][1]['background_image'])
 
 def openWebGame(gamename):
@@ -21,5 +23,10 @@ def openWebGame(gamename):
     url+="&search_exact=true&search_precise=true&search="+gamename
     response = requests.get(url, headers=headers)
     data=response.json()
+    #print(data)
     if(data['results']!=[]):
-        return(data['results'][0]['background_image']) 
+        return(data['results'][0]['background_image'])
+    else:
+        return NULL
+
+ 
