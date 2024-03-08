@@ -22,4 +22,4 @@ def openWebGame(gamename):
     response = requests.get(url, headers=headers)
     data=response.json()
     if(data['results']!=[]):
-        webbrowser.open(data['results'][0]['background_image']) 
+        return(data['results'][0]['background_image']) 
