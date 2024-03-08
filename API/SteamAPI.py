@@ -22,14 +22,16 @@ def getSteamGamesbyID(id):
      user=steam.users.get_user_details(id)
 
      response=steam.users.get_owned_games(user['player']['steamid'])
+     
+     
 
      count=response['game_count']
-     counter=0
-     web=[]   
+     web=[]
 
      for i in range(count):
-          temp=openWebGame(response['games'][i]['name'])
-          if(temp != NULL):
-               web.append(temp)
+          #print(temp)
+          games=steam.apps.search_games(response['games'][i]['name'])
+          if games['apps']!=[]:
+               web.append(games['apps'][0]['img'])
+     createSpielcards(web)
 
-     createSpielcards(count,web)
