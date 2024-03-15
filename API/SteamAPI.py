@@ -7,7 +7,7 @@ import sys
 import os
 
 sys.path.insert(1, "C:\gitRepos\V.E.R.G.A")
-from Tkinter_GUI.Spielcards import createSpielcards
+# from Tkinter_GUI.Spielcards import createSpielcards
 from API.GameAPI import openWebGame
 
 
@@ -33,5 +33,5 @@ def getSteamGamesbyID(id):
           games=steam.apps.search_games(response['games'][i]['name'])
           if games['apps']!=[]:
                web.append(games['apps'][0]['img'])
-     createSpielcards(web)
+    # createSpielcards(web)
 
