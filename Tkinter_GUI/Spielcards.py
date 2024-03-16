@@ -1,16 +1,9 @@
-from ast import main
-from textwrap import fill
-import tkinter
-from tkinter.ttk import Label
-from typing import Self
+from tkinter import *
 from customtkinter import *
-from numpy import pad
-from panel import Row
-from pyparsing import White
-from sympy import Array, expand, false, root
-import tkinterweb
-import webview
-from PIL import ImageTk, Image
+from scipy import io
+from PIL import Image
+import urllib.request
+import io
 
 
 class Spielcards: 
@@ -27,13 +20,19 @@ class Spielcards:
         self.frame= CTkFrame(self.root_tk, width=200,height=200)
         self.frame.pack()
         self.frame.place(anchor='center', relx=0.5,rely=0.5)
-        img_data=Image.open("Design/Background.png")
-        img=CTkImage(dark_image=img_data, light_image=img_data, size=(200, 200))
-        label=CTkLabel(self.frame,image=img)
-        label.pack()
-
-    def showCard(self):
         
+
+        
+
+    def showCard(self, url, title):
+        with urllib.request.urlopen(url) as u:
+            raw_data=u.read()
+        
+        img_data=Image.open(io.BytesIO(raw_data))
+        img=CTkImage(dark_image=img_data, light_image=img_data, size=(150, 200))
+        label=CTkLabel(self.frame,image=img,text_color='red')
+        label.configure(text=title)
+        label.pack()
         
         self.root_tk.mainloop()
 

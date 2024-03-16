@@ -1,6 +1,11 @@
 from Tkinter_GUI.Spielcards import Spielcards
-
+from API.SteamAPI import getSteamGamesbyID
 # Test_SteamID:76561199015522225 -> Sonrotz0815
-#getSteamGamesbyID("76561199015522225") # Testing Spielcards
+
+
+# Testing Spielcards
 test = Spielcards()
-test.showCard()
+
+url,title=getSteamGamesbyID("76561199015522225")
+
+test.showCard(url[0],title[0])

@@ -1,11 +1,7 @@
 import requests
 from dotenv import load_dotenv
 import os
-import webbrowser
-
 from zmq import NULL
-
-#print(data['results'][1]['background_image'])
 
 def openWebGame(gamename):
     
