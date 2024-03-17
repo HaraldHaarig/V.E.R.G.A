@@ -36,6 +36,8 @@ bg_lbl.place(x=0, y=0)
 app.title("Startpage")
 app.geometry("1280x720")  #Gröse festlegen 
 
+#app.iconphoto(False, tkinter.PhotoImage(file="Design/Icon.png"))
+
 #Die größen des Monitores einholen 
 for data in get_monitors():
     print(str(data))
