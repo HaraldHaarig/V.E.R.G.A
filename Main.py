@@ -8,4 +8,5 @@ test = Spielcards()
 
 url,title=getSteamGamesbyID("76561199015522225")
 
-test.showCard(url[0],title[0])
+test.showallCards(url,title)
+# test.showCard(url[0],title[0])

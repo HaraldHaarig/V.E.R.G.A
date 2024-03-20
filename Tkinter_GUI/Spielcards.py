@@ -1,5 +1,6 @@
 from tkinter import *
 from customtkinter import *
+from panel import Column
 from scipy import io
 from PIL import Image
 import urllib.request
@@ -17,26 +18,38 @@ class Spielcards:
         self.root_tk = CTk()  # create the Tk window like you normally do
         self.root_tk.geometry("1000x1000")
         self.root_tk.title("Spielcards")
-        self.frame= CTkFrame(self.root_tk, width=200,height=200)
+        self.frame= CTkFrame(self.root_tk, width=800,height=800)
         self.frame.pack()
         self.frame.place(anchor='center', relx=0.5,rely=0.5)
+        self.scrollbar=Scrollbar(self.frame)
         
 
         
 
-    def showCard(self, url, title):
+    def showCard(self, url, title,len):
         with urllib.request.urlopen(url) as u:
             raw_data=u.read()
         
         img_data=Image.open(io.BytesIO(raw_data))
-        img=CTkImage(dark_image=img_data, light_image=img_data, size=(150, 200))
+        img=CTkImage(dark_image=img_data, light_image=img_data, size=(20, 20))
         label=CTkLabel(self.frame,image=img,text_color='red')
         label.configure(text=title)
-        label.pack()
+        label.grid(row=len,column=0,pady=(0,10))
+        print(url, title)
+        
+        
+        
+
+    def showallCards(self, url, title):
+        count=0
+        self.frame.grid_rowconfigure(0,weight=1)
+        self.frame.columnconfigure(2, weight=1)
+                
+        for temp in url:
+            self.showCard(temp,title[count],len(url))
+            count+=1
         
         self.root_tk.mainloop()
-
-
 
 
 
