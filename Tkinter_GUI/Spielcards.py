@@ -1,6 +1,6 @@
 from tkinter import *
 from customtkinter import *
-from panel import Column
+from panel import Column, Row
 from scipy import io
 from PIL import Image
 import urllib.request
@@ -21,7 +21,8 @@ class Spielcards:
         self.frame= CTkFrame(self.root_tk, width=800,height=800)
         self.frame.pack()
         self.frame.place(anchor='center', relx=0.5,rely=0.5)
-        self.scrollbar=Scrollbar(self.frame)
+        self.scrollbar=Scrollbar(self.root_tk)
+        
         
 
         
@@ -42,11 +43,13 @@ class Spielcards:
 
     def showallCards(self, url, title):
         count=0
-        self.frame.grid_rowconfigure(0,weight=1)
-        self.frame.columnconfigure(2, weight=1)
-                
+        self.root_tk.grid_rowconfigure(2,weight=1)
+        self.root_tk.columnconfigure(0, weight=1)
+        
+        self.frame.grid(row=1, column=1,pady=(1,1))
+
         for temp in url:
-            self.showCard(temp,title[count],len(url))
+            self.showCard(temp,title[count],(len(url)-count))
             count+=1
         
         self.root_tk.mainloop()

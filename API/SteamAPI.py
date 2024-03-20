@@ -3,7 +3,7 @@ from decouple import config
 import sys
 
 from zmq import NULL
-# from API.GameAPI import openWebGame
+from API.GameAPI import openWebGame
 sys.path.insert(1, "C:\gitRepos\V.E.R.G.A")
 
 
@@ -26,9 +26,9 @@ def getSteamGamesbyID(id):
           names.append(response['games'][i]['name'])
           games=steam.apps.search_games(response['games'][i]['name'])
           if(games['apps'] != []):
-               # print(games['apps'][0])
                web.append(games['apps'][0]['img'])
-          
+          else:
+              web.append(openWebGame(response['games'][i]['name']))
      return web,names
     
 
