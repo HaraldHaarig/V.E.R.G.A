@@ -64,7 +64,7 @@ playtime_lbl = CTkLabel(app,
                         bg_color="#000001",
                         font=("Arial", 22))
 pywinstyles.set_opacity(playtime_lbl, color="#000001")
-playtime_lbl.place(x=875, y=325, anchor=tkinter.CENTER)
+playtime_lbl.place(x=825, y=325, anchor=tkinter.W)
 
 # Label für den Publisher
 publisher_lbl = CTkLabel(app, 
@@ -73,7 +73,7 @@ publisher_lbl = CTkLabel(app,
                         bg_color="#000001",
                         font=("Arial", 22))
 pywinstyles.set_opacity(publisher_lbl, color="#000001")
-publisher_lbl.place(x=875, y=360, anchor=tkinter.CENTER)
+publisher_lbl.place(x=825, y=360, anchor=tkinter.W)
 
 # Label für den Developer
 developer_lbl = CTkLabel(app, 
@@ -82,7 +82,7 @@ developer_lbl = CTkLabel(app,
                         bg_color="#000001",
                         font=("Arial", 22))
 pywinstyles.set_opacity(developer_lbl, color="#000001")
-developer_lbl.place(x=875, y=395, anchor=tkinter.CENTER)
+developer_lbl.place(x=825, y=395, anchor=tkinter.W)
 
 # Label für das Erscheinungsdatum
 releasedate_lbl = CTkLabel(app, 
@@ -91,7 +91,7 @@ releasedate_lbl = CTkLabel(app,
                         bg_color="#000001",
                         font=("Arial", 22))
 pywinstyles.set_opacity(releasedate_lbl, color="#000001")
-releasedate_lbl.place(x=875, y=430, anchor=tkinter.CENTER)
+releasedate_lbl.place(x=825, y=430, anchor=tkinter.W)
 
 # app.overrideredirect(True)            Remove Titlebar (mehr oder weniger)
 app.mainloop()
