@@ -6,6 +6,7 @@ from PIL import Image
 import urllib.request
 import io
 import ctypes
+from ctypes import windll
 
 
 class Spielcards: 
@@ -14,10 +15,11 @@ class Spielcards:
         print("Createt Spielcards")
         set_appearance_mode("dark")
         set_default_color_theme("blue")
-        
+        # h = windll.user32.FindWindowA(b'Shell_TrayWnd', None)
+        # windll.user32.ShowWindow(h, 0) Taskbar dissappears
+        # windll.user32.ShowWindow(h, 9) Taskbar reappears
 
         self.root_tk = CTk()  # create the Tk window like you normally do
-       
         user32 = ctypes.windll.user32
         screenwidth = user32.GetSystemMetrics(0)
         screenheight=user32.GetSystemMetrics(1)
@@ -25,7 +27,7 @@ class Spielcards:
         self.root_tk.geometry("%dx%d" % (int(screenwidth),int(screenheight)))
         
         self.root_tk.title("Spielcards")
-        self.frame= CTkFrame(self.root_tk, width=screenwidth-200,height=screenheight-200)
+        self.frame= CTkFrame(self.root_tk, width=screenwidth-200,height=screenheight-400)
         self.frame.pack()
         self.frame.place(anchor='center', relx=0.5,rely=0.5)
         self.scrollbar=Scrollbar(self.root_tk)
@@ -39,11 +41,11 @@ class Spielcards:
             raw_data=u.read()
         
         img_data=Image.open(io.BytesIO(raw_data))
-        img=CTkImage(dark_image=img_data, light_image=img_data, size=(150,100))
+        img=CTkImage(dark_image=img_data, light_image=img_data, size=(180,120))
         label=CTkLabel(self.frame,image=img,text_color='red')
         label.configure(text=title)
         
-        label.grid(row=len-(len%2),column=len % 2,pady=(0,10))
+        label.grid(row=len-(len%6),column=len % 6,pady=(0,10))
         print(url, title)
         
 
