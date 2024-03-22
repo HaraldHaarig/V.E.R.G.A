@@ -1,4 +1,5 @@
 import tkinter
+from click import command
 from customtkinter import *
 from PIL import Image
 import fontTools
@@ -10,6 +11,9 @@ set_appearance_mode("dark")
 app = CTk()
 app.geometry("1280x720")
 app.title("V.E.R.G.A GameLauncher")
+
+def Friends():
+    print("Servus")
 
 # Background Image
 image = Image.open("Design/Background.png")
@@ -79,12 +83,13 @@ recentlyPlayed_lbl = CTkLabel(app,
 pywinstyles.set_opacity(recentlyPlayed_lbl, color="#000001")
 recentlyPlayed_lbl.place(x=475, y=260, anchor=tkinter.W)
 
-fnds_lbl = CTkLabel(app,
+friends_lbl = CTkLabel(app,
                     text="Friends: ",
                     text_color="White",
                     bg_color="#000001",
                     font=("Arial", 22))
-pywinstyles.set_opacity(fnds_lbl, color="#000001")
-fnds_lbl.place(x=475, y=300, anchor=tkinter.W)
+friends_lbl.bind("<Button-1>", lambda e,:Friends())
+pywinstyles.set_opacity(friends_lbl, color="#000001")
+friends_lbl.place(x=475, y=300, anchor=tkinter.W)
 
 app.mainloop()
