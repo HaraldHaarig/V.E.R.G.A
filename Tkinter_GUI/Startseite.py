@@ -44,7 +44,7 @@ for data in get_monitors():
 
   
     def Settings():
-        print("Settings->")
+        print("Settings---->")
 
     def Store():
         print("Store->")
