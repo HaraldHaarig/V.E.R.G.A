@@ -16,9 +16,10 @@ class Spielcards:
         
 
         self.root_tk = CTk()  # create the Tk window like you normally do
-        self.root_tk.geometry("1000x1000")
+       
+        self.root_tk.geometry("%fx%f" % (self.root_tk.winfo_screenwidth, self.root_tk.winfo_screenheight))
         self.root_tk.title("Spielcards")
-        self.frame= CTkFrame(self.root_tk, width=800,height=800)
+        self.frame= CTkFrame(self.root_tk, width=self.root_tk.winfo_screenwidth-200,height=self.root_tk.winfo_screenheight-200)
         self.frame.pack()
         self.frame.place(anchor='center', relx=0.5,rely=0.5)
         self.scrollbar=Scrollbar(self.root_tk)
@@ -27,7 +28,7 @@ class Spielcards:
 
         
 
-    def showCard(self, url, title,len, col):
+    def showCard(self, url, title,len):
         with urllib.request.urlopen(url) as u:
             raw_data=u.read()
         
@@ -36,8 +37,10 @@ class Spielcards:
         label=CTkLabel(self.frame,image=img,text_color='red')
         label.configure(text=title)
         
-        label.grid(row=len,column=col % 2,pady=(0,10))
+        label.grid(row=len-(len%2),column=len % 2,pady=(0,10))
         print(url, title)
+        
+
         
         
         
@@ -50,7 +53,7 @@ class Spielcards:
         self.frame.grid(row=1, column=1,pady=(1,1))
 
         for temp in url:
-            self.showCard(temp,title[count],(len(url)-count),count)
+            self.showCard(temp,title[count],count)
             count+=1
         
         self.root_tk.mainloop()
