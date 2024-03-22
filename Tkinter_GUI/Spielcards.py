@@ -32,7 +32,7 @@ class Spielcards:
             raw_data=u.read()
         
         img_data=Image.open(io.BytesIO(raw_data))
-        img=CTkImage(dark_image=img_data, light_image=img_data, size=(20, 20))
+        img=CTkImage(dark_image=img_data, light_image=img_data, size=(70, 70))
         label=CTkLabel(self.frame,image=img,text_color='red')
         label.configure(text=title)
         label.grid(row=len,column=0,pady=(0,10))

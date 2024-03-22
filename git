@@ -1,0 +1,373 @@
+[33mcommit 52a27050caab19f8ed3186e76bd2b832ad922e8c[m[33m ([m[1;36mHEAD -> [m[1;32mmain[m[33m, [m[1;31morigin/main[m[33m, [m[1;31morigin/HEAD[m[33m)[m
+Author: binmarkoo <101064382+binmarkoo@users.noreply.github.com>
+Date:   Thu Mar 21 10:15:23 2024 +0100
+
+    upgraded Game descriptions and Added the Profile window
+
+[33mcommit 209649f08143749869547f03e9d51e563ed7baa6[m
+Author: binmarkoo <101064382+binmarkoo@users.noreply.github.com>
+Date:   Wed Mar 20 09:26:04 2024 +0100
+
+    Added Labels to the Game Stats
+
+[33mcommit 837ec65b5896c723c6b2a8320b59bdc42e61cc6d[m
+Author: Eric König <120642443+Sonrotz0815@users.noreply.github.com>
+Date:   Wed Mar 20 09:13:08 2024 +0100
+
+    Update Spielcards and Main.py
+
+[33mcommit ce226a1d07be97e032cbbc253b68e81ff083e108[m
+Author: Eric König <120642443+Sonrotz0815@users.noreply.github.com>
+Date:   Wed Mar 20 08:38:21 2024 +0100
+
+    Added showallCards to Spielcards, changed SteamAPI.py and Main.py
+
+[33mcommit 2686f057f297357ce76772d58321656fdfd31a88[m
+Author: binmarkoo <101064382+binmarkoo@users.noreply.github.com>
+Date:   Wed Mar 20 08:31:16 2024 +0100
+
+    updated Game Description
+
+[33mcommit d9b3387db0f24e1ecc5bcb4a9c32fdd15d09a9ee[m
+Author: Je5usP46LO69420 <132883026+Je5usP46LO69420@users.noreply.github.com>
+Date:   Sun Mar 17 21:49:32 2024 +0100
+
+    bilder für icon
+
+[33mcommit edc71fb1c8ede81cff234e07a42bf754e5464af1[m
+Author: Je5usP46LO69420 <132883026+Je5usP46LO69420@users.noreply.github.com>
+Date:   Sat Mar 16 23:36:57 2024 +0100
+
+    Startsteite nearly done
+
+[33mcommit f45433401b64415eec96a858b25e467aab3c49db[m
+Author: Eric König <120642443+Sonrotz0815@users.noreply.github.com>
+Date:   Sat Mar 16 15:12:11 2024 +0100
+
+    Spielcards.py working, changed main.py and SteamAPI.py
+
+[33mcommit 8a49997700fa63a377e9842f22a066ffdf32dbb4[m
+Author: Je5usP46LO69420 <tobiashirzi@icloud.com>
+Date:   Fri Mar 15 14:54:33 2024 +0100
+
+    startsite anordnung frames
+
+[33mcommit cee49e28705a091ddbaafa9cc80a8ecf3294db0f[m
+Author: Eric König <120642443+Sonrotz0815@users.noreply.github.com>
+Date:   Fri Mar 15 14:52:52 2024 +0100
+
+    changes on main.py and Spielcards.py
+
+[33mcommit f5612235abab475057e9d84df6758e397e174a3f[m
+Author: HaraldHaarig <132935818+HaraldHaarig@users.noreply.github.com>
+Date:   Fri Mar 15 14:32:19 2024 +0100
+
+    Added Images & changed Login.py
+
+[33mcommit e63294160bd1a6f11c24dee647a19c8af4701b14[m
+Author: Je5usP46LO69420 <tobiashirzi@icloud.com>
+Date:   Fri Mar 15 14:16:34 2024 +0100
+
+    changed Startseite.py
+
+[33mcommit 8c909e0aa141594072462f63b9d3f75260f845f8[m
+Author: Eric König <120642443+Sonrotz0815@users.noreply.github.com>
+Date:   Fri Mar 15 11:06:01 2024 +0100
+
+    Update Login.py
+
+[33mcommit 4172e681f53d228bbf68fe698b4b871dd79dd9f5[m
+Author: Eric König <120642443+Sonrotz0815@users.noreply.github.com>
+Date:   Fri Mar 8 21:28:49 2024 +0100
+
+    cleared Spielcards -> restart
+
+[33mcommit 9b55ccca4145049ce8a808420dd67c235a4fe89d[m
+Author: Eric König <120642443+Sonrotz0815@users.noreply.github.com>
+Date:   Fri Mar 8 20:49:32 2024 +0100
+
+    Changes in SteamAPI, Spielcards.py
+
+[33mcommit 6181036c32bf27b4327da709a2bfc77197162f6d[m
+Author: Eric König <120642443+Sonrotz0815@users.noreply.github.com>
+Date:   Fri Mar 8 17:50:31 2024 +0100
+
+    Added Main.py, Updated SteamAPI and Spielcards, Added Error.txt
+
+[33mcommit dac2ab6be6cb6e46c902556c0d748cd9aa672c72[m
+Merge: f186a95 97fdb4a
+Author: binmarkoo <101064382+binmarkoo@users.noreply.github.com>
+Date:   Fri Mar 8 16:02:03 2024 +0100
+
+    Merge branch 'main' of https://github.com/HaraldHaarig/V.E.R.G.A
+
+[33mcommit f186a95bd6af75f01ff05ba7885d653c3ab268f2[m
+Author: binmarkoo <101064382+binmarkoo@users.noreply.github.com>
+Date:   Fri Mar 8 15:57:37 2024 +0100
+
+    Spielbeschreibung.py added
+
+[33mcommit 97fdb4ac901695057b2ae1d789d354fd83036a93[m
+Merge: 9da5c10 5c3d4b9
+Author: Je5usP46LO69420 <tobiashirzi@icloud.com>
+Date:   Fri Mar 8 15:00:56 2024 +0100
+
+    Merge branch 'main' of https://github.com/HaraldHaarig/V.E.R.G.A
+
+[33mcommit 9da5c105321fdd2fee02f47b2234df974ec408b5[m
+Author: Je5usP46LO69420 <tobiashirzi@icloud.com>
+Date:   Fri Mar 8 15:00:52 2024 +0100
+
+    Startpage
+
+[33mcommit 5c3d4b9ea9d80db037131b11e33aba5ea877ba83[m
+Merge: 5ce3a37 5ddfb93
+Author: Eric König <120642443+Sonrotz0815@users.noreply.github.com>
+Date:   Fri Mar 8 14:55:41 2024 +0100
+
+    Merge branch 'main' of https://github.com/HaraldHaarig/V.E.R.G.A
+
+[33mcommit 5ce3a37d1fffc23be32718dd4205cef8a46d8ce7[m
+Author: Eric König <120642443+Sonrotz0815@users.noreply.github.com>
+Date:   Fri Mar 8 14:55:36 2024 +0100
+
+    Added init updates Spielcards
+
+[33mcommit 5ddfb931116c5a4609750393b2400464f39bcc2c[m
+Merge: 86eba36 f9eb754
+Author: Je5usP46LO69420 <tobiashirzi@icloud.com>
+Date:   Fri Mar 8 14:47:42 2024 +0100
+
+    Merge branch 'main' of https://github.com/HaraldHaarig/V.E.R.G.A
+
+[33mcommit 86eba36cbec943601431d44725ebce9c2953dbd2[m
+Author: Je5usP46LO69420 <tobiashirzi@icloud.com>
+Date:   Fri Mar 8 14:47:30 2024 +0100
+
+    Startpage firts commit
+
+[33mcommit f9eb754119ae73c54b21f8f02207f75e39a8081a[m
+Author: HaraldHaarig <132935818+HaraldHaarig@users.noreply.github.com>
+Date:   Fri Mar 8 14:45:50 2024 +0100
+
+    Login prototype upload
+
+[33mcommit f9a42213bbf3078a9c7e88e04bb0606796e67a11[m
+Author: binmarkoo <101064382+binmarkoo@users.noreply.github.com>
+Date:   Fri Mar 8 14:01:21 2024 +0100
+
+    Added Background Image
+
+[33mcommit fb5de050c08f602dbf52154ae3d542fb37fba6c3[m
+Author: Eric König <120642443+Sonrotz0815@users.noreply.github.com>
+Date:   Fri Mar 8 13:22:19 2024 +0100
+
+    Added testing Riot_API, Added folder Tkinter_GUI
+
+[33mcommit 94a90a151c0efbf7e0ad3bf9f6ab33fdc5847fca[m
+Author: binmarkoo <101064382+binmarkoo@users.noreply.github.com>
+Date:   Fri Mar 1 14:25:08 2024 +0100
+
+    Added new Designs
+
+[33mcommit bea25f9b59db21008b62abc932a39dd99ffa89c5[m
+Author: Eric_K <120642443+Sonrotz0815@users.noreply.github.com>
+Date:   Fri Mar 1 14:24:32 2024 +0100
+
+    Updated V.E.R.G.A.gan
+
+[33mcommit 5da5bc608e1843dff0de6e6a18f359d1c07bc31f[m
+Author: Eric_K <120642443+Sonrotz0815@users.noreply.github.com>
+Date:   Fri Mar 1 14:24:10 2024 +0100
+
+    Delete to Update Documentary/V.E.R.G.A.gan.lnk
+
+[33mcommit 8cf88757eb98b672f551a2d9004606c15fedd28a[m
+Author: Eric_K <120642443+Sonrotz0815@users.noreply.github.com>
+Date:   Fri Mar 1 14:23:09 2024 +0100
+
+    Add files via upload
+    
+    Updated V.E.R.G.A.gan
+
+[33mcommit c62ffebbdeaea04296145ee24b542b5aeaef285a[m
+Author: Eric König <120642443+Sonrotz0815@users.noreply.github.com>
+Date:   Fri Mar 1 10:29:24 2024 +0100
+
+    Tested, added and used SteamAPI in combination with GameAPI
+
+[33mcommit a43ebe835ed2316837b498517b062ea8f17fdd18[m
+Author: binmarkoo <101064382+binmarkoo@users.noreply.github.com>
+Date:   Thu Feb 29 07:44:19 2024 +0100
+
+    Added Logo Design
+
+[33mcommit fac130eb1158ed1e803d20d785ced3625a69673d[m
+Author: binmarkoo <101064382+binmarkoo@users.noreply.github.com>
+Date:   Wed Feb 28 16:43:35 2024 +0100
+
+    Delete initial File
+
+[33mcommit d6dda3d677898567aa6a33cb409405de0c7fa632[m
+Author: binmarkoo <101064382+binmarkoo@users.noreply.github.com>
+Date:   Wed Feb 28 16:42:44 2024 +0100
+
+    Uploaded first Designs
+
+[33mcommit 3b212b0389fe48756f97719c260a21bd1155bafd[m
+Author: binmarkoo <101064382+binmarkoo@users.noreply.github.com>
+Date:   Wed Feb 28 16:39:01 2024 +0100
+
+    Create Leon
+
+[33mcommit 123077a967c6fc08bef7ed89cad33502558bb493[m
+Author: binmarkoo <101064382+binmarkoo@users.noreply.github.com>
+Date:   Wed Feb 28 16:38:34 2024 +0100
+
+    Delete initial File
+
+[33mcommit aaf1b728cc2692aa8682b41f9b0d029419eacadb[m
+Author: binmarkoo <101064382+binmarkoo@users.noreply.github.com>
+Date:   Wed Feb 28 16:37:54 2024 +0100
+
+    Create Yarak
+
+[33mcommit 138f8f53e4d6352f4aa896d7fbabc549954caa13[m
+Merge: 4ddbc38 6a26874
+Author: Eric König <120642443+Sonrotz0815@users.noreply.github.com>
+Date:   Wed Feb 28 16:36:03 2024 +0100
+
+    Merge branch 'main' of https://github.com/HaraldHaarig/V.E.R.G.A
+
+[33mcommit 4ddbc38fdfb096f19a2aba8aebb9e3d3155a64b6[m
+Author: Eric König <120642443+Sonrotz0815@users.noreply.github.com>
+Date:   Wed Feb 28 16:35:58 2024 +0100
+
+    New Directory Design
+
+[33mcommit 6a2687463c1992274180e61d0d72b4974868bc02[m
+Author: Eric_K <120642443+Sonrotz0815@users.noreply.github.com>
+Date:   Wed Feb 28 16:29:34 2024 +0100
+
+    Updated V.E.R.G.A.gan
+
+[33mcommit a6f09ed299d108b4300a032b95813591789275be[m
+Author: Eric_K <120642443+Sonrotz0815@users.noreply.github.com>
+Date:   Wed Feb 28 16:29:11 2024 +0100
+
+    Delete V.E.R.G.A.gan to Update V.E.R.G.A.gan
+
+[33mcommit 85a11753737306948bc2fb67f44afa3da607522f[m
+Author: Eric_K <120642443+Sonrotz0815@users.noreply.github.com>
+Date:   Wed Feb 28 16:26:11 2024 +0100
+
+    Updated V.E.R.G.A.gan
+
+[33mcommit c03f1a2af5c8d893571a1c8c0f4d68d6b6e17425[m
+Author: HaraldHaarig <132935818+HaraldHaarig@users.noreply.github.com>
+Date:   Wed Feb 28 16:14:33 2024 +0100
+
+    Add files via upload
+
+[33mcommit 949dfb8669beaf053c96e54580f6f95f67331236[m
+Author: Eric König <120642443+Sonrotz0815@users.noreply.github.com>
+Date:   Fri Feb 23 23:28:06 2024 +0100
+
+    Update GameAPI
+
+[33mcommit e19d69c4244c65bdb2844698921d87b58163966c[m
+Merge: d919074 0e5134b
+Author: Eric König <120642443+Sonrotz0815@users.noreply.github.com>
+Date:   Fri Feb 23 15:00:19 2024 +0100
+
+    Merge branch 'main' of https://github.com/HaraldHaarig/V.E.R.G.A
+
+[33mcommit d9190746b4366ab3b2d669169c20b11e5abc96cd[m
+Author: Eric König <120642443+Sonrotz0815@users.noreply.github.com>
+Date:   Fri Feb 23 15:00:14 2024 +0100
+
+    Tested API and changed .env
+
+[33mcommit 0e5134b619dfc0e6a82f148977a8162aeb98e6d1[m
+Author: Eric_K <120642443+Sonrotz0815@users.noreply.github.com>
+Date:   Thu Feb 22 10:24:25 2024 +0100
+
+    Added GantChart for V.E.R.G.A
+
+[33mcommit 8c91c047e19783aaca927db24d768c264fcd6787[m
+Author: Eric König <120642443+Sonrotz0815@users.noreply.github.com>
+Date:   Thu Feb 22 10:14:30 2024 +0100
+
+    Added .env File for API Keys
+
+[33mcommit 945a59e6ee11a9fe8cd51ba381c53789a5102705[m
+Merge: 2bd1e87 8ad6288
+Author: Eric König <120642443+Sonrotz0815@users.noreply.github.com>
+Date:   Thu Feb 22 10:10:06 2024 +0100
+
+    Merge branch 'main' of https://github.com/HaraldHaarig/V.E.R.G.A
+
+[33mcommit 8ad6288dfb84e4d42b3176f91ceb8a915decef1b[m
+Author: HaraldHaarig <132935818+HaraldHaarig@users.noreply.github.com>
+Date:   Fri Jan 26 14:00:22 2024 +0100
+
+    Add files via upload
+    
+    Arbeitspakete Excelsheet has been uploaded
+
+[33mcommit 4035bfc18b14ec17497104678741b6f1660af919[m
+Author: HaraldHaarig <132935818+HaraldHaarig@users.noreply.github.com>
+Date:   Fri Nov 24 13:55:11 2023 +0100
+
+    Add Projektplanung via upload
+    
+    Verga-Projektantrag, Variantenbildung, SWOT-Analyse, Stakeholdertabelle via upload added
+
+[33mcommit fea8ff263eb20c5d9f8957161f8e1915a47557b3[m
+Author: HaraldHaarig <132935818+HaraldHaarig@users.noreply.github.com>
+Date:   Fri Nov 24 13:51:24 2023 +0100
+
+    Create Documentary Folder
+
+[33mcommit aba590ef92afac796df6e23168a53f5f4691baa3[m
+Author: HaraldHaarig <132935818+HaraldHaarig@users.noreply.github.com>
+Date:   Fri Nov 24 13:49:44 2023 +0100
+
+    Delete Documentary
+
+[33mcommit c66c838cfd49d559ba3315d45453bca7f50b9a12[m
+Author: HaraldHaarig <132935818+HaraldHaarig@users.noreply.github.com>
+Date:   Fri Nov 24 13:49:02 2023 +0100
+
+    Create Documentary
+
+[33mcommit 2bd1e8773625d5138c615dccb3da3521e1ddafb3[m
+Merge: 2453905 4329b54
+Author: Eric König <120642443+Sonrotz0815@users.noreply.github.com>
+Date:   Fri Nov 17 14:53:06 2023 +0100
+
+    Merge commit '4329b54431dd73b506e74b6763fa756053f0d261'
+
+[33mcommit 4329b54431dd73b506e74b6763fa756053f0d261[m
+Author: HaraldHaarig <132935818+HaraldHaarig@users.noreply.github.com>
+Date:   Fri Nov 17 14:52:18 2023 +0100
+
+    Update hello.py again
+
+[33mcommit a3c7961ffd47c9c8b527c9dddfcb0a522163e3ad[m
+Author: HaraldHaarig <132935818+HaraldHaarig@users.noreply.github.com>
+Date:   Fri Nov 17 14:50:33 2023 +0100
+
+    Update hello.py
+
+[33mcommit 24539050b61eb87c74da2d6ebfc2032f483bc7cf[m
+Author: Eric König <120642443+Sonrotz0815@users.noreply.github.com>
+Date:   Fri Nov 17 14:50:01 2023 +0100
+
+    Tested Repository
+
+[33mcommit c1d40fc63e4ee8918a8c0df6ff3f513b15c9887f[m
+Author: PabloEscobarsHaare <132935818+PabloEscobarsHaare@users.noreply.github.com>
+Date:   Fri Nov 17 14:39:03 2023 +0100
+
+    Initial commit
