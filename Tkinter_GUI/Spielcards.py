@@ -5,6 +5,7 @@ from scipy import io
 from PIL import Image
 import urllib.request
 import io
+import ctypes
 
 
 class Spielcards: 
@@ -17,9 +18,14 @@ class Spielcards:
 
         self.root_tk = CTk()  # create the Tk window like you normally do
        
-        self.root_tk.geometry("%fx%f" % (self.root_tk.winfo_screenwidth, self.root_tk.winfo_screenheight))
+        user32 = ctypes.windll.user32
+        screenwidth = user32.GetSystemMetrics(0)
+        screenheight=user32.GetSystemMetrics(1)
+
+        self.root_tk.geometry("%dx%d" % (int(screenwidth),int(screenheight)))
+        
         self.root_tk.title("Spielcards")
-        self.frame= CTkFrame(self.root_tk, width=self.root_tk.winfo_screenwidth-200,height=self.root_tk.winfo_screenheight-200)
+        self.frame= CTkFrame(self.root_tk, width=screenwidth-200,height=screenheight-200)
         self.frame.pack()
         self.frame.place(anchor='center', relx=0.5,rely=0.5)
         self.scrollbar=Scrollbar(self.root_tk)
