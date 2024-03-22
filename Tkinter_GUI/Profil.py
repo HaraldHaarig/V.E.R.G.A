@@ -79,12 +79,12 @@ recentlyPlayed_lbl = CTkLabel(app,
 pywinstyles.set_opacity(recentlyPlayed_lbl, color="#000001")
 recentlyPlayed_lbl.place(x=475, y=260, anchor=tkinter.W)
 
-friends_lbl = CTkLabel(app,
+fnds_lbl = CTkLabel(app,
                     text="Friends: ",
                     text_color="White",
                     bg_color="#000001",
                     font=("Arial", 22))
-pywinstyles.set_opacity(friends_lbl, color="#000001")
-friends_lbl.place(x=475, y=300, anchor=tkinter.W)
+pywinstyles.set_opacity(fnds_lbl, color="#000001")
+fnds_lbl.place(x=475, y=300, anchor=tkinter.W)
 
 app.mainloop()
