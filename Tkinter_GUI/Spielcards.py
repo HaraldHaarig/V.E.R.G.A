@@ -27,15 +27,16 @@ class Spielcards:
 
         
 
-    def showCard(self, url, title,len):
+    def showCard(self, url, title,len, col):
         with urllib.request.urlopen(url) as u:
             raw_data=u.read()
         
         img_data=Image.open(io.BytesIO(raw_data))
-        img=CTkImage(dark_image=img_data, light_image=img_data, size=(70, 70))
+        img=CTkImage(dark_image=img_data, light_image=img_data, size=(150,100))
         label=CTkLabel(self.frame,image=img,text_color='red')
         label.configure(text=title)
-        label.grid(row=len,column=0,pady=(0,10))
+        
+        label.grid(row=len,column=col % 2,pady=(0,10))
         print(url, title)
         
         
@@ -49,7 +50,7 @@ class Spielcards:
         self.frame.grid(row=1, column=1,pady=(1,1))
 
         for temp in url:
-            self.showCard(temp,title[count],(len(url)-count))
+            self.showCard(temp,title[count],(len(url)-count),count)
             count+=1
         
         self.root_tk.mainloop()
