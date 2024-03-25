@@ -1,4 +1,6 @@
+from cgitb import text
 from tkinter import *
+import black
 from customtkinter import *
 from numpy import empty
 from panel import Column, Row
@@ -45,9 +47,13 @@ class Spielcards:
         
         img_data=Image.open(io.BytesIO(raw_data))
         img=CTkImage(dark_image=img_data, light_image=img_data, size=(180,120))
-        label=CTkLabel(self.frame,image=img,text_color='red')
+        label=CTkLabel(self.frame,image=img)
         label.configure(text="")
         
+        canvas=Canvas(label,width=180,height=30,bg='black')
+        canvas.create_text(75, 19, text=title, fill="red", font=('Helvetica 10 bold'))
+        canvas.grid(row=0,column=0)
+
         label.grid(row=len-(len%6),column=len % 6,pady=(0,10))
         print(url, title)
         

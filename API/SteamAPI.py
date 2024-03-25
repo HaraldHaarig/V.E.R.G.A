@@ -28,7 +28,9 @@ def getSteamGamesbyID(id):
           if(games['apps'] != []):
                web.append(games['apps'][0]['img'])
           else:
-              web.append(openWebGame(response['games'][i]['name']))
+               web.append(0)
+          # else:
+          #     web.append(openWebGame(response['games'][i]['name']))
      return web,names
     
 
