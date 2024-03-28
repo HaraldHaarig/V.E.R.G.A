@@ -50,11 +50,11 @@ class Spielcards:
         label=CTkLabel(self.frame,image=img)
         label.configure(text="")
         
-        canvas=Canvas(label,width=180,height=30,bg='black')
-        canvas.create_text(75, 19, text=title, fill="red", font=('Helvetica 10 bold'))
-        canvas.grid(row=0,column=0)
+        # canvas=Canvas(label,width=180,height=30,bg='black') Titel beneath Img
+        # canvas.create_text(75, 19, text=title, fill="red", font=('Helvetica 10 bold'))
+        # canvas.grid(row=1,column=0)
 
-        label.grid(row=len-(len%6),column=len % 6,pady=(0,10))
+        label.grid(row=len-(len%6),column=len % 6,pady=(0,10), padx=(0,10))
         print(url, title)
         
 

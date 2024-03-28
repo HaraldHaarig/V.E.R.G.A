@@ -19,7 +19,7 @@ def openWebGame(gamename):
     url+="&search_exact=true&search_precise=true&search="+gamename
     response = requests.get(url, headers=headers)
     data=response.json()
-    if(data!=[]):
+    if(data['results']!=[]):
         
         return(data['results'][0]['background_image'])
     else:

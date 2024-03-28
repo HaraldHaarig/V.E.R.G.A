@@ -17,7 +17,6 @@ def getSteamGamesbyID(id):
 
      response=steam.users.get_owned_games(user['player']['steamid'])
      
-
      count=response['game_count']
      web=[]
      names=[]
@@ -26,11 +25,11 @@ def getSteamGamesbyID(id):
           names.append(response['games'][i]['name'])
           games=steam.apps.search_games(response['games'][i]['name'])
           if(games['apps'] != []):
+               #web.append(openWebGame(response['games'][i]['name']))
                web.append(games['apps'][0]['img'])
           else:
                web.append(0)
-          # else:
-          #     web.append(openWebGame(response['games'][i]['name']))
+     
      return web,names
     
 
