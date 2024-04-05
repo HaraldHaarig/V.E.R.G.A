@@ -1,5 +1,6 @@
 from cgitb import text
 import imp
+from re import I
 import tkinter
 from turtle import color, st, width
 from click import command
@@ -18,6 +19,7 @@ from referencing import Anchor
 from screeninfo import get_monitors
 from sqlalchemy import PrimaryKeyConstraint
 from sympy import HeuristicGCDFailed, im
+import ctypes
 
 
 
@@ -36,7 +38,13 @@ bg_lbl.place(x=0, y=0)
 app.title("Startpage")
 app.geometry("1280x720")  #Gröse festlegen 
 
-#app.iconphoto(False, tkinter.PhotoImage(file="Design/Icon.png"))
+
+app.iconbitmap(default="Design/Icon.png")
+app.iconphoto(False, tkinter.PhotoImage(file="Design/Icon.png"))  #icon festlegen 
+
+myappid = u'mycompany.myproduct.subproduct.version'                #icon in taskbar festlegen
+ctypes.windll.shell32.SetCurrentProcessExplicitAppUserModelID(myappid)
+
 
 #Die größen des Monitores einholen 
 for data in get_monitors():
