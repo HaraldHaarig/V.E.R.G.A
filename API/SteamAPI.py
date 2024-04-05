@@ -3,7 +3,7 @@ from decouple import config
 import sys
 
 from zmq import NULL
-from API.GameAPI import openWebGame
+from API.GameAPI import getMoreDetails
 sys.path.insert(1, "C:\gitRepos\V.E.R.G.A")
 
 
@@ -17,18 +17,28 @@ def getSteamGamesbyID(id):
 
      response=steam.users.get_owned_games(user['player']['steamid'])
      
+     
 
      count=response['game_count']
      web=[]
      names=[]
      
+
+
+     print(getMoreDetails("Minecraft")) # Placeholder for Spielbeschreibung
+
      for i in range(count):
           names.append(response['games'][i]['name'])
-          games=steam.apps.search_games(response['games'][i]['name'])
-          if(games['apps'] != []):
-               web.append(games['apps'][0]['img'])
+          
+          game_id=response['games'][i]['appid']
+          
+          game_detail=steam.apps.get_app_details(game_id)
+          
+          if(game_detail[str(game_id)]['success']==True):
+               web.append(game_detail[str(game_id)]['data']['header_image'])
           else:
-              web.append(openWebGame(response['games'][i]['name']))
+               web.append(0)
+     
      return web,names
     
 
