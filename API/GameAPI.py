@@ -3,7 +3,7 @@ from dotenv import load_dotenv
 import os
 from zmq import NULL
 
-def openWebGame(gamename):
+def getMoreDetails(gamename):
     
     load_dotenv(override=True)
 
@@ -20,8 +20,11 @@ def openWebGame(gamename):
     response = requests.get(url, headers=headers)
     data=response.json()
     if(data['results']!=[]):
-        
-        return(data['results'][0]['background_image'])
+        all_Platforms=[]
+        for platforms in data['results'][0]['platforms']:
+            all_Platforms.append(platforms['platform']['name'])
+
+        return(data['results'][0]['released'], data['results'][0]['metacritic'], all_Platforms)
     else:
         return NULL
 

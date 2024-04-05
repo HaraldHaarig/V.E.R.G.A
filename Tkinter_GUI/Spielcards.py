@@ -1,3 +1,4 @@
+from cProfile import label
 from cgitb import text
 from tkinter import *
 import black
@@ -39,7 +40,10 @@ class Spielcards:
         self.frame.place(anchor='center', relx=0.5,rely=0.5)
         self.scrollbar=Scrollbar(self.root_tk)
         
-       
+    def onLabelClicked(e):
+        print("Placeholder Spielebeschreibung")
+        print(e)
+
 
     def showCard(self, url, title,len):
         with urllib.request.urlopen(url) as u:
@@ -48,7 +52,11 @@ class Spielcards:
         img_data=Image.open(io.BytesIO(raw_data))
         img=CTkImage(dark_image=img_data, light_image=img_data, size=(180,120))
         label=CTkLabel(self.frame,image=img)
-        label.configure(text="")
+        label.bind("<Button-1>",lambda e:self.onLabelClicked())
+        if(url=="https://cdn-icons-png.flaticon.com/512/16/16096.png"):
+            label.configure(text=title)
+        else:
+            label.configure(text="")
         
         # canvas=Canvas(label,width=180,height=30,bg='black') Titel beneath Img
         # canvas.create_text(75, 19, text=title, fill="red", font=('Helvetica 10 bold'))
