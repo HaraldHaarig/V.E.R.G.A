@@ -1,10 +1,18 @@
+import imp
 from Tkinter_GUI.Spielcards import Spielcards
+from Tkinter_GUI.Startseite import Startpage
 from API.SteamAPI import getSteamGamesbyID
 # Test_SteamID:76561199015522225 -> Sonrotz0815
 
 
-# Testing Spielcards
+# generate classes
 test = Spielcards()
+
+startpage = Startpage()
+
+startpage.Clickoncards()
+
+
 
 url,title=getSteamGamesbyID("76561199015522225")
 

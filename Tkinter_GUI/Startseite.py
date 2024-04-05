@@ -31,10 +31,10 @@ class Startpage:
         customtkinter.set_default_color_theme("blue")
 
 
-        image = PIL.Image.open("Design/Background.png")                         #Background festlegen           
-        background_image = customtkinter.CTkImage(image, size=(1280, 720))
-        bg_lbl = customtkinter.CTkLabel(self.app, text="", image=background_image)
-        bg_lbl.place(x=0, y=0)
+        self.image = Image.open("Design/Background.png")                         #Background festlegen           
+        self.background_image = customtkinter.CTkImage(self.image, size=(1280, 720))
+        self.bg_lbl = customtkinter.CTkLabel(self.app, text="", image=self.background_image)
+        self.bg_lbl.place(x=0, y=0)
 
         self.app.title("Startpage")
         self.app.geometry("1280x720")  #Gröse festlegen 
@@ -43,8 +43,8 @@ class Startpage:
         self.app.iconbitmap(default="Design/Icon.png")
         self.app.iconphoto(False, tkinter.PhotoImage(file="Design/Icon.png"))  #icon festlegen 
 
-        myappid = u'mycompany.myproduct.subproduct.version'                #icon in taskbar festlegen
-        ctypes.windll.shell32.SetCurrentProcessExplicitAppUserModelID(myappid)
+        self.myappid = u'mycompany.myproduct.subproduct.version'                #icon in taskbar festlegen
+        ctypes.windll.shell32.SetCurrentProcessExplicitAppUserModelID(self.myappid)
 
 
         #Die größen des Monitores einholen 
@@ -90,7 +90,7 @@ class Startpage:
         pywinstyles.set_opacity(settings,color="#000001")
         settings.place(x=250,y=370)
 
-        settingsimg = PIL.Image.open("Tkinter_GUI/StartseiteIMG/settings.png")
+        settingsimg = Image.open("Tkinter_GUI/StartseiteIMG/settings.png")
         imgsettings = customtkinter.CTkImage(settingsimg,size=(100,100))
         settingslbl = customtkinter.CTkLabel(settings,text="",image=imgsettings)
         settingslbl.bind("<Button-1>",lambda e,:Settings())
@@ -110,12 +110,11 @@ class Startpage:
                                         fg_color="#250454",
                                         bg_color="#000001",text="",
                                         hover_color="#250454",
-                                        command=Store
-                                            )
+                                        command=Store)
         pywinstyles.set_opacity(store, color="#000001")
         store.place(x=540,y=70)
 
-        storeimg = PIL.Image.open("Tkinter_GUI/StartseiteIMG/shopping-cart.png")
+        storeimg = Image.open("Tkinter_GUI/StartseiteIMG/shopping-cart.png")
         imgstore = customtkinter.CTkImage(storeimg,size=(100,100))
         storelbl = customtkinter.CTkLabel(store,text="",image=imgstore)
         storelbl.bind("<Button-1>",lambda e,:Store())
@@ -135,12 +134,11 @@ class Startpage:
                                             bg_color="#000001",
                                             text="",
                                             hover_color="#250454",
-                                            command=Mygames
-                                            )
+                                            command=Mygames)
         pywinstyles.set_opacity(mygames, color="#000001")
         mygames.place(x=830,y=70)
 
-        mygamesimg = PIL.Image.open("Tkinter_GUI/StartseiteIMG/joystick.png")
+        mygamesimg = Image.open("Tkinter_GUI/StartseiteIMG/joystick.png")
         imgmygames = customtkinter.CTkImage(mygamesimg,size=(100,100))
         mygameslbl = customtkinter.CTkLabel(mygames,text="",image=imgmygames)
         mygameslbl.bind("<Button-1>",lambda e,:Mygames())
@@ -165,7 +163,7 @@ class Startpage:
         pywinstyles.set_opacity(wishlist, color="#000001")
         wishlist.place(x=830, y=370)
 
-        wishlistimg = PIL.Image.open("Tkinter_GUI/StartseiteIMG/geschenk.png")
+        wishlistimg = Image.open("Tkinter_GUI/StartseiteIMG/geschenk.png")
         imgwishlist = customtkinter.CTkImage(wishlistimg,size=(100,100))
         wishlistlbl = customtkinter.CTkLabel(wishlist,text="",image=imgwishlist)
         wishlistlbl.bind("<Button-1>",lambda e,:Wishlist())
@@ -190,7 +188,7 @@ class Startpage:
         pywinstyles.set_opacity(notes, color="#000001")
         notes.place(x=540, y=370)
 
-        notesimg = PIL.Image.open("Tkinter_GUI/StartseiteIMG/notes.png")
+        notesimg = Image.open("Tkinter_GUI/StartseiteIMG/notes.png")
         imgnotes = customtkinter.CTkImage(notesimg,size=(100,100))
         noteslbl = customtkinter.CTkLabel(notes,text="",image=imgnotes)
         noteslbl.bind("<Button-1>",lambda e,:Notes())
@@ -214,7 +212,7 @@ class Startpage:
         pywinstyles.set_opacity(profile, color="#000001")
         profile.place(x=250, y=70)
 
-        profileimg = PIL.Image.open("Tkinter_GUI/StartseiteIMG/user.png")
+        profileimg = Image.open("Tkinter_GUI/StartseiteIMG/user.png")
         imgprofile = customtkinter.CTkImage(profileimg,size=(100,100))
         profilelbl = customtkinter.CTkLabel(profile,text="",image=imgprofile)
         profilelbl.bind("<Button-1>",lambda e,:Profile())
