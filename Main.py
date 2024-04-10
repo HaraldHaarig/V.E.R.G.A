@@ -10,7 +10,6 @@ test = Spielcards()
 
 startpage = Startpage()
 
-startpage.Clickoncards()
 
 
 
