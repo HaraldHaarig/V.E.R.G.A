@@ -1,3 +1,4 @@
+from gc import disable
 import tkinter
 from click import command
 from customtkinter import *
@@ -7,6 +8,8 @@ from matplotlib.backend_bases import cursors
 from pyparsing import col
 import pywinstyles
 import ctypes
+
+from sympy import false
 
 set_appearance_mode("dark")
 
@@ -20,7 +23,32 @@ app.title("V.E.R.G.A GameLauncher")
 
 # Der Main Frame wird ein wenig nach links verschoben und ein neues Frame mit Freunden soll generiert werden
 def FriendsOut():
-    print("Servus")
+    global my_x
+    my_x -= 2
+    if my_x > 448:
+        profile.place(x=my_x, y=360, anchor=tkinter.CENTER)
+        app.after(2, FriendsOut)
+    
+    if my_x == 448:
+        # Das auftauchende Frame für die Freunde
+        friends = CTkFrame(master=app,
+                           width=350,
+                           height=380,
+                           corner_radius=20,
+                           fg_color="#250454",
+                           bg_color="#000001")
+        pywinstyles.set_opacity(friends, color="#00001")
+        friends.place(x=830, y=485, anchor=tkinter.CENTER)
+
+        # Labels für das extra Freunde-Frame
+        friends_heading_lbl = CTkLabel(master=friends,
+                                       text="Friends",
+                                       text_color="White",
+                                       bg_color="#000001",
+                                       font=("Arial", 25))
+        pywinstyles.set_opacity(friends_heading_lbl, color="#000001")
+        friends_heading_lbl.place(x=175, y=25, anchor=tkinter.CENTER)
+    
 
 # Background Image
 image = Image.open("Design/Background.png")
@@ -29,7 +57,10 @@ background_image = CTkImage(image, size=(1280, 720))
 bg_lbl = CTkLabel(app, text="", image = background_image)
 bg_lbl.place(x = 0, y = 0)
 
-# Frame für die Profildaten
+global my_x
+my_x = 640
+
+# Frames
 profile = CTkFrame(master=app,
                    width=350,
                    height=650,
@@ -37,10 +68,9 @@ profile = CTkFrame(master=app,
                    fg_color="#250454",
                    bg_color="#000001")
 pywinstyles.set_opacity(profile, color="#000001")
-profile.place(x=640, y=360, anchor=tkinter.CENTER)
+profile.place(x=my_x, y=360, anchor=tkinter.CENTER)
 
 # Labels
-
 username_lbl = CTkLabel(profile,
                         text="Username",
                         text_color="White",
@@ -90,21 +120,24 @@ recentlyPlayed_lbl = CTkLabel(profile,
 pywinstyles.set_opacity(recentlyPlayed_lbl, color="#000001")
 recentlyPlayed_lbl.place(x=20, y=210, anchor=tkinter.W)
 
-friends_lbl = CTkLabel(profile,
-                       text="Friends: ",
-                       text_color="White",
-                       bg_color="#000001",
-                       font=("Arial", 22))
-friends_lbl.bind("<Button-1>", lambda e,:FriendsOut())
-pywinstyles.set_opacity(friends_lbl, color="#000001")
-friends_lbl.place(x=20, y=245, anchor=tkinter.W)
-
 ban_status_lbl = CTkLabel(profile,
                           text="VAC Ban: ",
                           text_color="White",
                           bg_color="#000001",
                           font=("Arial", 22))
 pywinstyles.set_opacity(ban_status_lbl, color="#000001")
-ban_status_lbl.place(x=20, y=280, anchor=tkinter.W)
+ban_status_lbl.place(x=20, y=245, anchor=tkinter.W)
+
+friends_lbl = CTkButton(profile,
+                        width=30,
+                        text="Friends: ",
+                        text_color="White",
+                        fg_color="#250454",
+                        bg_color="#000001",
+                        font=("Arial", 22),
+                        hover=false)
+friends_lbl.bind("<Button-1>", lambda e,:FriendsOut())
+pywinstyles.set_opacity(friends_lbl, color="#000001")
+friends_lbl.place(x=13, y=280, anchor=tkinter.W)
 
 app.mainloop()
