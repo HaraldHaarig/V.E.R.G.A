@@ -1,4 +1,5 @@
 from cgitb import text
+import profile
 import tkinter
 from tkinter.font import Font
 from turtle import color
@@ -39,16 +40,16 @@ stats = CTkFrame(master=app,
 pywinstyles.set_opacity(stats, color="#000001")
 stats.place(x=1005, y=450, anchor=tkinter.CENTER)
 
-# Label für die Game Beschreibung
-description_lbl = CTkLabel(app, 
+# Label für den Überpunkt "Game Beschreibung"
+description_title_lbl = CTkLabel(app, 
                            text="Game Beschreibung", 
                            text_color="White", 
                            bg_color="#000001", 
                            font=("Arial", 25))
-pywinstyles.set_opacity(description_lbl, color="#000001")
-description_lbl.place(x=425, y=275, anchor=tkinter.CENTER)
+pywinstyles.set_opacity(description_title_lbl, color="#000001")
+description_title_lbl.place(x=425, y=275, anchor=tkinter.CENTER)
 
-# Label für die Game "Stats"
+# Label für den Überpunkt "Stats"
 stats_lbl = CTkLabel(app, 
                      text="Game Stats", 
                      text_color="White", 
@@ -57,41 +58,77 @@ stats_lbl = CTkLabel(app,
 pywinstyles.set_opacity(stats_lbl, color="#000001")
 stats_lbl.place(x=1005, y=275, anchor=tkinter.CENTER)
 
+# Leeres Label für die Spielbeschreibungen
+description_lbl = CTkLabel(description,
+                           text="*Hier steht die Spielbeschreibung*",
+                           text_color="White",
+                           bg_color="#000001",
+                           font=("Arial", 22))
+pywinstyles.set_opacity(description_lbl, color="#000001")
+description_lbl.place(x=10, y=70, anchor=tkinter.W)
+
 # Label für die Playtime
-playtime_lbl = CTkLabel(app, 
+playtime_lbl = CTkLabel(stats, 
                         text="Playtime: ",
                         text_color="White",
                         bg_color="#000001",
                         font=("Arial", 22))
 pywinstyles.set_opacity(playtime_lbl, color="#000001")
-playtime_lbl.place(x=825, y=325, anchor=tkinter.W)
+playtime_lbl.place(x=20, y=70, anchor=tkinter.W)
 
-# Label für den Publisher
-publisher_lbl = CTkLabel(app, 
-                        text="Publisher: ",
+# Label für das Release Date
+release_lbl = CTkLabel(stats, 
+                       text="Release Date: ",
+                       text_color="White",
+                       bg_color="#000001",
+                       font=("Arial", 22))
+pywinstyles.set_opacity(release_lbl, color="#000001")
+release_lbl.place(x=20, y=105, anchor=tkinter.W)
+
+# Label für den Metacrit Score
+metacrit_lbl = CTkLabel(stats, 
+                        text="Metacrit Score: ",
                         text_color="White",
                         bg_color="#000001",
                         font=("Arial", 22))
-pywinstyles.set_opacity(publisher_lbl, color="#000001")
-publisher_lbl.place(x=825, y=360, anchor=tkinter.W)
+pywinstyles.set_opacity(metacrit_lbl, color="#000001")
+metacrit_lbl.place(x=20, y=140, anchor=tkinter.W)
 
-# Label für den Developer
-developer_lbl = CTkLabel(app, 
-                        text="Developer: ",
-                        text_color="White",
-                        bg_color="#000001",
-                        font=("Arial", 22))
-pywinstyles.set_opacity(developer_lbl, color="#000001")
-developer_lbl.place(x=825, y=395, anchor=tkinter.W)
+# Label für den Preis
+price_lbl = CTkLabel(stats, 
+                     text="Price: ",
+                     text_color="White",
+                     bg_color="#000001",
+                     font=("Arial", 22))
+pywinstyles.set_opacity(price_lbl, color="#000001")
+price_lbl.place(x=20, y=175, anchor=tkinter.W)
 
-# Label für das Erscheinungsdatum
-releasedate_lbl = CTkLabel(app, 
-                        text="Release Date: ",
-                        text_color="White",
-                        bg_color="#000001",
-                        font=("Arial", 22))
-pywinstyles.set_opacity(releasedate_lbl, color="#000001")
-releasedate_lbl.place(x=825, y=430, anchor=tkinter.W)
+# Label für Controller Support
+controller_lbl = CTkLabel(stats, 
+                          text="Controller: ",
+                          text_color="White",
+                          bg_color="#000001",
+                          font=("Arial", 22))
+pywinstyles.set_opacity(controller_lbl, color="#000001")
+controller_lbl.place(x=20, y=210, anchor=tkinter.W)
+
+# Label für das Erforderliche Alter
+age_lbl = CTkLabel(stats, 
+                   text="Required Age: ",
+                   text_color="White",
+                   bg_color="#000001",
+                   font=("Arial", 22))
+pywinstyles.set_opacity(age_lbl, color="#000001")
+age_lbl.place(x=20, y=245, anchor=tkinter.W)
+
+# Label für die verfügbaren Plattformen
+platforms_lbl = CTkLabel(stats, 
+                         text="Platforms: ",
+                         text_color="White",
+                         bg_color="#000001",
+                         font=("Arial", 22))
+pywinstyles.set_opacity(platforms_lbl, color="#000001")
+platforms_lbl.place(x=20, y=280, anchor=tkinter.W)
 
 # app.overrideredirect(True)            Remove Titlebar (mehr oder weniger)
 app.mainloop()
