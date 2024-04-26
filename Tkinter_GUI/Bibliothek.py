@@ -54,6 +54,8 @@ class Bibliothek:
         self.spielcards.showallCards(url,title)
         self.spielcards.showCard(url[0],title[0], count)
 
+        print("Verga")
+
         #self.showCards()
         
         self.root_tk.mainloop()
