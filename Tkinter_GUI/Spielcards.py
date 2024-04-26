@@ -45,7 +45,7 @@ class Spielcards:
         
     def onLabelClicked(self,details):
         self.root_tk.destroy()
-        spielbeschreibung_main(details[2],details[1],"B","C",details[0],details[4],details[3],"G")
+        spielbeschreibung_main(details[2],(details[1]/60),details[5],details[6],details[0],details[4],details[3],details[7],self)
 
 
     def showCard(self, url, title,len,details):
@@ -55,6 +55,8 @@ class Spielcards:
         img_data=Image.open(io.BytesIO(raw_data))
         img=CTkImage(dark_image=img_data, light_image=img_data, size=(180,120))
         label=CTkLabel(self.frame,image=img)
+        
+
         label.bind("<Button-1>",lambda e:self.onLabelClicked(details))
         if(url=="https://cdn-icons-png.flaticon.com/512/16/16096.png"):
             label.configure(text=title)

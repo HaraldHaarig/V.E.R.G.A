@@ -3,19 +3,29 @@ from tkinter.font import Font
 from customtkinter import *
 from PIL import Image
 import pywinstyles
+
+from Tkinter_GUI.Spielcards import Spielcards
 def spielbeschreibung_main(gamedescription, playtime, reldate, metascore, price, controller, reqage, platforms):
+
     set_appearance_mode("dark")
 
     app = CTk()
     app.geometry("1280x720")
     app.title("V.E.R.G.A GameLauncher")
-
+    
     # Background Image
     image = Image.open("Design/Background.png")
     background_image = CTkImage(image, size=(1280, 720))
-
+    #Background Image Label
     bg_lbl = CTkLabel(app, text="", image = background_image)
     bg_lbl.place(x = 0, y = 0)
+    
+    backimg= Image.open("Design/back_arrow.png")
+    gobackimg=CTkImage(backimg,size=(50,50))
+    
+    back = CTkLabel(app,text="",image=gobackimg)
+    back.place(x=0,y=0)
+    back.bind("<Button-1>",lambda e:goback(app))
 
     # Frame für die Spielbeschreibung
     description = CTkFrame(master=app,
@@ -60,13 +70,14 @@ def spielbeschreibung_main(gamedescription, playtime, reldate, metascore, price,
                             text=gamedescription,
                             text_color="White",
                             bg_color="#000001",
-                            font=("Arial", 22))
+                            font=("Arial", 22),
+                            wraplength=690)
     pywinstyles.set_opacity(description_lbl, color="#000001")
-    description_lbl.place(x=10, y=70, anchor=tkinter.W)
+    description_lbl.place(x=10, y=95, anchor=tkinter.W)
 
     # Label für die Playtime
     playtime_lbl = CTkLabel(stats, 
-                            text="Playtime: "+str(playtime),
+                            text="Playtime: "+str(playtime)+" h",
                             text_color="White",
                             bg_color="#000001",
                             font=("Arial", 22))
@@ -129,3 +140,7 @@ def spielbeschreibung_main(gamedescription, playtime, reldate, metascore, price,
 
     #app.overrideredirect(True)            Remove Titlebar (mehr oder weniger)
     app.mainloop()
+
+def goback(app:CTk):
+    app.destroy()
+    
