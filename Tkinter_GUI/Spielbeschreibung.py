@@ -4,8 +4,8 @@ from customtkinter import *
 from PIL import Image
 import pywinstyles
 
-from Tkinter_GUI.Spielcards import Spielcards
-def spielbeschreibung_main(gamedescription, playtime, reldate, metascore, price, controller, reqage, platforms):
+
+def spielbeschreibung_main(gamedescription, playtime, reldate, metascore, price, controller, reqage, platforms,restore_details,restore_titles,restore_urls):
 
     set_appearance_mode("dark")
 
@@ -20,12 +20,12 @@ def spielbeschreibung_main(gamedescription, playtime, reldate, metascore, price,
     bg_lbl = CTkLabel(app, text="", image = background_image)
     bg_lbl.place(x = 0, y = 0)
     
-    backimg= Image.open("Design/back_arrow.png")
+    backimg= Image.open("Design/creation.png")
     gobackimg=CTkImage(backimg,size=(50,50))
     
     back = CTkLabel(app,text="",image=gobackimg)
-    back.place(x=0,y=0)
-    back.bind("<Button-1>",lambda e:goback(app))
+    back.place(x=1230,y=0)
+    back.bind("<Button-1>",lambda e:goback(app,restore_details,restore_titles,restore_urls))
 
     # Frame für die Spielbeschreibung
     description = CTkFrame(master=app,
@@ -73,7 +73,7 @@ def spielbeschreibung_main(gamedescription, playtime, reldate, metascore, price,
                             font=("Arial", 22),
                             wraplength=690)
     pywinstyles.set_opacity(description_lbl, color="#000001")
-    description_lbl.place(x=10, y=95, anchor=tkinter.W)
+    description_lbl.place(x=10, y=105, anchor=tkinter.W)
 
     # Label für die Playtime
     playtime_lbl = CTkLabel(stats, 
@@ -134,13 +134,22 @@ def spielbeschreibung_main(gamedescription, playtime, reldate, metascore, price,
                             text="Platforms: "+str(platforms),
                             text_color="White",
                             bg_color="#000001",
-                            font=("Arial", 22))
+                            font=("Arial", 22),
+                            wraplength=300)
     pywinstyles.set_opacity(platforms_lbl, color="#000001")
-    platforms_lbl.place(x=20, y=280, anchor=tkinter.W)
-
+    try:
+        if(len(platforms)>4):
+            platforms_lbl.place(x=20, y=320, anchor=tkinter.W)
+        else:
+            platforms_lbl.place(x=20, y=280,anchor=tkinter.W)
+    except TypeError:
+        platforms_lbl.place(x=20,y=280,anchor=tkinter.W)
     #app.overrideredirect(True)            Remove Titlebar (mehr oder weniger)
     app.mainloop()
 
-def goback(app:CTk):
+def goback(app:CTk,details,titles,urls):
+    from Tkinter_GUI.Spielcards import Spielcards #PFUSCH
     app.destroy()
+    temp=Spielcards()
+    temp.showallCards(urls,titles,details)
     
