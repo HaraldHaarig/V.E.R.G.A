@@ -1,28 +1,31 @@
+from re import S
 import tkinter
+from turtle import width
 import customtkinter
-import PIL.Image
+from PIL import Image
+from numpy import imag
 import pywinstyles
 from screeninfo import get_monitors
 import ctypes
 
 class Startpage:
 
-    def Settings():
+    def Settings(self):
         print("Settings---->")
 
-    def Store():
+    def Store(self):
         print("Store->")
 
-    def Mygames():
+    def Mygames(self):
         print("Mygames->")
 
-    def Wishlist():
+    def Wishlist(self):
         print("wishlist->")
 
-    def Notes():
+    def Notes(self):
         print("notes->")
 
-    def Profile():
+    def Profile(self):
         print("profile->")
     
     
@@ -36,10 +39,13 @@ class Startpage:
         customtkinter.set_default_color_theme("blue")
 
 
-        image = tkinter.PhotoImage(master=app,file="Design/Background.png")                         #Background festlegen           
+        image = tkinter.PhotoImage(master=app,file="Design/Background.png")     #Background festlegen 
+        image = image.zoom(2)                           
         #background_image = customtkinter.CTkImage(image, size=(1280, 720))
-        image.configure(width="1280", height="720")
+        #image.configure(width="1280", height="720")
+        
         bg_lbl = customtkinter.CTkLabel(app, text="", image=image)
+
         bg_lbl.place(x=0, y=0)
 
         app.title("Startpage")
@@ -72,7 +78,10 @@ class Startpage:
         settings.place(x=250,y=370)
 
         settingsimg = tkinter.PhotoImage(master=app,file="Tkinter_GUI/StartseiteIMG/settings.png")
-        # imgsettings = customtkinter.CTkImage(settingsimg,size=(100,100))
+        settingsimg = settingsimg.zoom(2)
+       
+        
+        #imgsettings = customtkinter.CTkImage(settingsimg,size=(100,100))
         settingslbl = customtkinter.CTkLabel(settings,text="",image=settingsimg)
         settingslbl.bind("<Button-1>",lambda e,:self.Settings())
         settingslbl.place(x=100,y=90,anchor=tkinter.CENTER)
@@ -96,8 +105,13 @@ class Startpage:
         pywinstyles.set_opacity(store, color="#000001")
         store.place(x=540,y=70)
 
-        storeimg = tkinter.PhotoImage(master=app,file="Tkinter_GUI/StartseiteIMG/shopping-cart.png")
-        # imgstore = customtkinter.CTkImage(storeimg,size=(100,100))
+        #test = Image.open("Tkinter_GUI/StartseiteIMG/shopping-cart.png")
+        #test = test.resize()
+        
+        storeimg = Image.open("Tkinter_GUI/StartseiteIMG/shopping-cart.png")
+        
+
+        #imgstore = customtkinter.CTkImage(storeimg,size=(100,100))
         storelbl = customtkinter.CTkLabel(store,text="",image=storeimg)
         storelbl.bind("<Button-1>",lambda e,:self.Store())
         storelbl.place(x=100,y=90,anchor=tkinter.CENTER)
