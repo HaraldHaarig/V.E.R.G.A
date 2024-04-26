@@ -11,7 +11,7 @@ import ctypes
 from sympy import false
 
 class Profil:
-    def __init__(self):       
+    def __init__(self):
         set_appearance_mode("dark")
         self.app = CTk()
         self.app.geometry("1280x720")
@@ -28,6 +28,7 @@ class Profil:
         bg_lbl = CTkLabel(self.app, text="", image = background_image)
         bg_lbl.place(x = 0, y = 0)
 
+        self.temp = 0
         self.my_x = 640
 
         # Mainframe
@@ -120,27 +121,39 @@ class Profil:
     
     # Der Main Frame wird ein wenig nach links verschoben und ein neues Frame mit Freunden soll generiert werden
     def FriendsOut(self):
-        self.my_x -= 2
-        if self.my_x > 448:
+        if self.my_x > 448 and self.temp == 0:
+            self.my_x -= 2
             self.profile.place(x=self.my_x, y=360, anchor=tkinter.CENTER)
             self.app.after(2, self.FriendsOut)
             
-        if self.my_x == 448:
+        if self.my_x == 448 and self.temp == 0:
             # Das auftauchende Frame für die Freunde
-            friends = CTkFrame(master=self.app,
+            self.friends = CTkFrame(master=self.app,
                                width=350,
                                height=380,
                                corner_radius=20,
                                fg_color="#250454",
                                bg_color="#000001")
-            pywinstyles.set_opacity(friends, color="#00001")
-            friends.place(x=830, y=485, anchor=tkinter.CENTER)
+            pywinstyles.set_opacity(self.friends, color="#00001")
+            self.friends.place(x=830, y=485, anchor=tkinter.CENTER)
 
             # Labels für das extra Freunde-Frame
-            friends_heading_lbl = CTkLabel(master=friends,
+            self.friends_heading_lbl = CTkLabel(master=self.friends,
                                            text="Friends",
                                            text_color="White",
                                            bg_color="#000001",
                                            font=("Arial", 25))
-            pywinstyles.set_opacity(friends_heading_lbl, color="#000001")
-            friends_heading_lbl.place(x=175, y=25, anchor=tkinter.CENTER)
+            pywinstyles.set_opacity(self.friends_heading_lbl, color="#000001")
+            self.friends_heading_lbl.place(x=175, y=25, anchor=tkinter.CENTER)
+            self.temp = 1
+        
+    def FriendsIn(self):
+        if self.my_x == 640 and self.temp == 1:
+            self.friends.destroy()
+            self.friends_heading_lbl.destroy()
+
+        if self.my_x < 640 and self.temp == 1:
+            self.my_x += 2
+            self.profile.place(x=self.my_x, y=360, anchor=tkinter.CENTER)
+            self.app.after(2, self.FriendsIn)
+            self.temp = 0
