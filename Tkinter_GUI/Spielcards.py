@@ -46,12 +46,14 @@ class Spielcards:
 
 
     def showCard(self, url, title,len):
-        with urllib.request.urlopen(url) as u:
-            raw_data=u.read()
+        side_img_data = Image.open("Tkinter_GUI/Images/Background_frfr.png")
+        side_img = CTkImage(dark_image=side_img_data, light_image=side_img_data, size=(300, 480))
+        # with urllib.request.urlopen(url) as u:
+        #     raw_data=u.read()
         
-        img_data=Image.open(io.BytesIO(raw_data))
+        # img_data=Image.open(io.BytesIO(raw_data))
         img=CTkImage(dark_image=img_data, light_image=img_data, size=(180,120))
-        label=CTkLabel(self.frame,image=img)
+        label=CTkLabel(self.frame,text="Bitte")
         label.bind("<Button-1>",lambda e:self.onLabelClicked())
         if(url=="https://cdn-icons-png.flaticon.com/512/16/16096.png"):
             label.configure(text=title)
@@ -77,7 +79,7 @@ class Spielcards:
         for temp in url:
             self.showCard(temp,title[count],count)
             count+=1
-    
+        
 
 
 
