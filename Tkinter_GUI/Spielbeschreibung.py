@@ -66,7 +66,7 @@ def spielbeschreibung_main(gamedescription, playtime, reldate, metascore, price,
 
     # Label für die Playtime
     playtime_lbl = CTkLabel(stats, 
-                            text="Playtime: "+playtime,
+                            text="Playtime: "+str(playtime),
                             text_color="White",
                             bg_color="#000001",
                             font=("Arial", 22))
@@ -75,7 +75,7 @@ def spielbeschreibung_main(gamedescription, playtime, reldate, metascore, price,
 
     # Label für das Release Date
     release_lbl = CTkLabel(stats, 
-                        text="Release Date: "+reldate,
+                        text="Release Date: "+str(reldate),
                         text_color="White",
                         bg_color="#000001",
                         font=("Arial", 22))
@@ -84,7 +84,7 @@ def spielbeschreibung_main(gamedescription, playtime, reldate, metascore, price,
 
     # Label für den Metacrit Score
     metacrit_lbl = CTkLabel(stats, 
-                            text="Metacrit Score: "+metascore,
+                            text="Metacrit Score: "+str(metascore),
                             text_color="White",
                             bg_color="#000001",
                             font=("Arial", 22))
@@ -93,7 +93,7 @@ def spielbeschreibung_main(gamedescription, playtime, reldate, metascore, price,
 
     # Label für den Preis
     price_lbl = CTkLabel(stats, 
-                        text="Price: "+price,
+                        text="Price: "+str(price),
                         text_color="White",
                         bg_color="#000001",
                         font=("Arial", 22))
@@ -102,7 +102,7 @@ def spielbeschreibung_main(gamedescription, playtime, reldate, metascore, price,
 
     # Label für Controller Support
     controller_lbl = CTkLabel(stats, 
-                            text="Controller: "+controller,
+                            text="Controller: "+str(controller),
                             text_color="White",
                             bg_color="#000001",
                             font=("Arial", 22))
@@ -111,7 +111,7 @@ def spielbeschreibung_main(gamedescription, playtime, reldate, metascore, price,
 
     # Label für das Erforderliche Alter
     age_lbl = CTkLabel(stats, 
-                    text="Required Age: "+reqage,
+                    text="Required Age: "+str(reqage),
                     text_color="White",
                     bg_color="#000001",
                     font=("Arial", 22))
@@ -120,7 +120,7 @@ def spielbeschreibung_main(gamedescription, playtime, reldate, metascore, price,
 
     # Label für die verfügbaren Plattformen
     platforms_lbl = CTkLabel(stats, 
-                            text="Platforms: "+platforms,
+                            text="Platforms: "+str(platforms),
                             text_color="White",
                             bg_color="#000001",
                             font=("Arial", 22))

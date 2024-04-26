@@ -11,6 +11,8 @@ import urllib.request
 import io
 import ctypes
 from ctypes import windll
+
+from sympy import det
 from Tkinter_GUI.Spielbeschreibung import spielbeschreibung_main
 
 
@@ -43,7 +45,7 @@ class Spielcards:
         
     def onLabelClicked(self,details):
         self.root_tk.destroy()
-        spielbeschreibung_main(details[2],"A","B","C","D","E","F","G")
+        spielbeschreibung_main(details[2],details[1],"B","C",details[0],details[4],details[3],"G")
 
 
     def showCard(self, url, title,len,details):

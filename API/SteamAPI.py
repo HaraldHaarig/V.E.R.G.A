@@ -25,8 +25,11 @@ def getSteamGamesbyID(id):
      names=[]
      details=[[0]*(5)]*count
      #details=getMoreDetails("Minecraft") # Placeholder for Spielbeschreibung
+     details[0][0]="Servus"
+     # TODO: Fix 2d array 
 
      for i in range(count):
+          
           names.append(response['games'][i]['name'])
           temp=response['games'][i]['name']
           temp1=steam.apps.search_games(temp)
@@ -45,7 +48,7 @@ def getSteamGamesbyID(id):
           if(game_detail[str(game_id)]['success']==True):
                
                web.append(game_detail[str(game_id)]['data']['header_image'])
-               details[i][2]=game_detail[str(game_id)]['data']['detailed_description']
+               details[i][2]=game_detail[str(game_id)]['data']['short_description']
                details[i][3]=game_detail[str(game_id)]['data']['required_age']
                try:
                     details[i][4]=game_detail[str(game_id)]['data']['controller_support']
@@ -54,6 +57,9 @@ def getSteamGamesbyID(id):
 
           else:
                web.append(0)
+         
+
+
      
      return web,names,details
     
