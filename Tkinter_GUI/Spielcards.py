@@ -77,8 +77,6 @@ class Spielcards:
         for temp in url:
             self.showCard(temp,title[count],count)
             count+=1
-        
-        self.root_tk.mainloop()
     
 
 

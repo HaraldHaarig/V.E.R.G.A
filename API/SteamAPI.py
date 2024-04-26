@@ -1,17 +1,16 @@
-from steam import Steam
+from steam_web_api import Steam
 from decouple import config
 import sys
-
 from zmq import NULL
 from API.GameAPI import getMoreDetails
-sys.path.insert(1, "C:\gitRepos\V.E.R.G.A")
+#sys.path.insert(1, "C:\gitRepos\V.E.R.G.A")
 
 
 
 def getSteamGamesbyID(id):
 
-     KEY=config("STEAM_API_KEY")
-     steam=Steam(KEY)
+     #KEY=config("STEAM_API_KEY")
+     steam=Steam("F113CBFAE50D9CD7BB8DE844BCFFE7C1")
 
      user=steam.users.get_user_details(id)
 
@@ -25,7 +24,7 @@ def getSteamGamesbyID(id):
      
 
 
-     print(getMoreDetails("Minecraft")) # Placeholder for Spielbeschreibung
+     #print(getMoreDetails("Minecraft")) # Placeholder for Spielbeschreibung
 
      for i in range(count):
           names.append(response['games'][i]['name'])

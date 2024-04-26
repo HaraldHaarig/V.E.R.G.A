@@ -4,8 +4,9 @@ import tkinter as tk
 from PIL import Image
 from ctypes import windll
 import ctypes
-from Tkinter_GUI.Spielcards import Spielcards#
+from Tkinter_GUI.Spielcards import Spielcards
 from API.SteamAPI import getSteamGamesbyID
+
 
 
 class Bibliothek:
@@ -22,6 +23,8 @@ class Bibliothek:
         self.root_tk.geometry("%dx%d+%d+%d" % (int(screenwidth),int(screenheight),int(x),int(y)))
         
         self.root_tk.title("Bibliothek")
+
+        self.spielcards = Spielcards()
 
         #Pictures
         leftside_img_data = Image.open("Tkinter_GUI/Images/Background_frfr.png")
@@ -43,13 +46,13 @@ class Bibliothek:
         self.root_tk.mainloop()
 
     def showCards(self):
-        spielcards = Spielcards()
+        print("hallo")
         url,title=getSteamGamesbyID("76561199015522225")
         count=0
         for s in url:
             if s == 0:
                 url[count]="https://cdn-icons-png.flaticon.com/512/16/16096.png"
                 count+=1
-        spielcards.showallCards(url,title)
+        self.spielcards.showallCards(url,title)
 
         

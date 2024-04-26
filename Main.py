@@ -1,6 +1,12 @@
 from Tkinter_GUI.Bibliothek import Bibliothek
 from Tkinter_GUI.Spielcards import Spielcards
+from API.SteamAPI import getSteamGamesbyID
 
+from steam_web_api import Steam
+
+steam=Steam("F113CBFAE50D9CD7BB8DE844BCFFE7C1")
+# 105600
+#print(steam.apps.get_app_details(105600))
 
 # Test_SteamID:76561199015522225 -> Sonrotz0815
 
@@ -8,7 +14,7 @@ from Tkinter_GUI.Spielcards import Spielcards
 # generate classes
 bibliothek = Bibliothek()
 
-#test = Spielcards()
+# test = Spielcards()
 
 
 # startpage = Startpage()
