@@ -4,6 +4,9 @@ import tkinter as tk
 from PIL import Image
 from ctypes import windll
 import ctypes
+from Tkinter_GUI.Spielcards import Spielcards#
+from API.SteamAPI import getSteamGamesbyID
+
 
 class Bibliothek:
 
@@ -35,16 +38,18 @@ class Bibliothek:
         #self.leftframe.pack()
         self.leftframe.place(anchor=tk.W, relx=0.0,rely=0.5)
 
-        CTkLabel(master=self.leftframe, text="", image=side_img).pack(expand=True, side="left")
-
+        self.showCards()
+        
         self.root_tk.mainloop()
-        # app = CTk()
-        # app.geometry("1280x720")
-        # app.resizable(0,0)
 
-        # background = Image.open("Tkinter_GUI/Images/Background_frfr.png")
-        # backgroundData = CTkImage(dark_image=background, light_image=background, size=(1280, 720))
+    def showCards(self):
+        spielcards = Spielcards()
+        url,title=getSteamGamesbyID("76561199015522225")
+        count=0
+        for s in url:
+            if s == 0:
+                url[count]="https://cdn-icons-png.flaticon.com/512/16/16096.png"
+                count+=1
+        spielcards.showallCards(url,title)
 
-        # CTkLabel(master=app, text="", image=backgroundData).pack(expand=True, side="left")
-
-        # app.mainloop()
+        

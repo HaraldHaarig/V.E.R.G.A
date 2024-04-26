@@ -1,4 +1,6 @@
 from Tkinter_GUI.Bibliothek import Bibliothek
+from Tkinter_GUI.Spielcards import Spielcards
+
 
 # Test_SteamID:76561199015522225 -> Sonrotz0815
 
@@ -6,7 +8,8 @@ from Tkinter_GUI.Bibliothek import Bibliothek
 # generate classes
 bibliothek = Bibliothek()
 
-# test = Spielcards()
+#test = Spielcards()
+
 
 # startpage = Startpage()
 
@@ -15,7 +18,8 @@ bibliothek = Bibliothek()
 
 # url,title=getSteamGamesbyID("76561199015522225")
 
-# # print(len(url), len(title) )
+
+# print(len(url), len(title) )
 # count=0
 # for s in url:
 #     if s == 0:
