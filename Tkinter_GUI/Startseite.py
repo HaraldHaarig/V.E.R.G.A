@@ -6,6 +6,7 @@ from PIL import Image
 import ctypes
 import pywinstyles
 from Tkinter_GUI.LoadingScreen import Loadingscreen
+from Tkinter_GUI.Profil import Profil
 
 
 
@@ -222,4 +223,4 @@ class Startpage:
     def Profile(self):
         print("profile->")
         self.app.destroy()
-        loadingscreen = Loadingscreen()
+        profil = Profil()
