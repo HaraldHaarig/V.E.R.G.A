@@ -5,28 +5,29 @@ from screeninfo import get_monitors
 from PIL import Image
 import ctypes
 import pywinstyles
+from Tkinter_GUI.LoadingScreen import Loadingscreen
 
 
 
 class Startpage:
 
     def __init__(self):
-        app = customtkinter.CTk()
+        self.app = customtkinter.CTk()
 
         customtkinter.set_appearance_mode("dark")
         customtkinter.set_default_color_theme("blue")
-        app.geometry("1280x720")
-        app.title("Startpage")
+        self.app.geometry("1280x720")
+        self.app.title("Startpage")
 
 
         image = Image.open("Design/Background.png")                                  #Image initialitieren
         imagebg = customtkinter.CTkImage(image,size=(1280,720))
 
-        bg_label = customtkinter.CTkLabel(app, text="", image=imagebg)                   #backgrund imagelabel
+        bg_label = customtkinter.CTkLabel(self.app, text="", image=imagebg)                   #backgrund imagelabel
         bg_label.place(x=0,y=0)
 
-        app.iconbitmap(default="Design/Icon.png")
-        app.iconphoto(False, PhotoImage(master=app,file="Design/Icon.png"))              #Icon festlegen
+        self.app.iconbitmap(default="Design/Icon.png")
+        self.app.iconphoto(False, PhotoImage(master=self.app,file="Design/Icon.png"))              #Icon festlegen
 
         myappid = u'mycompany.myproduct.subproduct.version'
         ctypes.windll.shell32.SetCurrentProcessExplicitAppUserModelID(myappid)          #Icon festlegen
@@ -34,7 +35,7 @@ class Startpage:
 
         
         #settingsbutton
-        settings = customtkinter.CTkButton(master=app,
+        settings = customtkinter.CTkButton(master=self.app,
                                                 width=200,
                                                 height=250,
                                                 corner_radius=20,
@@ -62,7 +63,7 @@ class Startpage:
 
 
         #storebutton
-        store = customtkinter.CTkButton(master=app,
+        store = customtkinter.CTkButton(master=self.app,
                                         width=200,
                                         height=250,
                                         corner_radius=20,
@@ -87,7 +88,7 @@ class Startpage:
 
 
         #myGames
-        mygames = customtkinter.CTkButton(master=app,
+        mygames = customtkinter.CTkButton(master=self.app,
                                             width=200,
                                             height=250,
                                             corner_radius=20,
@@ -113,7 +114,7 @@ class Startpage:
 
 
          #wishlist
-        wishlist = customtkinter.CTkButton(master=app,
+        wishlist = customtkinter.CTkButton(master=self.app,
                                                 width=200,
                                                 height=250,
                                                 corner_radius=20,
@@ -138,7 +139,7 @@ class Startpage:
         wishlisttxt.place(x=100,y=180,anchor=tkinter.CENTER)
 
         #notes
-        notes= customtkinter.CTkButton(master=app,
+        notes= customtkinter.CTkButton(master=self.app,
                                             width=200,
                                             height=250,
                                             corner_radius=20,
@@ -164,7 +165,7 @@ class Startpage:
 
 
         #profile
-        profile = customtkinter.CTkButton(master=app,
+        profile = customtkinter.CTkButton(master=self.app,
                                             width=200,
                                             height=250,
                                             corner_radius=20,
@@ -190,7 +191,7 @@ class Startpage:
         
         
 
-        app.mainloop()
+        self.app.mainloop()
 
 
 
@@ -199,19 +200,26 @@ class Startpage:
 
 
     def Settings(self):
-        print("Settings->")
+        print("Settings->") 
+        
     
     def Store(self):
         print("Store->")
+        #self.app.destroy()
     
     def Mygames(self):
         print("My games->")
+        #self.app.destroy()
     
     def Wishlist(self):
         print("Wishlist->")
+        #self.app.destroy()
     
     def Notes(self):
         print("Notes->")
+        #self.app.destroy()
 
     def Profile(self):
         print("profile->")
+        self.app.destroy()
+        loadingscreen = Loadingscreen()
