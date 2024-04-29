@@ -1,69 +1,39 @@
-from re import S
 import tkinter
-from turtle import width
 import customtkinter
-from PIL import Image
-from numpy import imag
-import pywinstyles
+from tkinter import *
 from screeninfo import get_monitors
+from PIL import Image
 import ctypes
+import pywinstyles
+
+
 
 class Startpage:
-
-    def Settings(self):
-        print("Settings---->")
-
-    def Store(self):
-        print("Store->")
-
-    def Mygames(self):
-        print("Mygames->")
-
-    def Wishlist(self):
-        print("wishlist->")
-
-    def Notes(self):
-        print("notes->")
-
-    def Profile(self):
-        print("profile->")
-    
-    
-
-
 
     def __init__(self):
         app = customtkinter.CTk()
 
         customtkinter.set_appearance_mode("dark")
         customtkinter.set_default_color_theme("blue")
-
-
-        image = tkinter.PhotoImage(master=app,file="Design/Background.png")     #Background festlegen 
-        image = image.zoom(2)                           
-        #background_image = customtkinter.CTkImage(image, size=(1280, 720))
-        #image.configure(width="1280", height="720")
-        
-        bg_lbl = customtkinter.CTkLabel(app, text="", image=image)
-
-        bg_lbl.place(x=0, y=0)
-
+        app.geometry("1280x720")
         app.title("Startpage")
-        app.geometry("1280x720")  #Gröse festlegen 
 
+
+        image = Image.open("Design/Background.png")                                  #Image initialitieren
+        imagebg = customtkinter.CTkImage(image,size=(1280,720))
+
+        bg_label = customtkinter.CTkLabel(app, text="", image=imagebg)                   #backgrund imagelabel
+        bg_label.place(x=0,y=0)
 
         app.iconbitmap(default="Design/Icon.png")
-        app.iconphoto(False, tkinter.PhotoImage(master=app,file="Design/Icon.png"))  #icon festlegen 
+        app.iconphoto(False, PhotoImage(master=app,file="Design/Icon.png"))              #Icon festlegen
 
-        myappid = u'mycompany.myproduct.subproduct.version'                #icon in taskbar festlegen
-        ctypes.windll.shell32.SetCurrentProcessExplicitAppUserModelID(myappid)
+        myappid = u'mycompany.myproduct.subproduct.version'
+        ctypes.windll.shell32.SetCurrentProcessExplicitAppUserModelID(myappid)          #Icon festlegen
 
 
-        #Die größen des Monitores einholen 
-        for data in get_monitors():
-            print(str(data))
-
-            #settingsbutton
+        
+        #settingsbutton
         settings = customtkinter.CTkButton(master=app,
                                                 width=200,
                                                 height=250,
@@ -77,18 +47,17 @@ class Startpage:
         pywinstyles.set_opacity(settings,color="#000001")
         settings.place(x=250,y=370)
 
-        settingsimg = tkinter.PhotoImage(master=app,file="Tkinter_GUI/StartseiteIMG/settings.png")
-        settingsimg = settingsimg.zoom(2)
-       
-        
-        #imgsettings = customtkinter.CTkImage(settingsimg,size=(100,100))
-        settingslbl = customtkinter.CTkLabel(settings,text="",image=settingsimg)
+        image = Image.open("Tkinter_GUI/StartseiteIMG/settings.png")
+        imagesettings = customtkinter.CTkImage(image,size=(100,100))
+
+        settingslbl = customtkinter.CTkLabel(settings,text="",image=imagesettings)
         settingslbl.bind("<Button-1>",lambda e,:self.Settings())
         settingslbl.place(x=100,y=90,anchor=tkinter.CENTER)
 
-        settingstext = customtkinter.CTkLabel(settings,text="Settings",font=("Arial",25),text_color="#B886F8")
-        settingstext.place(x=100,y=180,anchor=tkinter.CENTER)
-        settingstext.bind("<Button-1>",lambda e,:self.Settings())
+        settingstxt = customtkinter.CTkLabel(settings, text="Settings",font=("Arial",25),text_color="#B886F8")
+        settingstxt.place(x=100,y=180,anchor=tkinter.CENTER)
+        settingstxt.bind("<Button-1>",lambda e, :self.Settings())
+
 
 
 
@@ -105,23 +74,19 @@ class Startpage:
         pywinstyles.set_opacity(store, color="#000001")
         store.place(x=540,y=70)
 
-        #test = Image.open("Tkinter_GUI/StartseiteIMG/shopping-cart.png")
-        #test = test.resize()
-        
-        storeimg = Image.open("Tkinter_GUI/StartseiteIMG/shopping-cart.png")
-        
+        image = Image.open("Tkinter_GUI/StartseiteIMG/shopping-cart.png")
+        imagestore = customtkinter.CTkImage(image,size=(100,100))
 
-        #imgstore = customtkinter.CTkImage(storeimg,size=(100,100))
-        storelbl = customtkinter.CTkLabel(store,text="",image=storeimg)
+        storelbl = customtkinter.CTkLabel(store,text="",image=imagestore)
         storelbl.bind("<Button-1>",lambda e,:self.Store())
         storelbl.place(x=100,y=90,anchor=tkinter.CENTER)
 
-        storetext = customtkinter.CTkLabel(store,text="Store",font=("Arial",25),text_color="#B886F8")
-        storetext.place(x=100,y=180,anchor=tkinter.CENTER)
-        storetext.bind("<Button-1>",lambda e,:self.Store())
+        storetxt = customtkinter.CTkLabel(store, text="Store",font=("Arial",25),text_color="#B886F8")
+        storetxt.place(x=100,y=180,anchor=tkinter.CENTER)
+        storetxt.bind("<Button-1>",lambda e, :self.Store())
 
 
-        #mygamesbutton
+        #myGames
         mygames = customtkinter.CTkButton(master=app,
                                             width=200,
                                             height=250,
@@ -135,18 +100,19 @@ class Startpage:
         pywinstyles.set_opacity(mygames, color="#000001")
         mygames.place(x=830,y=70)
 
-        mygamesimg = tkinter.PhotoImage(master=app,file="Tkinter_GUI/StartseiteIMG/joystick.png")
-        # imgmygames = customtkinter.CTkImage(mygamesimg,size=(100,100))
-        mygameslbl = customtkinter.CTkLabel(mygames,text="",image=mygamesimg)
-        mygameslbl.bind("<Button-1>",lambda e,:self.Mygames())
+        image = Image.open("Tkinter_GUI/StartseiteIMG/joystick.png")
+        imagemygames = customtkinter.CTkImage(image,size=(100,100))
+
+        mygameslbl = customtkinter.CTkLabel(mygames,text="",image=imagemygames)
+        mygameslbl.bind("<Button-1>",lambda e, :self.Mygames())
         mygameslbl.place(x=100,y=90,anchor=tkinter.CENTER)
 
-        mygamestext = customtkinter.CTkLabel(mygames,text="My Games",font=("Arial",25),text_color="#B886F8")
-        mygamestext.place(x=100,y=180,anchor=tkinter.CENTER)
-        mygamestext.bind("<Button-1>",lambda e,:self.Mygames())
+        mygamestxt = customtkinter.CTkLabel(mygames,text="Mygames",font=("Arial",25),text_color="#B886F8")
+        mygamestxt.place(x=100,y=180,anchor=tkinter.CENTER)
+        mygamestxt.bind("<Button-1>",lambda e, :self.Mygames())
 
 
-        #wishlistbutton
+         #wishlist
         wishlist = customtkinter.CTkButton(master=app,
                                                 width=200,
                                                 height=250,
@@ -158,20 +124,20 @@ class Startpage:
                                                 command=self.Wishlist
                                                 )
         pywinstyles.set_opacity(wishlist, color="#000001")
-        wishlist.place(x=830, y=370)
+        wishlist.place(x=830, y=370) 
+    
+        image = Image.open("Tkinter_GUI/StartseiteIMG/geschenk.png")
+        imagewishlist = customtkinter.CTkImage(image,size=(100,100))
 
-        wishlistimg = tkinter.PhotoImage(master=app,file="Tkinter_GUI/StartseiteIMG/geschenk.png")
-        # imgwishlist = customtkinter.CTkImage(wishlistimg,size=(100,100))
-        wishlistlbl = customtkinter.CTkLabel(wishlist,text="",image=wishlistimg)
-        wishlistlbl.bind("<Button-1>",lambda e,:self.Wishlist())
-        wishlistlbl.place(x=100,y=100,anchor=tkinter.CENTER)
+        wishlistlbl = customtkinter.CTkLabel(wishlist,text="",image=imagewishlist)
+        wishlistlbl.bind("<Button-1>",lambda e, :self.Wishlist())
+        wishlistlbl.place(x=100,y=90,anchor=tkinter.CENTER)
 
-        wishlisttxt = customtkinter.CTkLabel(wishlist,text="Wishlist", font=("Arial",25), text_color="#B886F8")
+        wishlisttxt = customtkinter.CTkLabel(wishlist,text="Wishlist",font=("Arial",25),text_color="#B886F8")
+        wishlisttxt.bind("<Button-1>",lambda e, :self.Wishlist())
         wishlisttxt.place(x=100,y=180,anchor=tkinter.CENTER)
-        wishlisttxt.bind("<Button-1>",lambda e,:self.Wishlist())
 
-
-        #notesbutton
+        #notes
         notes= customtkinter.CTkButton(master=app,
                                             width=200,
                                             height=250,
@@ -185,17 +151,19 @@ class Startpage:
         pywinstyles.set_opacity(notes, color="#000001")
         notes.place(x=540, y=370)
 
-        notesimg = tkinter.PhotoImage(master=app,file="Tkinter_GUI/StartseiteIMG/notes.png")
-        # imgnotes = customtkinter.CTkImage(notesimg,size=(100,100))
-        noteslbl = customtkinter.CTkLabel(notes,text="",image=notesimg)
-        noteslbl.bind("<Button-1>",lambda e,:self.Notes())
-        noteslbl.place(x=100,y=100,anchor=tkinter.CENTER)
+        image = Image.open("Tkinter_GUI/StartseiteIMG/notes.png")
+        imagenotes = customtkinter.CTkImage(image,size=(100,100))
+
+        noteslbl = customtkinter.CTkLabel(notes,text="",image=imagenotes)
+        noteslbl.bind("<Button-1>",lambda e, :self.Notes())
+        noteslbl.place(x=100,y=90,anchor=tkinter.CENTER)
 
         notestxt = customtkinter.CTkLabel(notes,text="Notes",font=("Arial",25),text_color="#B886F8")
+        notestxt.bind("<Button-1>",lambda e, :self.Notes())
         notestxt.place(x=100,y=180,anchor=tkinter.CENTER)
-        notestxt.bind("<Button-1>",lambda e,:self.Notes())
 
-        #profilebutton
+
+        #profile
         profile = customtkinter.CTkButton(master=app,
                                             width=200,
                                             height=250,
@@ -209,17 +177,41 @@ class Startpage:
         pywinstyles.set_opacity(profile, color="#000001")
         profile.place(x=250, y=70)
 
-        profileimg = tkinter.PhotoImage(master=app,file="Tkinter_GUI/StartseiteIMG/user.png")
-        # imgprofile = customtkinter.CTkImage(profileimg,size=(100,100))
-        profilelbl = customtkinter.CTkLabel(profile,text="",image=profileimg)
-        profilelbl.bind("<Button-1>",lambda e,:self.Profile())
-        profilelbl.place(x=100,y=100,anchor=tkinter.CENTER)
+        image = Image.open("Tkinter_GUI/StartseiteIMG/user.png")
+        imageprofile = customtkinter.CTkImage(image,size=(100,100))
 
-        profiletext = customtkinter.CTkLabel(profile,text="Profile",font=("Arial",25),text_color="#B886F8")
-        profiletext.place(x=100,y=180,anchor=tkinter.CENTER)
-        profiletext.bind("<Button-1>",lambda e,:self.Profile())
+        profilelbl = customtkinter.CTkLabel(profile,text="",image=imageprofile)
+        profilelbl.bind("<Button-1>",lambda e, :self.Profile())
+        profilelbl.place(x=100,y=90,anchor=tkinter.CENTER)
 
+        profiletxt = customtkinter.CTkLabel(profile,text="Profile",font=("Arial",25),text_color="#B886F8")
+        profiletxt.bind("<Button-1>",lambda e, :self.Profile())
+        profiletxt.place(x=100,y=180,anchor=tkinter.CENTER)
+        
+        
 
         app.mainloop()
 
+
+
+
+
+
+
+    def Settings(self):
+        print("Settings->")
     
+    def Store(self):
+        print("Store->")
+    
+    def Mygames(self):
+        print("My games->")
+    
+    def Wishlist(self):
+        print("Wishlist->")
+    
+    def Notes(self):
+        print("Notes->")
+
+    def Profile(self):
+        print("profile->")
