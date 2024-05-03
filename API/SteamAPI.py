@@ -11,6 +11,7 @@ sys.path.insert(1, "C:\gitRepos\V.E.R.G.A")
 
 def getSteamGamesbyID(id):
 
+     
      KEY=config("STEAM_API_KEY")
      steam=Steam(KEY)
 

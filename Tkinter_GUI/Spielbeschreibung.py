@@ -20,7 +20,8 @@ def spielbeschreibung_main(gamedescription, playtime, reldate, metascore, price,
     bg_lbl = CTkLabel(app, text="", image = background_image)
     bg_lbl.place(x = 0, y = 0)
     
-    backimg= Image.open("Design/creation.png")
+    backimg= Image.open("Design/back.png")
+    
     gobackimg=CTkImage(backimg,size=(50,50))
     
     back = CTkLabel(app,text="",image=gobackimg)
