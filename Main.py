@@ -1,5 +1,6 @@
 import imp
 
+from Tkinter_GUI.Login import Login
 from Tkinter_GUI.Spielcards import Spielcards
 from Tkinter_GUI.Startseite import Startpage
 from API.SteamAPI import getSteamGamesbyID
@@ -8,9 +9,9 @@ from Tkinter_GUI.Spielbeschreibung import spielbeschreibung_main
 
 # # generate classes
 
-
+login=Login()
 #startpage = Startpage()
-startpagefix = Startpage()
+#startpagefix = Startpage()
 
 # test = Spielcards()
 
