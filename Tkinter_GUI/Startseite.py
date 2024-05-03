@@ -5,8 +5,11 @@ from screeninfo import get_monitors
 from PIL import Image
 import ctypes
 import pywinstyles
+from API.GameAPI import getImg
+from Tkinter_GUI.Spielcards import Spielcards
 from Tkinter_GUI.LoadingScreen import Loadingscreen
 from Tkinter_GUI.Profil import Profil
+from API.SteamAPI import getSteamGamesbyID
 
 
 
@@ -209,8 +212,22 @@ class Startpage:
         #self.app.destroy()
     
     def Mygames(self):
-        print("My games->")
-        #self.app.destroy()
+        print("My games->") # Temporär bis Bibliothek fertig ist
+        self.app.destroy()
+        spielcard=Spielcards()
+        
+        url,title,details=getSteamGamesbyID("76561199015522225")
+
+
+        count=0
+        for s in url:
+            if s == 0:
+                url[count]=getImg(title[count])
+                if(url[count]==0):
+                    url[count]="https://cdn-icons-png.flaticon.com/512/16/16096.png"
+            count+=1
+        spielcard.showallCards(url,title,details)
+    
     
     def Wishlist(self):
         print("Wishlist->")

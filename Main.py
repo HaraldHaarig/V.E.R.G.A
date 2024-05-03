@@ -12,16 +12,16 @@ from Tkinter_GUI.Spielbeschreibung import spielbeschreibung_main
 #startpage = Startpage()
 startpagefix = Startpage()
 
-test = Spielcards()
+# test = Spielcards()
 
-url,title,details=getSteamGamesbyID("76561199015522225")
+# url,title,details=getSteamGamesbyID("76561199015522225")
 
 
-count=0
-for s in url:
-    if s == 0:
-        url[count]="https://cdn-icons-png.flaticon.com/512/16/16096.png"
-    count+=1
-test.showallCards(url,title,details)
+# count=0
+# for s in url:
+#     if s == 0:
+#         url[count]="https://cdn-icons-png.flaticon.com/512/16/16096.png"
+#     count+=1
+# test.showallCards(url,title,details)
 # test.showCard(url[0],title[0])
 
