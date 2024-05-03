@@ -1,5 +1,6 @@
 from gc import disable
 import tkinter
+import arrow
 from click import command
 from customtkinter import *
 from PIL import Image
@@ -8,7 +9,7 @@ from matplotlib.backend_bases import cursors
 from pyparsing import col
 import pywinstyles
 import ctypes
-from sympy import false
+from sympy import false, im
 
 class Profil:
     def __init__(self):
@@ -111,8 +112,7 @@ class Profil:
                                 text_color="White",
                                 fg_color="#250454",
                                 bg_color="#000001",
-                                font=("Arial", 22),
-                                hover=false)
+                                font=("Arial", 22))
         friends_lbl.bind("<Button-1>", lambda e,:self.FriendsOut())
         pywinstyles.set_opacity(friends_lbl, color="#000001")
         friends_lbl.place(x=13, y=280, anchor=tkinter.W)
@@ -121,39 +121,45 @@ class Profil:
     
     # Der Main Frame wird ein wenig nach links verschoben und ein neues Frame mit Freunden soll generiert werden
     def FriendsOut(self):
-        if self.my_x > 448 and self.temp == 0:
+        if self.my_x > 448:
             self.my_x -= 2
             self.profile.place(x=self.my_x, y=360, anchor=tkinter.CENTER)
             self.app.after(2, self.FriendsOut)
             
-        if self.my_x == 448 and self.temp == 0:
+        if self.my_x == 448:
             # Das auftauchende Frame für die Freunde
             self.friends = CTkFrame(master=self.app,
-                               width=350,
-                               height=380,
-                               corner_radius=20,
-                               fg_color="#250454",
-                               bg_color="#000001")
+                                    width=350,
+                                    height=380,
+                                    corner_radius=20,
+                                    fg_color="#250454",
+                                    bg_color="#000001")
             pywinstyles.set_opacity(self.friends, color="#00001")
             self.friends.place(x=830, y=485, anchor=tkinter.CENTER)
 
             # Labels für das extra Freunde-Frame
             self.friends_heading_lbl = CTkLabel(master=self.friends,
-                                           text="Friends",
-                                           text_color="White",
-                                           bg_color="#000001",
-                                           font=("Arial", 25))
+                                                text="Friends",
+                                                text_color="White",
+                                                bg_color="#000001",
+                                                font=("Arial", 25))
             pywinstyles.set_opacity(self.friends_heading_lbl, color="#000001")
             self.friends_heading_lbl.place(x=175, y=25, anchor=tkinter.CENTER)
-            self.temp = 1
+
+            self.arrow_img = Image.open("Design/arrow.png")
+            self.goBackArrow = CTkImage(self.arrow_img, size=(30, 30))
+
+            self.goBackArrow_lbl = CTkLabel(master=self.friends, text="", image=self.goBackArrow)
+            self.goBackArrow_lbl.place(x=10, y=10)
+            self.goBackArrow_lbl.bind("<Button-1>", lambda e,:self.FriendsIn())
         
     def FriendsIn(self):
-        if self.my_x == 640 and self.temp == 1:
-            self.friends.destroy()
-            self.friends_heading_lbl.destroy()
+        if self.my_x == 448:
+            self.friends_heading_lbl.destroy()              #TODO: Kein neues Frame erstellen, sondern das "Profile" Frame mit den Freunden überschreiben. Heute mochma Schicht. Bruch
+            self.goBackArrow_lbl.destroy()
+            
 
-        if self.my_x < 640 and self.temp == 1:
+        if self.my_x < 640:
             self.my_x += 2
             self.profile.place(x=self.my_x, y=360, anchor=tkinter.CENTER)
             self.app.after(2, self.FriendsIn)
-            self.temp = 0
