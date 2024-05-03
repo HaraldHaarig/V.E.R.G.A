@@ -18,9 +18,16 @@ class Startpage:
     def __init__(self):
         self.app = customtkinter.CTk()
 
+        widh_of_window = 1280
+        height_of_window = 720                                                              #Code damit fesnter in der Mitte des Bildschirmes geöffnet wird
+        scree_widh = self.app.winfo_screenwidth()
+        screen_height = self.app.winfo_screenheight()
+        x_cordinate = (scree_widh/2)-(widh_of_window/2)
+        y_cordinate = (screen_height/2)-(height_of_window/2)
+        self.app.geometry("%dx%d+%d+%d" %(widh_of_window,height_of_window,x_cordinate,y_cordinate))
+
         customtkinter.set_appearance_mode("dark")
         customtkinter.set_default_color_theme("blue")
-        self.app.geometry("1280x720")
         self.app.title("Startpage")
 
 
@@ -205,6 +212,8 @@ class Startpage:
 
     def Settings(self):
         print("Settings->") 
+        self.app.destroy()
+        loadingscreen = Loadingscreen()
         
     
     def Store(self):
