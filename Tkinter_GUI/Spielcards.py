@@ -12,6 +12,9 @@ import io
 import ctypes
 from ctypes import windll
 
+from sympy import det
+from Tkinter_GUI.Spielbeschreibung import spielbeschreibung_main
+
 
 class Spielcards: 
 
@@ -40,19 +43,21 @@ class Spielcards:
         self.frame.place(anchor='center', relx=0.5,rely=0.5)
         self.scrollbar=Scrollbar(self.root_tk)
         
-    def onLabelClicked(e):
-        print("Placeholder Spielebeschreibung")
-        print(e)
+    def onLabelClicked(self,details,restore_detail,restore_titles,restore_urls):
+        self.root_tk.destroy()
+        spielbeschreibung_main(details[2],(details[1]/60),details[5],details[6],details[0],details[4],details[3],details[7],restore_detail,restore_titles,restore_urls)
 
 
-    def showCard(self, url, title,len):
+    def showCard(self, url, title,len,details,spielbeschreibung_details,spielbeschreibung_title,spielbeschreibung_url):
         with urllib.request.urlopen(url) as u:
             raw_data=u.read()
         
         img_data=Image.open(io.BytesIO(raw_data))
         img=CTkImage(dark_image=img_data, light_image=img_data, size=(180,120))
         label=CTkLabel(self.frame,image=img)
-        label.bind("<Button-1>",lambda e:self.onLabelClicked())
+        
+
+        label.bind("<Button-1>",lambda e:self.onLabelClicked(details,spielbeschreibung_details,spielbeschreibung_title,spielbeschreibung_url))
         if(url=="https://cdn-icons-png.flaticon.com/512/16/16096.png"):
             label.configure(text=title)
         else:
@@ -67,7 +72,7 @@ class Spielcards:
         
 
 
-    def showallCards(self, url, title):
+    def showallCards(self, url, title,details):
         count=0
         self.root_tk.grid_rowconfigure(2,weight=1)
         self.root_tk.columnconfigure(0, weight=1)
@@ -75,7 +80,7 @@ class Spielcards:
         self.frame.grid(row=1, column=1,pady=(1,1))
 
         for temp in url:
-            self.showCard(temp,title[count],count)
+            self.showCard(temp,title[count],count,details[count],details,title,url)
             count+=1
         
         self.root_tk.mainloop()
