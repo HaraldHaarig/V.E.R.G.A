@@ -12,7 +12,7 @@ from Tkinter_GUI.Spielbeschreibung import spielbeschreibung_main
 #startpage = Startpage()
 startpagefix = Startpage()
 
-# test = Spielcards()
+test = Spielcards()
 
 # url,title,details=getSteamGamesbyID("76561199015522225")
 
@@ -24,4 +24,5 @@ startpagefix = Startpage()
 #     count+=1
 # test.showallCards(url,title,details)
 # test.showCard(url[0],title[0])
+
 
