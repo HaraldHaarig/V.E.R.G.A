@@ -26,19 +26,20 @@ class Spielcards:
         # self.parent = CTk()  # create the CTk window like you normally do
         # self.parent
 
+
         self.parent = parent
 
-        user32 = ctypes.windll.user32
-        screenwidth = user32.GetSystemMetrics(0)
-        screenheight=user32.GetSystemMetrics(1)
+        # user32 = ctypes.windll.user32
+        # screenwidth = user32.GetSystemMetrics(0)
+        # screenheight=user32.GetSystemMetrics(1)
         
-        x = int(((screenwidth/40)))
-        y = int(((screenheight/40)))
+        # x = int(((screenwidth/40)))
+        # y = int(((screenheight/40)))
         
-        self.frame= CTkFrame(self.parent, width=screenwidth-200,height=screenheight-400)
-        self.frame.pack()
+        self.frame= CTkScrollableFrame(self.parent, width=900,height=700)
+        #self.frame.pack()
         self.frame.place(anchor='center', relx=0.5,rely=0.5)
-        self.scrollbar=Scrollbar(self.frame)
+        #self.scrollbar=Scrollbar(self.frame)
         
     def onLabelClicked(e):
         print("Placeholder Spielebeschreibung")
@@ -59,12 +60,8 @@ class Spielcards:
             label.configure(text=title)
         else:
             label.configure(text="")
-        
-        # canvas=Canvas(label,width=180,height=30,bg='black') Titel beneath Img
-        # canvas.create_text(75, 19, text=title, fill="red", font=('Helvetica 10 bold'))
-        # canvas.grid(row=1,column=0)
 
-        label.grid(row=len-(len%6),column=len % 6,pady=(0,10), padx=(0,10))
+        label.grid(row=len-(len%4),column=len % 4,pady=(0,10), padx=(0,10))
         print(url, title)
         
 
