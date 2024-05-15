@@ -11,6 +11,7 @@ import urllib.request
 import io
 import ctypes
 from ctypes import windll
+from Tkinter_GUI.Spielbeschreibung import spielbeschreibung_main
 
 
 class Spielcards: 
@@ -36,17 +37,17 @@ class Spielcards:
         # x = int(((screenwidth/40)))
         # y = int(((screenheight/40)))
         
-        self.frame= CTkScrollableFrame(self.parent, width=900,height=700)
+        self.frame= CTkScrollableFrame(self.parent, width=920,height=720)
         #self.frame.pack()
         self.frame.place(anchor='center', relx=0.5,rely=0.5)
         #self.scrollbar=Scrollbar(self.frame)
         
-    def onLabelClicked(e):
-        print("Placeholder Spielebeschreibung")
-        print(e)
+    def onLabelClicked(self,details,restore_detail,restore_titles,restore_urls):
+        self.parent.destroy()
+        spielbeschreibung_main(details[2],(details[1]/60),details[5],details[6],details[0],details[4],details[3],details[7],restore_detail,restore_titles,restore_urls)
 
 
-    def showCard(self, url, title,len):
+    def showCard(self, url, title,len,details,spielbeschreibung_details,spielbeschreibung_title,spielbeschreibung_url):
         side_img_data = Image.open("Tkinter_GUI/Images/Background_frfr.png")
         side_img = CTkImage(dark_image=side_img_data, light_image=side_img_data, size=(300, 480))
         with urllib.request.urlopen(url) as u:
@@ -55,7 +56,7 @@ class Spielcards:
         img_data=Image.open(io.BytesIO(raw_data))
         img=CTkImage(dark_image=img_data, light_image=img_data, size=(180,120))
         label=CTkLabel(self.frame,image=img)
-        label.bind("<Button-1>",lambda e:self.onLabelClicked())
+        label.bind("<Button-1>",lambda e:self.onLabelClicked(details,spielbeschreibung_details,spielbeschreibung_title,spielbeschreibung_url))
         if(url=="https://cdn-icons-png.flaticon.com/512/16/16096.png"):
             label.configure(text=title)
         else:
@@ -66,7 +67,7 @@ class Spielcards:
         
 
 
-    def showallCards(self, url, title):
+    def showallCards(self, url, title,details):
         count=0
         # self.parent.grid_rowconfigure(2,weight=1)
         # self.parent.columnconfigure(0, weight=1)
@@ -74,7 +75,7 @@ class Spielcards:
         self.frame.grid(row=1, column=1,pady=(1,1))
 
         for temp in url:
-            self.showCard(temp,title[count],count)
+            self.showCard(temp,title[count],count,details[count],details,title,url)
             count+=1
         
 

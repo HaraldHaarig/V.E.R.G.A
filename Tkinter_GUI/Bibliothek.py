@@ -45,15 +45,15 @@ class Bibliothek:
 
         self.spielcards = Spielcards(self.mainframe)
 
-        url,title=getSteamGamesbyID("76561199015522225")
+        url,title,details=getSteamGamesbyID("76561199015522225")
 
         count=0
         for s in url:
             if s == 0:
                 url[count]="https://cdn-icons-png.flaticon.com/512/16/16096.png"
             count+=1
-        self.spielcards.showallCards(url,title)
-        self.spielcards.showCard(url[0],title[0], count)
+        self.spielcards.showallCards(url,title,details)
+        #self.spielcards.showCard(url[0],title[0], count)
 
         #self.showCards()
         
