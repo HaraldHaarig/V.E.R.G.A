@@ -8,10 +8,10 @@ from Tkinter_GUI.Spielbeschreibung import spielbeschreibung_main
 # Test_SteamID:76561199015522225 -> Sonrotz0815
 
 # # generate classes
-
+# getSteamGamesbyID("76561199015522225")
 login=Login()
 
-#startpage = Startpage()
+# startpage = Startpage()
 #startpagefix = Startpage()
 
 # test = Spielcards()

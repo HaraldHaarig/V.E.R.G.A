@@ -216,7 +216,7 @@ class Startpage:
         self.app.destroy()
         spielcard=Spielcards()
         
-        url,title,details=getSteamGamesbyID("76561199015522225")
+        url,title,details=getSteamGamesbyID("Marko437")
 
 
         count=0
