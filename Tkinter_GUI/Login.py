@@ -1,7 +1,11 @@
+import tkinter.messagebox
+from turtle import bgcolor
 from customtkinter import *
 from PIL import Image
+from numpy import empty
 from sympy import false, true
 import bcrypt
+
 
 class Login:
     def __init__(self):
@@ -31,16 +35,19 @@ class Login:
         CTkLabel(master=self.frame, text="  Username:", text_color="#601E88", anchor="w", justify="left", font=("Arial Bold", 14), image=email_icon, compound="left").pack(anchor="w", pady=(38, 0), padx=(25, 0))
         
         self.username=CTkEntry(master=self.frame, width=225, fg_color="#EEEEEE", border_color="#601E88", border_width=1, text_color="#000000")
+        self.username.configure(placeholder_text="myusername123", placeholder_text_color="gray")
         self.username.pack(anchor="w", padx=(25, 0))
 
         CTkLabel(master=self.frame, text="  Password:", text_color="#601E88", anchor="w", justify="left", font=("Arial Bold", 14), image=password_icon, compound="left").pack(anchor="w", pady=(21, 0), padx=(25, 0))
         
         self.password=CTkEntry(master=self.frame, width=225, fg_color="#EEEEEE", border_color="#601E88", border_width=1, text_color="#000000", show="*")
+        self.password.configure(placeholder_text="********", placeholder_text_color="gray")
         self.password.pack(anchor="w", padx=(25, 0))
         
         CTkLabel(master=self.frame, text="  (Only for SignIn) SteamID:", text_color="#601E88", anchor="w", justify="left", font=("Arial Bold", 14), image=steam_icon, compound="left").pack(anchor="w", pady=(21, 0), padx=(25, 0))
 
         self.steamId=CTkEntry(master=self.frame, width=225, fg_color="#EEEEEE", border_color="#601E88", border_width=1, text_color="#000000")
+        self.steamId.configure(placeholder_text="76561197960359230", placeholder_text_color="gray")
         self.steamId.pack(anchor="w", padx=(25,0))
 
         CTkButton(master=self.frame, text="Login", fg_color="#601E88", hover_color="#E44982", font=("Arial Bold", 12), text_color="#ffffff", width=225,command=self.pressedLogin).pack(anchor="w", pady=(40, 0), padx=(25, 0))
@@ -52,7 +59,15 @@ class Login:
         password=self.password.get()
         steam=self.steamId.get()
         salt=bcrypt.gensalt()
-        self.checkSignIn(username,password,salt,steam)
+        
+        if(len(username)==0):
+           self.username.configure(fg_color="red")
+        elif(len(password)==0):
+            self.password.configure(fg_color="red")
+        elif(len(steam)==0):
+            self.steamId.configure(fg_color="red")
+        else:
+            self.checkSignIn(username,password,salt,steam)
 
     def checkSignIn(self,username,password,salt,steamid):
         temp=password.encode('utf-8')
@@ -84,7 +99,13 @@ class Login:
     def pressedLogin(self):
         username=self.username.get()
         password=self.password.get()
-        self.checkLogin(username,password)
+        
+        if(len(username)==0):
+            self.username.configure(fg_color="red")
+        elif(len(password)==0):
+            self.password.configure(fg_color="red")
+        else:
+            self.checkLogin(username,password)
 
 
 

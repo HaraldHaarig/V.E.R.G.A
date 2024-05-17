@@ -15,13 +15,20 @@ def getSteamGamesbyID(id):
      KEY=config("STEAM_API_KEY")
      steam=Steam(KEY)
 
-     user=steam.users.get_user_details(id)
+     try:
+          int(id)
+     except ValueError:
+          id=steam.users.get_steamid(id)
 
+     user=steam.users.get_user_details(id)
+     
      response=steam.users.get_owned_games(user['player']['steamid'])
      
      
-
-     count=response['game_count']
+     try:
+          count=response['game_count']
+     except KeyError:
+          print("Attention:Steam Account must be public !")
      web=[]
      names=[]
      details=[[0 for x in range(9)] for y in range(count)] 
