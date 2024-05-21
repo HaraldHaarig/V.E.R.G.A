@@ -87,6 +87,9 @@ class Login:
             else:
                 db.close()
                 db=open('db.txt','a')
+                self.username.configure(fg_color="green")
+                self.password.configure(fg_color="green")
+                self.steamId.configure(fg_color="green")
                 db.write(username+";"+str(finalpassword.decode("utf-8"))+";"+steamid+"\n")
 
         except FileNotFoundError:
@@ -122,6 +125,8 @@ class Login:
                 hashed=bytes(curr[1],"utf-8")
                 
                 if(curr[0]==username and bcrypt.checkpw(encoded,hashed)): #Voll Pfusch
+                    self.username.configure(fg_color="green")
+                    self.password.configure(fg_color="green")
                     print("Login granted on Account: "+username)
                     break
                 elif(curr[0]==username and not bcrypt.checkpw(encoded,hashed)):
