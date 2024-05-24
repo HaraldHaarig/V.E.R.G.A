@@ -38,6 +38,76 @@ class Profil:
         bg_lbl = CTkLabel(self.app, text="", image = background_image)
         bg_lbl.place(x = 0, y = 0)
 
+        image_geschenk = CTkImage(Image.open("Tkinter_GUI/StartseiteIMG/geschenk.png"), size=(20, 20))
+        image_joystick = CTkImage(Image.open("Tkinter_GUI/StartseiteIMG/joystick.png"), size=(20, 20))
+        image_notes = CTkImage(Image.open("Tkinter_GUI/StartseiteIMG/notes.png"), size=(20, 20))
+        image_settings = CTkImage(Image.open("Tkinter_GUI/StartseiteIMG/settings.png"), size=(20, 20))
+        image_shoppingcart = CTkImage(Image.open("Tkinter_GUI/StartseiteIMG/shopping-cart.png"), size=(20, 20))
+        image_user = CTkImage(Image.open("Tkinter_GUI/StartseiteIMG/user.png"), size=(20, 20))
+
+        self.listbar = CTkFrame(master=self.app,
+                                width=300,
+                                height=720,
+                                fg_color="#250454",
+                                bg_color="#000001")
+        pywinstyles.set_opacity(self.listbar, color="#000001")
+        self.listbar.place(x=0, y=0)
+
+        self.store_btn = CTkButton(master=self.listbar,
+                                   image=image_shoppingcart,
+                                   text="Store",
+                                   width=100,
+                                   height=60,
+                                   fg_color="#000001",
+                                   cursor="hand2",
+                                   font=("Arial", 25))
+        pywinstyles.set_opacity(self.store_btn, color="#000001")
+        self.store_btn.place(x=100, y=70, anchor=tkinter.W)
+
+        self.mygames_btn = CTkButton(master=self.listbar,
+                                     image=image_joystick,
+                                     text="My Games",
+                                     width=100,
+                                     height=60,
+                                     fg_color="#000001",
+                                     cursor="hand2",
+                                     font=("Arial", 25))
+        pywinstyles.set_opacity(self.mygames_btn, color="#000001")
+        self.mygames_btn.place(x=100, y=140, anchor=tkinter.W)
+
+        self.notes_btn = CTkButton(master=self.listbar,
+                                   image=image_notes,
+                                   text="Notes",
+                                   width=100,
+                                   height=60,
+                                   fg_color="#000001",
+                                   cursor="hand2",
+                                   font=("Arial", 25))
+        pywinstyles.set_opacity(self.notes_btn, color="#000001")
+        self.notes_btn.place(x=100, y=210, anchor=tkinter.W)
+
+        self.wishlist_btn = CTkButton(master=self.listbar,
+                                      image=image_geschenk,
+                                      text="Wishlist",
+                                      width=100,
+                                      height=60,
+                                      fg_color="#000001",
+                                      cursor="hand2",
+                                      font=("Arial", 25))
+        pywinstyles.set_opacity(self.wishlist_btn, color="#000001")
+        self.wishlist_btn.place(x=100, y=280, anchor=tkinter.W)
+
+        self.settings_btn = CTkButton(master=self.listbar,
+                                      text="Settings",
+                                      image=image_settings,
+                                      width=100,
+                                      height=60,
+                                      fg_color="#000001",
+                                      cursor="hand2",
+                                      font=("Arial", 25))
+        pywinstyles.set_opacity(self.settings_btn, color="#000001")
+        self.settings_btn.place(x=100, y=350, anchor=tkinter.W)
+        
         # Mainframe
         self.profile = CTkFrame(master=self.app,
                                 width=350,
@@ -46,7 +116,7 @@ class Profil:
                                 fg_color="#250454",
                                 bg_color="#000001")
         pywinstyles.set_opacity(self.profile, color="#000001")
-        self.profile.place(x=640, y=360, anchor=tkinter.CENTER)
+        self.profile.place(x=790, y=360, anchor=tkinter.CENTER)
 
         # Überschrifts Label für den Username
         username_lbl = CTkLabel(self.profile,
@@ -118,7 +188,8 @@ class Profil:
                                 text_color="White",
                                 fg_color="#250454",
                                 bg_color="#000001",
-                                font=("Arial", 22))
+                                font=("Arial", 22),
+                                cursor="hand2")
         friends_lbl.bind("<Button-1>", lambda e,:self.openFriends())
         pywinstyles.set_opacity(friends_lbl, color="#000001")
         friends_lbl.place(x=13, y=280, anchor=tkinter.W)
@@ -135,7 +206,7 @@ class Profil:
                                 fg_color="#250454",
                                 bg_color="#000001")
         pywinstyles.set_opacity(self.friends, color="#00001")
-        self.friends.place(x=640, y=360, anchor=tkinter.CENTER)
+        self.friends.place(x=810, y=360, anchor=tkinter.CENTER)
 
         # Labels für das extra Freunde-Frame
         self.friends_heading_lbl = CTkLabel(master=self.friends,
@@ -149,7 +220,7 @@ class Profil:
         self.arrow_img = Image.open("Design/arrow.png")
         self.goBackArrow = CTkImage(self.arrow_img, size=(30, 30))
 
-        self.goBackArrow_lbl = CTkLabel(master=self.friends, text="", image=self.goBackArrow)
+        self.goBackArrow_lbl = CTkLabel(master=self.friends, text="", image=self.goBackArrow, cursor="hand2")
         self.goBackArrow_lbl.place(x=10, y=10)
         self.goBackArrow_lbl.bind("<Button-1>", lambda e,:self.closeFriends())
 
