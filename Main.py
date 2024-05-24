@@ -5,14 +5,19 @@ from Tkinter_GUI.Startseite import Startpage
 from API.SteamAPI import getSteamGamesbyID
 from Tkinter_GUI.Spielbeschreibung import spielbeschreibung_main
 # Test_SteamID:76561199015522225 -> Sonrotz0815
+from LoadingScreen import loadstartpage
+from LoadingScreen import loadspielcards
 
 # # generate classes
 
 
-#startpage = Startpage()
-startpagefix = Startpage()
+startpage = Startpage()
 
-test = Spielcards()
+#lore = loadstartpage()
+#lore = loadspielcards()
+
+
+#test = Spielcards()
 
 # url,title,details=getSteamGamesbyID("76561199015522225")
 
