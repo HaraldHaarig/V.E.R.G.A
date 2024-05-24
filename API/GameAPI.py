@@ -1,3 +1,4 @@
+from ctypes import sizeof
 import requests
 from dotenv import load_dotenv
 import os
@@ -54,3 +55,33 @@ def getImg(gamename):
     except KeyError:
         return 0
 
+def getAllGames(pages_anz):
+    
+    games=[]
+    spareImg=[]
+    details=[]
+    load_dotenv(override=True)
+
+    rapid_key=os.getenv("RAPID_API_KEY")
+    raw_key=os.getenv("RAWG_API_KEY")
+
+    url = "https://rawg-video-games-database.p.rapidapi.com/games?key="+raw_key
+
+    headers = {
+        "X-RapidAPI-Host": "rawg-video-games-database.p.rapidapi.com",
+        "X-RapidAPI-Key": rapid_key
+    }
+    count=0
+    for pages in range(pages_anz):
+        url+="&page="+str(pages+1)+"&page_size=40"
+        response = requests.get(url, headers=headers)
+        data=response.json()
+        #print(data)
+        for result in data['results']:
+            count+=1
+            games.append(result['name'])
+            spareImg.append(result['background_image'])
+            details.append(getMoreDetails(result['name']))
+            print(games[count-1], details[count-1])
+    print(count)
+    return games,spareImg,details

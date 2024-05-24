@@ -4,14 +4,19 @@ from Tkinter_GUI.Login import Login
 from Tkinter_GUI.Spielcards import Spielcards
 from Tkinter_GUI.Startseite import Startpage
 from API.SteamAPI import getSteamGamesbyID
+from API.GameAPI import getAllGames
 from Tkinter_GUI.Spielbeschreibung import spielbeschreibung_main
 # Test_SteamID:76561199015522225 -> Sonrotz0815
 
-# # generate classes
+#  generate classes
 # getSteamGamesbyID("76561199015522225")
-login=Login()
+# login=Login()
 
-# startpage = Startpage()
+names,img,details=getAllGames(1)
+
+
+
+#startpage = Startpage()
 #startpagefix = Startpage()
 
 # test = Spielcards()

@@ -1,3 +1,4 @@
+from numpy import size
 from steam import Steam
 from decouple import config
 import sys
@@ -5,6 +6,8 @@ import sys
 from sympy import det
 from zmq import NULL
 from API.GameAPI import getMoreDetails
+from API.GameAPI import getAllGames
+from API.GameAPI import getImg
 sys.path.insert(1, "C:\gitRepos\V.E.R.G.A")
 
 
@@ -76,4 +79,6 @@ def getSteamGamesbyID(id):
      
      return web,names,details
     
+
+
 
