@@ -153,4 +153,3 @@ def goback(app:CTk,details,titles,urls):
     app.destroy()
     temp=Spielcards()
     temp.showallCards(urls,titles,details)
-    

@@ -25,6 +25,11 @@ def getMoreDetails(gamename):
             all_Platforms=[]
             for platforms in data['results'][0]['platforms']:
                 all_Platforms.append(platforms['platform']['name'])
+    try:
+        if(data!=[] and data['results']!=[]):
+            all_Platforms=[]
+            for platforms in data['results'][0]['platforms']:
+                all_Platforms.append(platforms['platform']['name'])
 
             return(data['results'][0]['released'], data['results'][0]['metacritic'], all_Platforms)
         else:
