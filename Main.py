@@ -14,6 +14,10 @@ from Tkinter_GUI.Spielbeschreibung import spielbeschreibung_main
 
 names,img,details=getAllGames(1)
 
+print(names)
+print(img)
+print(details)
+
 
 
 #startpage = Startpage()

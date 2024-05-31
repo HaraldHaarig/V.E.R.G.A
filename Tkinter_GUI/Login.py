@@ -132,10 +132,9 @@ class Login:
                 elif(curr[0]==username and not bcrypt.checkpw(encoded,hashed)):
                     print("Username exists but password is wrong")
                     break            
-                else:
-                    print("Your User does not exists. Pls go to Sign in")
+                
             if(isempty):
-                print("Empty db go to Sign In")
+                print("Empty db or User does not exists go to Sign In")
         except FileNotFoundError:
             db=open('db.txt','w')
             

@@ -82,6 +82,5 @@ def getAllGames(pages_anz):
             games.append(result['name'])
             spareImg.append(result['background_image'])
             details.append(getMoreDetails(result['name']))
-            print(games[count-1], details[count-1])
     print(count)
     return games,spareImg,details
