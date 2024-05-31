@@ -16,7 +16,7 @@ from Tkinter_GUI.Spielbeschreibung import spielbeschreibung_main
 
 class Spielcards: 
 
-    def __init__(self, parent):
+    def __init__(self, parent, bibliothek_root):
         print("Createt Spielcards")
         set_appearance_mode("dark")
         set_default_color_theme("blue")
@@ -26,9 +26,11 @@ class Spielcards:
 
         # self.parent = CTk()  # create the CTk window like you normally do
         # self.parent
-
+        
+        self.bibliothek_root = bibliothek_root
 
         self.parent = parent
+        self.images = []
 
         # user32 = ctypes.windll.user32
         # screenwidth = user32.GetSystemMetrics(0)
@@ -43,7 +45,7 @@ class Spielcards:
         #self.scrollbar=Scrollbar(self.frame)
         
     def onLabelClicked(self,details,restore_detail,restore_titles,restore_urls):
-        self.parent.destroy()
+        self.bibliothek_root.destroy()
         spielbeschreibung_main(details[2],(details[1]/60),details[5],details[6],details[0],details[4],details[3],details[7],restore_detail,restore_titles,restore_urls)
 
 
@@ -55,6 +57,8 @@ class Spielcards:
         
         img_data=Image.open(io.BytesIO(raw_data))
         img=CTkImage(dark_image=img_data, light_image=img_data, size=(180,120))
+        self.images.append(img)
+        
         label=CTkLabel(self.frame,image=img)
         label.bind("<Button-1>",lambda e:self.onLabelClicked(details,spielbeschreibung_details,spielbeschreibung_title,spielbeschreibung_url))
         if(url=="https://cdn-icons-png.flaticon.com/512/16/16096.png"):
@@ -69,17 +73,12 @@ class Spielcards:
 
     def showallCards(self, url, title,details):
         count=0
-        # self.parent.grid_rowconfigure(2,weight=1)
-        # self.parent.columnconfigure(0, weight=1)
-        
         self.frame.grid(row=1, column=1,pady=(1,1))
 
         for temp in url:
             self.showCard(temp,title[count],count,details[count],details,title,url)
             count+=1
         
-
-
 
     
 

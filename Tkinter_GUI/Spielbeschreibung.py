@@ -150,6 +150,8 @@ def spielbeschreibung_main(gamedescription, playtime, reldate, metascore, price,
 
 def goback(app:CTk,details,titles,urls):
     from Tkinter_GUI.Spielcards import Spielcards #PFUSCH
+    from Tkinter_GUI.Bibliothek import Bibliothek #pfusch 2?
     app.destroy()
-    temp=Spielcards()
-    temp.showallCards(urls,titles,details)
+    bibliothek=Bibliothek(True,urls,titles,details)
+    #temp=Spielcards()
+    #temp.showallCards(urls,titles,details)

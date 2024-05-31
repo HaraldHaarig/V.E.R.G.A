@@ -1,41 +1,6 @@
-import imp
-
-from Tkinter_GUI.Login import Login
-from Tkinter_GUI.Spielcards import Spielcards
-from Tkinter_GUI.Startseite import Startpage
-from API.SteamAPI import getSteamGamesbyID
-from API.GameAPI import getAllGames
-from Tkinter_GUI.Spielbeschreibung import spielbeschreibung_main
+from zmq import NULL
 from Tkinter_GUI.Bibliothek import Bibliothek
-# Test_SteamID:76561199015522225 -> Sonrotz0815
+from Tkinter_GUI.Spielcards import Spielcards
 
-#  generate classes
-# getSteamGamesbyID("76561199015522225")
-# login=Login()
-
-# names,img,details=getAllGames(1)
-
-# print(names)
-# print(img)
-# print(details)
-
-yarak=Bibliothek()
-
-
-
-#startpage = Startpage()
-#startpagefix = Startpage()
-
-# test = Spielcards()
-
-# url,title,details=getSteamGamesbyID("76561199015522225")
-
-
-# count=0
-# for s in url:
-#     if s == 0:
-#         url[count]="https://cdn-icons-png.flaticon.com/512/16/16096.png"
-#     count+=1
-# test.showallCards(url,title,details)
-# test.showCard(url[0],title[0])
-
+# generate classes
+bibliothek = Bibliothek(False, None, None, None)
