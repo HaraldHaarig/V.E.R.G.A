@@ -20,11 +20,7 @@ def getMoreDetails(gamename):
     url+="&search_exact=true&search_precise=true&search="+gamename
     response = requests.get(url, headers=headers)
     data=response.json()
-    try:
-        if(data!=[] and data['results']!=[]):
-            all_Platforms=[]
-            for platforms in data['results'][0]['platforms']:
-                all_Platforms.append(platforms['platform']['name'])
+    
     try:
         if(data!=[] and data['results']!=[]):
             all_Platforms=[]

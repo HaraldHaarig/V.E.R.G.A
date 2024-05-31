@@ -6,17 +6,20 @@ from Tkinter_GUI.Startseite import Startpage
 from API.SteamAPI import getSteamGamesbyID
 from API.GameAPI import getAllGames
 from Tkinter_GUI.Spielbeschreibung import spielbeschreibung_main
+from Tkinter_GUI.Bibliothek import Bibliothek
 # Test_SteamID:76561199015522225 -> Sonrotz0815
 
 #  generate classes
 # getSteamGamesbyID("76561199015522225")
 # login=Login()
 
-names,img,details=getAllGames(1)
+# names,img,details=getAllGames(1)
 
-print(names)
-print(img)
-print(details)
+# print(names)
+# print(img)
+# print(details)
+
+yarak=Bibliothek()
 
 
 
