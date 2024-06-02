@@ -3,9 +3,10 @@ from tkinter.font import Font
 from customtkinter import *
 from PIL import Image
 import pywinstyles
+from GameStarter import startGame
 
 
-def spielbeschreibung_main(gamedescription, playtime, reldate, metascore, price, controller, reqage, platforms,restore_details,restore_titles,restore_urls):
+def spielbeschreibung_main(title,gamedescription, playtime, reldate, metascore, price, controller, reqage, platforms,restore_details,restore_titles,restore_urls,owned):
 
     set_appearance_mode("dark")
 
@@ -146,6 +147,11 @@ def spielbeschreibung_main(gamedescription, playtime, reldate, metascore, price,
     except TypeError:
         platforms_lbl.place(x=20,y=280,anchor=tkinter.W)
     #app.overrideredirect(True)            Remove Titlebar (mehr oder weniger)
+    print(owned)
+    if(owned):
+        startGameBtn=CTkButton(master=stats, text="Start Game", command= lambda title=title:startGame(title), font=("Arial",22))
+        startGameBtn.place(x=20,y=325, anchor=tkinter.W)
+    
     app.mainloop()
 
 def goback(app:CTk,details,titles,urls):
@@ -153,5 +159,5 @@ def goback(app:CTk,details,titles,urls):
     from Tkinter_GUI.Bibliothek import Bibliothek #pfusch 2?
     app.destroy()
     bibliothek=Bibliothek(True,urls,titles,details)
-    #temp=Spielcards()
-    #temp.showallCards(urls,titles,details)
+    # temp=Spielcards()
+    # temp.showallCards(urls,titles,details)
