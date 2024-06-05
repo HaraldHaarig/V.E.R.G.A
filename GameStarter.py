@@ -11,7 +11,8 @@ from numpy import empty
 def startGame(gameName):
     path=searchExe(gameName)
     if(path != ""):
-        subprocess.Popen(path,stdout=subprocess.PIPE)
+        print(path)
+        subprocess.Popen(path, stdout=subprocess.PIPE, stderr=subprocess.PIPE)
         return 0
     else:
         return -1
