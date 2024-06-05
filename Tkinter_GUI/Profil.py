@@ -10,6 +10,7 @@ from pyparsing import col
 import pywinstyles
 import ctypes
 from sympy import false, im
+from Tkinter_GUI.Sidebar import Sidebar
 
 class Profil:
     def __init__(self):
@@ -38,74 +39,7 @@ class Profil:
         bg_lbl = CTkLabel(self.app, text="", image = background_image)
         bg_lbl.place(x = 0, y = 0)
 
-        image_geschenk = CTkImage(Image.open("Tkinter_GUI/StartseiteIMG/geschenk.png"), size=(20, 20))
-        image_joystick = CTkImage(Image.open("Tkinter_GUI/StartseiteIMG/joystick.png"), size=(20, 20))
-        image_notes = CTkImage(Image.open("Tkinter_GUI/StartseiteIMG/notes.png"), size=(20, 20))
-        image_shoppingcart = CTkImage(Image.open("Tkinter_GUI/StartseiteIMG/shopping-cart.png"), size=(20, 20))
-        image_user = CTkImage(Image.open("Tkinter_GUI/StartseiteIMG/user.png"), size=(20, 20))
-
-        self.listbar = CTkFrame(master=self.app,
-                                width=300,
-                                height=720,
-                                fg_color="#250454",
-                                bg_color="#000001")
-        pywinstyles.set_opacity(self.listbar, color="#000001")
-        self.listbar.place(x=0, y=0)
-
-        self.store_btn = CTkButton(master=self.listbar,
-                                   image=image_shoppingcart,
-                                   text="Store",
-                                   width=100,
-                                   height=60,
-                                   fg_color="#000001",
-                                   cursor="hand2",
-                                   font=("Arial", 25))
-        pywinstyles.set_opacity(self.store_btn, color="#000001")
-        self.store_btn.place(x=100, y=70, anchor=tkinter.W)
-
-        self.mygames_btn = CTkButton(master=self.listbar,
-                                     image=image_joystick,
-                                     text="My Games",
-                                     width=100,
-                                     height=60,
-                                     fg_color="#000001",
-                                     cursor="hand2",
-                                     font=("Arial", 25))
-        pywinstyles.set_opacity(self.mygames_btn, color="#000001")
-        self.mygames_btn.place(x=100, y=140, anchor=tkinter.W)
-
-        self.notes_btn = CTkButton(master=self.listbar,
-                                   image=image_notes,
-                                   text="Notes",
-                                   width=100,
-                                   height=60,
-                                   fg_color="#000001",
-                                   cursor="hand2",
-                                   font=("Arial", 25))
-        pywinstyles.set_opacity(self.notes_btn, color="#000001")
-        self.notes_btn.place(x=100, y=210, anchor=tkinter.W)
-
-        self.wishlist_btn = CTkButton(master=self.listbar,
-                                      image=image_geschenk,
-                                      text="Wishlist",
-                                      width=100,
-                                      height=60,
-                                      fg_color="#000001",
-                                      cursor="hand2",
-                                      font=("Arial", 25))
-        pywinstyles.set_opacity(self.wishlist_btn, color="#000001")
-        self.wishlist_btn.place(x=100, y=280, anchor=tkinter.W)
-
-        self.profile_btn = CTkButton(master=self.listbar,
-                                     image=image_user,
-                                     text="Profile",
-                                     width=100,
-                                     height=60,
-                                     fg_color="#000001",
-                                     cursor="hand2",
-                                     font=("Arial", 25))
-        pywinstyles.set_opacity(self.profile_btn, color="#000001")
-        self.profile_btn.place(x=100, y=350, anchor=tkinter.W)
+        sidebar = Sidebar(self.app)
         
         # Mainframe
         self.profile = CTkFrame(master=self.app,
