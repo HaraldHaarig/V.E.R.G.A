@@ -6,6 +6,5 @@ from GameStarter import startGame
 
 
 # generate classes
-bibliothek = Bibliothek(False, None, None, None)
-# startGame("Palworld")
-
+# bibliothek = Bibliothek(False, None, None, None)
+startGame("Palworld")
