@@ -41,7 +41,6 @@ class Profil:
         image_geschenk = CTkImage(Image.open("Tkinter_GUI/StartseiteIMG/geschenk.png"), size=(20, 20))
         image_joystick = CTkImage(Image.open("Tkinter_GUI/StartseiteIMG/joystick.png"), size=(20, 20))
         image_notes = CTkImage(Image.open("Tkinter_GUI/StartseiteIMG/notes.png"), size=(20, 20))
-        image_settings = CTkImage(Image.open("Tkinter_GUI/StartseiteIMG/settings.png"), size=(20, 20))
         image_shoppingcart = CTkImage(Image.open("Tkinter_GUI/StartseiteIMG/shopping-cart.png"), size=(20, 20))
         image_user = CTkImage(Image.open("Tkinter_GUI/StartseiteIMG/user.png"), size=(20, 20))
 
@@ -97,16 +96,16 @@ class Profil:
         pywinstyles.set_opacity(self.wishlist_btn, color="#000001")
         self.wishlist_btn.place(x=100, y=280, anchor=tkinter.W)
 
-        self.settings_btn = CTkButton(master=self.listbar,
-                                      text="Settings",
-                                      image=image_settings,
-                                      width=100,
-                                      height=60,
-                                      fg_color="#000001",
-                                      cursor="hand2",
-                                      font=("Arial", 25))
-        pywinstyles.set_opacity(self.settings_btn, color="#000001")
-        self.settings_btn.place(x=100, y=350, anchor=tkinter.W)
+        self.profile_btn = CTkButton(master=self.listbar,
+                                     image=image_user,
+                                     text="Profile",
+                                     width=100,
+                                     height=60,
+                                     fg_color="#000001",
+                                     cursor="hand2",
+                                     font=("Arial", 25))
+        pywinstyles.set_opacity(self.profile_btn, color="#000001")
+        self.profile_btn.place(x=100, y=350, anchor=tkinter.W)
         
         # Mainframe
         self.profile = CTkFrame(master=self.app,
@@ -206,7 +205,7 @@ class Profil:
                                 fg_color="#250454",
                                 bg_color="#000001")
         pywinstyles.set_opacity(self.friends, color="#00001")
-        self.friends.place(x=810, y=360, anchor=tkinter.CENTER)
+        self.friends.place(x=790, y=360, anchor=tkinter.CENTER)
 
         # Labels für das extra Freunde-Frame
         self.friends_heading_lbl = CTkLabel(master=self.friends,
