@@ -3,6 +3,7 @@ from tkinter.font import Font
 from customtkinter import *
 from PIL import Image
 import pywinstyles
+from referencing import Anchor
 from GameStarter import startGame
 
 
@@ -76,10 +77,10 @@ def spielbeschreibung_main(title,gamedescription, playtime, reldate, metascore, 
                             wraplength=690)
     pywinstyles.set_opacity(description_lbl, color="#000001")
     description_lbl.place(x=10, y=105, anchor=tkinter.W)
-
+    time = "{:.2f}".format(playtime) # Runden der playtime sonst zu lang
     # Label für die Playtime
     playtime_lbl = CTkLabel(stats, 
-                            text="Playtime: "+str(playtime)+" h",
+                            text="Playtime: "+str(time)+" h",
                             text_color="White",
                             bg_color="#000001",
                             font=("Arial", 22))
@@ -150,7 +151,8 @@ def spielbeschreibung_main(title,gamedescription, playtime, reldate, metascore, 
     print(owned)
     if(owned):
         startGameBtn=CTkButton(master=stats, text="Start Game", command= lambda title=title:startGame(title), font=("Arial",22))
-        startGameBtn.place(x=20,y=325, anchor=tkinter.W)
+        startGameBtn.place(x=250,y=375, anchor=tkinter.W)
+        
     
     app.mainloop()
 

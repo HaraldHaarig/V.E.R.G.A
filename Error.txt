@@ -1,2 +1,0 @@
-Probleme beim Ausführen: 
-    bei SteamAPI den Command "sys.path.insert(1, "C:\gitRepos\V.E.R.G.A")" für eigenenen Pfad anpassen
