@@ -9,7 +9,8 @@ from LoadingScreen import Loadingscreen
 
 
 # # generate classes
-lore = Loadingscreen.loadspielcards()
+lore = Loadingscreen()
+lore.loadspielcards()
 #startpage = Startpage()
 
 #lore = loadstartpage()

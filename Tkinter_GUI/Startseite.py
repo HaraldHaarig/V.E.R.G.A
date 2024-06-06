@@ -1,7 +1,7 @@
 import tkinter
 import customtkinter
 from tkinter import *
-from screeninfo import get_monitors
+#from screeninfo import get_monitors
 from PIL import Image
 import ctypes
 import pywinstyles
