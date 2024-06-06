@@ -105,6 +105,6 @@ class Sidebar:
         self.notes_btn.place(x=150, y=670, anchor=tkinter.CENTER)
 
         def openHome():
-            from Tkinter_GUI.Startseite import Startpage
+            from Tkinter_GUI.Startseite import Startpage # Pfusch 3
             app.destroy()
             test = Startpage()
