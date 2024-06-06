@@ -26,6 +26,7 @@ class Notes:
         bg_lbl = CTkLabel(self.app, text="", image = background_image)
         bg_lbl.place(x = 0, y = 0)
 
+        # Sidebar wird eingefügt
         sidebar = Sidebar(self.app)
 
         self.app.mainloop()
