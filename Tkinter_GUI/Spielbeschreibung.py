@@ -3,9 +3,11 @@ from tkinter.font import Font
 from customtkinter import *
 from PIL import Image
 import pywinstyles
+from referencing import Anchor
+from GameStarter import startGame
 
 
-def spielbeschreibung_main(gamedescription, playtime, reldate, metascore, price, controller, reqage, platforms,restore_details,restore_titles,restore_urls):
+def spielbeschreibung_main(title,gamedescription, playtime, reldate, metascore, price, controller, reqage, platforms,restore_details,restore_titles,restore_urls,owned):
 
     set_appearance_mode("dark")
 
@@ -75,10 +77,10 @@ def spielbeschreibung_main(gamedescription, playtime, reldate, metascore, price,
                             wraplength=690)
     pywinstyles.set_opacity(description_lbl, color="#000001")
     description_lbl.place(x=10, y=105, anchor=tkinter.W)
-
+    time = "{:.2f}".format(playtime) # Runden der playtime sonst zu lang
     # Label für die Playtime
     playtime_lbl = CTkLabel(stats, 
-                            text="Playtime: "+str(playtime)+" h",
+                            text="Playtime: "+str(time)+" h",
                             text_color="White",
                             bg_color="#000001",
                             font=("Arial", 22))
@@ -146,6 +148,12 @@ def spielbeschreibung_main(gamedescription, playtime, reldate, metascore, price,
     except TypeError:
         platforms_lbl.place(x=20,y=280,anchor=tkinter.W)
     #app.overrideredirect(True)            Remove Titlebar (mehr oder weniger)
+    print(owned)
+    if(owned):
+        startGameBtn=CTkButton(master=stats, text="Start Game", command= lambda title=title:startGame(title), font=("Arial",22))
+        startGameBtn.place(x=250,y=375, anchor=tkinter.W)
+        
+    
     app.mainloop()
 
 def goback(app:CTk,details,titles,urls):
@@ -153,5 +161,5 @@ def goback(app:CTk,details,titles,urls):
     from Tkinter_GUI.Bibliothek import Bibliothek #pfusch 2?
     app.destroy()
     bibliothek=Bibliothek(True,urls,titles,details)
-    #temp=Spielcards()
-    #temp.showallCards(urls,titles,details)
+    # temp=Spielcards()
+    # temp.showallCards(urls,titles,details)

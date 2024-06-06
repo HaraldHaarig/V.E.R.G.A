@@ -11,6 +11,8 @@ import urllib.request
 import io
 import ctypes
 from ctypes import windll
+
+from sympy import false, true
 from Tkinter_GUI.Spielbeschreibung import spielbeschreibung_main
 
 
@@ -20,6 +22,7 @@ class Spielcards:
         print("Createt Spielcards")
         set_appearance_mode("dark")
         set_default_color_theme("blue")
+        self.owned=false
         # h = windll.user32.FindWindowA(b'Shell_TrayWnd', None)
         # windll.user32.ShowWindow(h, 0) Taskbar disappears
         # windll.user32.ShowWindow(h, 9) Taskbar reappears
@@ -44,9 +47,10 @@ class Spielcards:
         self.frame.place(anchor='center', relx=0.5,rely=0.5)
         #self.scrollbar=Scrollbar(self.frame)
         
-    def onLabelClicked(self,details,restore_detail,restore_titles,restore_urls):
+    def onLabelClicked(self,title,details,restore_detail,restore_titles,restore_urls):
         self.bibliothek_root.destroy()
-        spielbeschreibung_main(details[2],(details[1]/60),details[5],details[6],details[0],details[4],details[3],details[7],restore_detail,restore_titles,restore_urls)
+        print(self.owned)
+        spielbeschreibung_main(title,details[2],(details[1]/60),details[5],details[6],details[0],details[4],details[3],details[7],restore_detail,restore_titles,restore_urls,self.owned)
 
 
     def showCard(self, url, title,len,details,spielbeschreibung_details,spielbeschreibung_title,spielbeschreibung_url):
@@ -60,7 +64,7 @@ class Spielcards:
         self.images.append(img)
         
         label=CTkLabel(self.frame,image=img)
-        label.bind("<Button-1>",lambda e:self.onLabelClicked(details,spielbeschreibung_details,spielbeschreibung_title,spielbeschreibung_url))
+        label.bind("<Button-1>",lambda e:self.onLabelClicked(title,details,spielbeschreibung_details,spielbeschreibung_title,spielbeschreibung_url))
         if(url=="https://cdn-icons-png.flaticon.com/512/16/16096.png"):
             label.configure(text=title)
         else:
@@ -70,10 +74,11 @@ class Spielcards:
         print(url, title)
         
 
-
+    #TODO: Umbennen zu showallOwnedGames
     def showallCards(self, url, title,details):
         count=0
         self.frame.grid(row=1, column=1,pady=(1,1))
+        self.owned=true 
 
         for temp in url:
             self.showCard(temp,title[count],count,details[count],details,title,url)
