@@ -137,4 +137,8 @@ class Login:
                 print("Empty db or User does not exists go to Sign In")
         except FileNotFoundError:
             db=open('db.txt','w')
+    
+    def getSteamId(self):
+        #bzw. Datenbank zugriff mit Username und Password
+        return self.steamId
             
