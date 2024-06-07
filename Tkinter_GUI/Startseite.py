@@ -1,13 +1,12 @@
 import tkinter
 import customtkinter
 from tkinter import *
-from screeninfo import get_monitors
+#from screeninfo import get_monitors
 from PIL import Image
 import ctypes
 import pywinstyles
 from API.GameAPI import getImg
 from Tkinter_GUI.Spielcards import Spielcards
-from Tkinter_GUI.LoadingScreen import Loadingscreen
 from Tkinter_GUI.Profil import Profil
 from API.SteamAPI import getSteamGamesbyID
 
@@ -212,8 +211,7 @@ class Startpage:
 
     def Settings(self):
         print("Settings->") 
-        self.app.destroy()
-        loadingscreen = Loadingscreen()
+
         
     
     def Store(self):
