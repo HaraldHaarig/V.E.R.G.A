@@ -26,3 +26,4 @@ class Connection:
                 return conn
         except (psycopg2.DatabaseError, Exception) as error:
             print(error)
+    

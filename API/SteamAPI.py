@@ -93,13 +93,6 @@ def getSteamGamesbyID(id):
                except KeyError:
                     details[i][4]="UNKNOWN"
 
-               details[i][2]=game_detail[str(game_id)]['data']['short_description']
-               details[i][3]=game_detail[str(game_id)]['data']['required_age']
-               try:
-                    details[i][4]=game_detail[str(game_id)]['data']['controller_support']
-               except KeyError:
-                    details[i][4]="UNKNOWN"
-
           else:
                web.append(0)
           print(details)
