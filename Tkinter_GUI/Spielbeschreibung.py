@@ -154,7 +154,7 @@ def spielbeschreibung_main(title,gamedescription, playtime, reldate, metascore, 
         startGameBtn=CTkButton(master=stats, text="Start Game", command= lambda title=title:startGame(title), font=("Arial",22))
         startGameBtn.place(x=250,y=375, anchor=tkinter.W)
     else:
-        wishListBtn=CTkButton(master=stats, text="Add to Wishlist",command= lambda title=title:addToWishlist(title) ,font=("Arial",22))
+        wishListBtn=CTkButton(master=stats, text="Add to Wishlist",font=("Arial",22)) #TODO: add command add to Wishlist
         wishListBtn.place(x=250, y=375, anchor=tkinter.W)    
     
     app.mainloop()

@@ -1,16 +1,29 @@
 from Tkinter_GUI.Login import Login
 from API.GameAPI import getGame
 
-#add to params login:Login
-def addToWishlist(title):
-    #login.getSteamId()
-    #Datenbank zugriff mit SteamId => Mit SteamId als FK title setzen
-    print("Placeholder")
 
-#add to params login:Login
-def getWishlist():
-    #login.getSteamId()
-    #Datenbank zugriff mit SteamId => Alles Items mit der SteamId
-    #=>Schleife:  img,details=getGame(title)
-    #return all_img, all_details, all_titles
-    print("Placeholder")
+def addToWishlist(title, login:Login): 
+    steamid=login.getSteamId()
+    connection=login.getConnection()
+
+    with connection.cursor() as cur:
+        sql="""INSERT INTO wishlist(gamenname,steamid) VALUES(%s,%s)"""
+        cur.execute(sql,(title,steamid,))
+        connection.commit()
+
+
+def getWishlist(login:Login):
+    steamid=login.getSteamId()
+    connection=login.getConnection()
+    title=[]
+    img=[]
+    details=[]
+
+    with connection.cursor() as cur:
+        sql="""SELECT gamenname FROM wishlist WHERE steamid=%s"""
+        cur.execute(sql, (steamid,))
+        rows=cur.fetchall()
+        for row in rows:
+            title.append(row[0])
+            img,details=getGame(row[0])
+        return title,img,details

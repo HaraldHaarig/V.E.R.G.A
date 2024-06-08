@@ -8,12 +8,14 @@ from DB_Service.Connection import Connection
 import psycopg2
 
 
+
 class Login:
     def __init__(self,connection:Connection):
         self.app = CTk()
         self.app.geometry("600x480")
         self.app.resizable(0,0)
         self.connect=connection.connect()
+        self.valuesteam=""
         
 
         side_img_data = Image.open("Tkinter_GUI/Images/Background_frfr.png")
@@ -120,31 +122,30 @@ class Login:
 
     def checkLogin(self,username,password):
         print("Enter db")
-        isempty=true
-        try:
-            db=open('db.txt','r')
-            
-            for user in db:
-                isempty=false
-                curr=user.split(";")
+        match=false
+        with self.connect.cursor() as cur:
+            cur.execute("SELECT name, password, steamid, admin FROM account ORDER BY steamid")
+            print("Number of Accounts: "+str(cur.rowcount))
+            rows=cur.fetchall()
+
+            for row in rows:
                 encoded=password.encode("utf-8")
-                hashed=bytes(curr[1],"utf-8")
-                
-                if(curr[0]==username and bcrypt.checkpw(encoded,hashed)): #Voll Pfusch
+                hashed=bytes(row[1],"utf-8")
+                if(row[0] == username and bcrypt.checkpw(encoded,hashed)):
+                    match=true
                     self.username.configure(fg_color="green")
                     self.password.configure(fg_color="green")
-                    print("Login granted on Account: "+username)
-                    break
-                elif(curr[0]==username and not bcrypt.checkpw(encoded,hashed)):
-                    print("Username exists but password is wrong")
-                    break            
-                
-            if(isempty):
-                print("Empty db or User does not exists go to Sign In")
-        except FileNotFoundError:
-            db=open('db.txt','w')
-    
+                    self.valuesteam=row[2]
+                    from DB_Service.Wishlist import getWishlist
+                    print(getWishlist(self))
+                    
+                    break     
+            if not match:
+                print("No Account with these parameters found")  
+            
     def getSteamId(self):
         #bzw. Datenbank zugriff mit Username und Password
-        return self.steamId
-            
+        return self.valuesteam
+    
+    def getConnection(self):
+        return self.connect
