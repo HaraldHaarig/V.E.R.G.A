@@ -5,6 +5,7 @@ from PIL import Image
 import pywinstyles
 from referencing import Anchor
 from GameStarter import startGame
+from DB_Service.Wishlist import addToWishlist
 
 
 def spielbeschreibung_main(title,gamedescription, playtime, reldate, metascore, price, controller, reqage, platforms,restore_details,restore_titles,restore_urls,owned):
@@ -152,7 +153,9 @@ def spielbeschreibung_main(title,gamedescription, playtime, reldate, metascore, 
     if(owned):
         startGameBtn=CTkButton(master=stats, text="Start Game", command= lambda title=title:startGame(title), font=("Arial",22))
         startGameBtn.place(x=250,y=375, anchor=tkinter.W)
-        
+    else:
+        wishListBtn=CTkButton(master=stats, text="Add to Wishlist",font=("Arial",22)) #TODO: add command add to Wishlist
+        wishListBtn.place(x=250, y=375, anchor=tkinter.W)    
     
     app.mainloop()
 
