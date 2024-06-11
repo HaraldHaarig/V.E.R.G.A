@@ -82,7 +82,7 @@ class Login:
         exists=false
         
         with self.connect.cursor() as cur:
-            cur.execute("SELECT name, password, steamid, admin FROM account ORDER BY steamid")
+            cur.execute("SELECT name, password, steamid, notes FROM account ORDER BY steamid")
             print("Number of Accounts: "+str(cur.rowcount))
             rows=cur.fetchall()
             for row in rows:
@@ -94,9 +94,12 @@ class Login:
                     exists=true
                     print("SteamID already in use")
                     break
+                
             if exists==false:
-                sql="""INSERT INTO account(name, password, steamid) VALUES(%s, %s, %s);"""
-                cur.execute(sql,(username,str(finalpassword.decode("utf-8")),steamid,))
+                self.valuesteam=steamid
+                self.valuenotes="Nothing written yet"
+                sql="""INSERT INTO account(name, password, steamid, notes) VALUES(%s, %s, %s, %s);"""
+                cur.execute(sql,(username,str(finalpassword.decode("utf-8")),steamid,self.valuenotes,))
                 self.connect.commit()
                 self.username.configure(fg_color="green")
                 self.password.configure(fg_color="green")

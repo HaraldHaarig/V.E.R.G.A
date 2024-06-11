@@ -184,7 +184,7 @@ class Startpage:
                                             bg_color="#000001",
                                             text="",
                                             hover_color="#250454",
-                                            command=self.Profile
+                                            command=lambda login=login:self.Profile(login)
                                             )
         pywinstyles.set_opacity(profile, color="#000001")
         profile.place(x=250, y=70)
@@ -193,11 +193,11 @@ class Startpage:
         imageprofile = customtkinter.CTkImage(image,size=(100,100))
 
         profilelbl = customtkinter.CTkLabel(profile,text="",image=imageprofile)
-        profilelbl.bind("<Button-1>",lambda e, :self.Profile())
+        profilelbl.bind("<Button-1>",lambda e, :self.Profile(login))
         profilelbl.place(x=100,y=90,anchor=tkinter.CENTER)
 
         profiletxt = customtkinter.CTkLabel(profile,text="Profile",font=("Arial",25),text_color="#B886F8")
-        profiletxt.bind("<Button-1>",lambda e, :self.Profile())
+        profiletxt.bind("<Button-1>",lambda e, :self.Profile(login))
         profiletxt.place(x=100,y=180,anchor=tkinter.CENTER)
         
         
@@ -241,4 +241,4 @@ class Startpage:
     def Profile(self,login):
         print("profile->")
         self.app.destroy()
-        profil = Profil()
+        profil = Profil(login)
