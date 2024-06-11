@@ -1,11 +1,18 @@
+from cgitb import text
+import gettext
 from Tkinter_GUI.Sidebar import Sidebar
 import tkinter
+from tkinter import *
 from customtkinter import *
 from PIL import Image
 import pywinstyles
 
 class Notes:
     def __init__(self):
+        
+        def getText():
+            print("hs")
+        
         set_appearance_mode("dark")
         self.app = CTk()
         self.app.title("V.E.R.G.A GameLauncher")
@@ -28,5 +35,25 @@ class Notes:
 
         # Sidebar wird eingefügt
         sidebar = Sidebar(self.app)
+
+        inputText = CTkTextbox(master=self.app,
+                               width=940,
+                               height=680,
+                               fg_color="#250454",
+                               bg_color="#000001",
+                               font=("Arial", 20))
+        pywinstyles.set_opacity(inputText, color="#000001")
+        inputText.place(x=320, y=20)
+
+        button = CTkButton(master=self.app,
+                           text="Save",
+                           width=50,
+                           height=40,
+                           fg_color="#3B0F82",
+                           bg_color="#000001",
+                           font=("Arial", 30),
+                           command=getText)
+        pywinstyles.set_opacity(button, color="#000001")
+        button.place(x=1170, y=650)
 
         self.app.mainloop()
