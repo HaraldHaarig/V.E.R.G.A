@@ -7,9 +7,10 @@ from numpy import imag, size
 from pyparsing import col
 import pywinstyles
 from sympy import true
+from Tkinter_GUI.Login import Login
 
 class Sidebar:
-    def __init__(self, app):
+    def __init__(self, app,login:Login):
         
         # Images
         image_home = CTkImage(Image.open("Tkinter_GUI/StartseiteIMG/home.png"), size=(30, 30))
@@ -113,14 +114,14 @@ class Sidebar:
         def openHome():
             from Tkinter_GUI.Startseite import Startpage # Pfusch 3
             app.destroy()
-            home = Startpage()
+            home = Startpage(login)
         
         def openNotes():
             from Tkinter_GUI.Notes import Notes # Pfusch 4
             app.destroy()
-            notes = Notes()
+            notes = Notes(login)
 
         def openProfile():
             from Tkinter_GUI.Profil import Profil # Pfusch 5
             app.destroy()
-            profile = Profil()
+            profile = Profil(login)

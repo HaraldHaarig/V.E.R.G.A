@@ -11,9 +11,10 @@ import pywinstyles
 import ctypes
 from sympy import false, im
 from Tkinter_GUI.Sidebar import Sidebar
+from Tkinter_GUI.Login import Login
 
 class Profil:
-    def __init__(self):
+    def __init__(self, login:Login):
         set_appearance_mode("dark")
         self.app = CTk()
         self.app.title("V.E.R.G.A GameLauncher")
@@ -39,7 +40,7 @@ class Profil:
         bg_lbl = CTkLabel(self.app, text="", image = background_image)
         bg_lbl.place(x = 0, y = 0)
 
-        sidebar = Sidebar(self.app)
+        sidebar = Sidebar(self.app,login)
         
         # Mainframe
         self.profile = CTkFrame(master=self.app,

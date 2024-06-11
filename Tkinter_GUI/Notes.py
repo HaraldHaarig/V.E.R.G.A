@@ -34,7 +34,7 @@ class Notes:
         bg_lbl.place(x = 0, y = 0)
 
         # Sidebar wird eingefügt
-        sidebar = Sidebar(self.app)
+        sidebar = Sidebar(self.app,login)
 
         self.inputText = CTkTextbox(master=self.app,
                                width=940,
