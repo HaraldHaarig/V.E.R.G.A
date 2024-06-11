@@ -16,6 +16,7 @@ class Login:
         self.app.resizable(0,0)
         self.connect=connection.connect()
         self.valuesteam=""
+        self.valuenotes=""
         
 
         side_img_data = Image.open("Tkinter_GUI/Images/Background_frfr.png")
@@ -94,13 +95,13 @@ class Login:
                     print("SteamID already in use")
                     break
             if exists==false:
-                sql="""INSERT INTO account(name, password, steamid, admin) VALUES(%s, %s, %s, false);"""
+                sql="""INSERT INTO account(name, password, steamid) VALUES(%s, %s, %s);"""
                 cur.execute(sql,(username,str(finalpassword.decode("utf-8")),steamid,))
                 self.connect.commit()
                 self.username.configure(fg_color="green")
                 self.password.configure(fg_color="green")
                 self.steamId.configure(fg_color="green")
-                #Start Startseite
+                self.app.destroy()
             else:
                 self.username.configure(fg_color="red")
                 self.password.configure(fg_color="red")
@@ -124,7 +125,7 @@ class Login:
         print("Enter db")
         match=false
         with self.connect.cursor() as cur:
-            cur.execute("SELECT name, password, steamid, admin FROM account ORDER BY steamid")
+            cur.execute("SELECT name, password, steamid, notes FROM account ORDER BY steamid")
             print("Number of Accounts: "+str(cur.rowcount))
             rows=cur.fetchall()
 
@@ -136,9 +137,8 @@ class Login:
                     self.username.configure(fg_color="green")
                     self.password.configure(fg_color="green")
                     self.valuesteam=row[2]
-                    from DB_Service.Wishlist import getWishlist
-                    print(getWishlist(self))
-                    
+                    self.valuenotes=row[3]
+                    self.app.destroy()
                     break     
             if not match:
                 print("No Account with these parameters found")  
@@ -147,5 +147,8 @@ class Login:
         #bzw. Datenbank zugriff mit Username und Password
         return self.valuesteam
     
+    def getNotes(self):
+        return self.valuenotes
+
     def getConnection(self):
         return self.connect
