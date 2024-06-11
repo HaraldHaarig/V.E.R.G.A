@@ -10,8 +10,9 @@ import pywinstyles
 class Notes:
     def __init__(self):
         
+        # Funktion, um den text aus der Textbox in der Konsole auszugeben
         def getText():
-            print("hs")
+            print(inputText.get('1.0', END))
         
         set_appearance_mode("dark")
         self.app = CTk()
