@@ -1,13 +1,17 @@
 import tkinter
+from turtle import bgcolor
 from customtkinter import *
 from PIL import Image
 from matplotlib.backend_bases import cursors
 from numpy import imag, size
 from pyparsing import col
 import pywinstyles
+from sympy import true
 
 class Sidebar:
     def __init__(self, app):
+        
+        # Images
         image_home = CTkImage(Image.open("Tkinter_GUI/StartseiteIMG/home.png"), size=(30, 30))
         image_geschenk = CTkImage(Image.open("Tkinter_GUI/StartseiteIMG/geschenk.png"), size=(30, 30))
         image_joystick = CTkImage(Image.open("Tkinter_GUI/StartseiteIMG/joystick.png"), size=(30, 30))
@@ -53,6 +57,7 @@ class Sidebar:
                                      fg_color="#000001",
                                      cursor="hand2",
                                      font=("Arial", 35))
+        self.profile_btn.bind("<Button-1>", lambda e,:openProfile())
         pywinstyles.set_opacity(self.profile_btn, color="#000001")
         self.profile_btn.place(x=150, y=310, anchor=tkinter.CENTER)
 
@@ -101,10 +106,21 @@ class Sidebar:
                                    fg_color="#000001",
                                    cursor="hand2",
                                    font=("Arial", 35))
+        self.notes_btn.bind("<Button-1>", lambda e,:openNotes())
         pywinstyles.set_opacity(self.notes_btn, color="#000001")
         self.notes_btn.place(x=150, y=670, anchor=tkinter.CENTER)
 
         def openHome():
             from Tkinter_GUI.Startseite import Startpage # Pfusch 3
             app.destroy()
-            test = Startpage()
+            home = Startpage()
+        
+        def openNotes():
+            from Tkinter_GUI.Notes import Notes # Pfusch 4
+            app.destroy()
+            notes = Notes()
+
+        def openProfile():
+            from Tkinter_GUI.Profil import Profil # Pfusch 5
+            app.destroy()
+            profile = Profil()

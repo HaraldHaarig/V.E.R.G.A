@@ -8,6 +8,7 @@ import pywinstyles
 from API.GameAPI import getImg
 from Tkinter_GUI.Spielcards import Spielcards
 from Tkinter_GUI.Profil import Profil
+from Tkinter_GUI.Notes import Notes
 from API.SteamAPI import getSteamGamesbyID
 
 
@@ -242,7 +243,8 @@ class Startpage:
     
     def Notes(self):
         print("Notes->")
-        #self.app.destroy()
+        self.app.destroy()
+        notes = Notes()
 
     def Profile(self):
         print("profile->")
