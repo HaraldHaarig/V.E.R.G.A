@@ -8,11 +8,13 @@ import tkinter as tk
 from API.SteamAPI import getSteamGamesbyID
 from PIL import ImageTk,Image
 from itertools import count, cycle
+import ctypes
 
 class Loadingscreen:
     def show_loading_screen(self):      #das loading screen fenster wird geladen 
         self.root = tk.Tk()
         self.root.title("Loading...")
+        
 
         # Center the window
         window_width = 600
@@ -25,6 +27,8 @@ class Loadingscreen:
 
         image = Image.open("Design/Background.png")
         photo = ImageTk.PhotoImage(image)
+
+        self.root.overrideredirect(True)
 
         self.label = tk.Label(self.root,image=photo)
         self.label.image = photo
