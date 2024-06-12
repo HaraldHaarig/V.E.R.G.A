@@ -8,4 +8,4 @@ from LoadingScreen import Loadingscreen
 # generate classes
 #bibliothek = Bibliothek(False, None, None, None)
 lore = Loadingscreen()
-Loadingscreen.loadspielcards()
+lore.loadspielcards()
