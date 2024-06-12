@@ -12,8 +12,7 @@ from API.SteamAPI import getSteamGamesbyID
 
 
 
-class Startpage:
-
+class Startpage():
     def __init__(self):
         self.app = customtkinter.CTk()
 
