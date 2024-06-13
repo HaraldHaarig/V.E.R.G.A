@@ -1,17 +1,7 @@
-import imp
-import tkinter
-#import splashscreen_ctk as splash
 import threading, time
-from turtle import back, bgcolor
-from numpy import size
-from sympy import im, true
-from Tkinter_GUI.Profil import Profil
 import tkinter as tk
 #from API.SteamAPI import getSteamGamesbyID
 from PIL import ImageTk,Image
-from itertools import count, cycle
-import ctypes
-from itertools import count
 from customtkinter import *
 import pywinstyles
 
@@ -133,8 +123,6 @@ class Loadingscreen:
 
     def loadmainapi(self):
         loading_screen = self.show_loading_screen()
-        if not loading_screen:
-            return
 
         thread = threading.Thread(target=self.mainapiload)
         thread.start()
@@ -156,8 +144,7 @@ class Loadingscreen:
 
     def loadspielcards(self):
         loading_screen = self.show_loading_screen()
-        if not loading_screen:
-            return
+
 
         thread = threading.Thread(target=self.spielcardload)
         thread.start()
@@ -178,8 +165,7 @@ class Loadingscreen:
 
     def loadprofile(self):
         loading_screen = self.show_loading_screen()
-        if not loading_screen:
-            return
+        
 
         thread = threading.Thread(target=self.profileload)
         thread.start()
