@@ -4,6 +4,55 @@ from dotenv import load_dotenv
 import os
 from zmq import NULL
 
+def getMoreDetailsALL(gamename):
+    load_dotenv(override=True)
+
+    rapid_key=os.getenv("RAPID_API_KEY")
+    raw_key=os.getenv("RAWG_API_KEY")
+
+    url = "https://rawg-video-games-database.p.rapidapi.com/games?key="+raw_key
+
+    headers = {
+        "X-RapidAPI-Host": "rawg-video-games-database.p.rapidapi.com",
+        "X-RapidAPI-Key": rapid_key
+    }
+    url+="&search_exact=true&search_precise=true&search="+gamename
+    response = requests.get(url, headers=headers)
+    data=response.json()
+
+    
+    
+
+
+    try:
+        if(data!=[] and data['results']!=[]):
+            all_Platforms=[]
+            url=f"https://api.rawg.io/api/games/{data['results'][0]['id']}?key="+raw_key
+            response=requests.get(url, headers=headers)
+            dataid=response.json()
+            controllersupport="No Controller Support"
+            for i in range(len(dataid['tags'])):
+                if(dataid['tags'][i]['name']=="Full controller support"):
+                    controllersupport=dataid['tags'][i]['name']
+            
+            
+            try:
+                ageRating=data['results'][0]['esrb_rating']['name']
+            except TypeError:
+                ageRating="NAN"
+            # for theme in data['results'][0]:
+            #     print(theme)
+            #     print("\n")
+
+            for platforms in data['results'][0]['platforms']:
+                all_Platforms.append(platforms['platform']['name'])
+
+            return(data['results'][0]['released'], data['results'][0]['metacritic'], all_Platforms, ageRating, dataid['description'], controllersupport)
+        else:
+            return NULL
+    except KeyError:
+        return NULL
+
 def getMoreDetails(gamename):
     
     load_dotenv(override=True)
@@ -82,7 +131,7 @@ def getAllGames(pages_anz):
             count+=1
             games.append(result['name'])
             spareImg.append(result['background_image'])
-            details.append(getMoreDetails(result['name']))
+            details.append(getMoreDetailsALL(result['name']))
     print(count)
     return games,spareImg,details
 

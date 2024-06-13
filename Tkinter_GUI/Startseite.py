@@ -5,12 +5,16 @@ from tkinter import *
 from PIL import Image
 import ctypes
 import pywinstyles
+from sympy import false
 from API.GameAPI import getImg
 from Tkinter_GUI.Login import Login
 from Tkinter_GUI.Spielcards import Spielcards
 from Tkinter_GUI.Profil import Profil
 from Tkinter_GUI.Notes import Notes
 from API.SteamAPI import getSteamGamesbyID
+from Tkinter_GUI.Bibliothek import Bibliothek
+from Tkinter_GUI.Profil import Profil
+
 
 
 
@@ -209,7 +213,8 @@ class Startpage:
     
     def Store(self,login):
         print("Store->")
-        #self.app.destroy()
+        self.app.destroy()
+        bibliothek = Bibliothek(2, False, None, None, None)
     
     def Mygames(self,login):
         print("My games->") # Temporär bis Bibliothek fertig ist
@@ -231,7 +236,8 @@ class Startpage:
     
     def Wishlist(self,login):
         print("Wishlist->")
-        #self.app.destroy()
+        self.app.destroy()
+        bibliothek = Bibliothek(3, False, None, None, None)
     
     def Notes(self,login):
         print("Notes->")

@@ -12,7 +12,7 @@ import io
 import ctypes
 from ctypes import windll
 
-from sympy import false, true
+from sympy import det, false, true
 from Tkinter_GUI.Spielbeschreibung import spielbeschreibung_main
 
 
@@ -42,15 +42,29 @@ class Spielcards:
         # x = int(((screenwidth/40)))
         # y = int(((screenheight/40)))
         
-        self.frame= CTkScrollableFrame(self.parent, width=920,height=720)
+        self.frame= CTkScrollableFrame(self.parent, width=940,height=720)
         #self.frame.pack()
         self.frame.place(anchor='center', relx=0.5,rely=0.5)
         #self.scrollbar=Scrollbar(self.frame)
+
+                # Background Image
+        image = Image.open("Design/Background.png")
+        background_image = CTkImage(image, size=(10000, 720))
+        #Background Image Label
+        bg_lbl = CTkLabel(self.frame, text="", image = background_image)
+        bg_lbl.place(x = 0, y = 0)
         
     def onLabelClicked(self,title,details,restore_detail,restore_titles,restore_urls):
         self.bibliothek_root.destroy()
         print(self.owned)
-        spielbeschreibung_main(title,details[2],(details[1]/60),details[5],details[6],details[0],details[4],details[3],details[7],restore_detail,restore_titles,restore_urls,self.owned)
+        x = len(details)
+        print(x)
+        for temp in details:
+            print(temp)
+        if(x == 9):
+            spielbeschreibung_main(title,details[2],(details[1]/60),details[5],details[6],details[0],details[4],details[3],details[7],restore_detail,restore_titles,restore_urls,self.owned)
+        else:
+            spielbeschreibung_main(title,details[4], "N/A", details[0], details[1], 0, details[5], details[3], details[2], restore_detail,restore_titles,restore_urls,self.owned)
 
 
     def showCard(self, url, title,len,details,spielbeschreibung_details,spielbeschreibung_title,spielbeschreibung_url):
@@ -75,10 +89,19 @@ class Spielcards:
         
 
     #TODO: Umbennen zu showallOwnedGames
-    def showallCards(self, url, title,details):
+    def showAllOwnedGames(self, url, title,details):
         count=0
         self.frame.grid(row=1, column=1,pady=(1,1))
         self.owned=true 
+
+        for tempurl in url:
+            self.showCard(tempurl,title[count],count,details[count],details,title,url)
+            count+=1
+
+    def showGames(self, url, title,details):
+        count=0
+        self.frame.grid(row=1, column=1,pady=(1,1))
+        self.owned=false 
 
         for temp in url:
             self.showCard(temp,title[count],count,details[count],details,title,url)

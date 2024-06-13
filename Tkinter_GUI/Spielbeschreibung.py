@@ -2,8 +2,9 @@ import tkinter
 from tkinter.font import Font
 from customtkinter import *
 from PIL import Image
+import re
 import pywinstyles
-from referencing import Anchor
+#from referencing import Anchor
 from GameStarter import startGame
 from DB_Service.Wishlist import addToWishlist
 
@@ -69,16 +70,25 @@ def spielbeschreibung_main(title,gamedescription, playtime, reldate, metascore, 
     pywinstyles.set_opacity(stats_lbl, color="#000001")
     stats_lbl.place(x=1005, y=275, anchor=tkinter.CENTER)
 
+    #RegEx für Beschreibung weil sonst lore
+    cleanedDescription = re.sub(r'</?p>', '', gamedescription)
+
     # Leeres Label für die Spielbeschreibungen
     description_lbl = CTkLabel(description,
-                            text=gamedescription,
+                            text=cleanedDescription,
                             text_color="White",
                             bg_color="#000001",
                             font=("Arial", 22),
                             wraplength=690)
     pywinstyles.set_opacity(description_lbl, color="#000001")
     description_lbl.place(x=10, y=105, anchor=tkinter.W)
-    time = "{:.2f}".format(playtime) # Runden der playtime sonst zu lang
+
+    try:
+        time = "{:.2f}".format(playtime)
+    except (ValueError, TypeError):
+        time = "N/A"
+
+    #time = "{:.2f}".format(playtime) # Runden der playtime sonst zu lang
     # Label für die Playtime
     playtime_lbl = CTkLabel(stats, 
                             text="Playtime: "+str(time)+" h",
@@ -163,6 +173,7 @@ def goback(app:CTk,details,titles,urls):
     from Tkinter_GUI.Spielcards import Spielcards #PFUSCH
     from Tkinter_GUI.Bibliothek import Bibliothek #pfusch 2?
     app.destroy()
-    bibliothek=Bibliothek(True,urls,titles,details)
+    print("goback clicked")
+    bibliothek = Bibliothek(2, True,urls,titles,details)
     # temp=Spielcards()
     # temp.showallCards(urls,titles,details)
