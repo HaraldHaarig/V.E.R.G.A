@@ -4,12 +4,13 @@ from customtkinter import *
 from PIL import Image
 import re
 import pywinstyles
+from sympy import false
 #from referencing import Anchor
 from GameStarter import startGame
 from DB_Service.Wishlist import addToWishlist
 
 
-def spielbeschreibung_main(title,gamedescription, playtime, reldate, metascore, price, controller, reqage, platforms,restore_details,restore_titles,restore_urls,owned):
+def spielbeschreibung_main(title,gamedescription, playtime, reldate, metascore, price, controller, reqage, platforms,restore_details,restore_titles,restore_urls,owned,login):
 
     set_appearance_mode("dark")
 
@@ -30,7 +31,7 @@ def spielbeschreibung_main(title,gamedescription, playtime, reldate, metascore, 
     
     back = CTkLabel(app,text="",image=gobackimg)
     back.place(x=1230,y=0)
-    back.bind("<Button-1>",lambda e:goback(app,restore_details,restore_titles,restore_urls))
+    back.bind("<Button-1>",lambda e:goback(app,restore_details,restore_titles,restore_urls,login))
 
     # Frame für die Spielbeschreibung
     description = CTkFrame(master=app,
@@ -163,17 +164,20 @@ def spielbeschreibung_main(title,gamedescription, playtime, reldate, metascore, 
     if(owned):
         startGameBtn=CTkButton(master=stats, text="Start Game", command= lambda title=title:startGame(title), font=("Arial",22))
         startGameBtn.place(x=250,y=375, anchor=tkinter.W)
-    else:
-        wishListBtn=CTkButton(master=stats, text="Add to Wishlist",font=("Arial",22)) #TODO: add command add to Wishlist
+    elif owned == false:
+        wishListBtn=CTkButton(master=stats, text="Add to Wishlist",font=("Arial",22),command= lambda title=title:addToWishlist(title,login)) #TODO: add command add to Wishlist
         wishListBtn.place(x=250, y=375, anchor=tkinter.W)    
-    
+    else:
+        print("Nothing happens")
+
     app.mainloop()
 
-def goback(app:CTk,details,titles,urls):
+def goback(app:CTk,details,titles,urls,login):
     from Tkinter_GUI.Spielcards import Spielcards #PFUSCH
     from Tkinter_GUI.Bibliothek import Bibliothek #pfusch 2?
+    from Tkinter_GUI.Login import Login
     app.destroy()
     print("goback clicked")
-    bibliothek = Bibliothek(2, True,urls,titles,details)
+    bibliothek = Bibliothek(2, True,urls,titles,details,login)
     # temp=Spielcards()
     # temp.showallCards(urls,titles,details)

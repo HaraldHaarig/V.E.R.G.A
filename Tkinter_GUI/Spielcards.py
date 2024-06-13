@@ -14,15 +14,16 @@ from ctypes import windll
 
 from sympy import det, false, true
 from Tkinter_GUI.Spielbeschreibung import spielbeschreibung_main
-
+from Tkinter_GUI.Login import Login
 
 class Spielcards: 
 
-    def __init__(self, parent, bibliothek_root):
+    def __init__(self, parent, bibliothek_root,login:Login):
         print("Createt Spielcards")
         set_appearance_mode("dark")
         set_default_color_theme("blue")
         self.owned=false
+        self.login=login
         # h = windll.user32.FindWindowA(b'Shell_TrayWnd', None)
         # windll.user32.ShowWindow(h, 0) Taskbar disappears
         # windll.user32.ShowWindow(h, 9) Taskbar reappears
@@ -62,9 +63,9 @@ class Spielcards:
         for temp in details:
             print(temp)
         if(x == 9):
-            spielbeschreibung_main(title,details[2],(details[1]/60),details[5],details[6],details[0],details[4],details[3],details[7],restore_detail,restore_titles,restore_urls,self.owned)
+            spielbeschreibung_main(title,details[2],(details[1]/60),details[5],details[6],details[0],details[4],details[3],details[7],restore_detail,restore_titles,restore_urls,self.owned,self.login)
         else:
-            spielbeschreibung_main(title,details[4], "N/A", details[0], details[1], 0, details[5], details[3], details[2], restore_detail,restore_titles,restore_urls,self.owned)
+            spielbeschreibung_main(title,details[4], "N/A", details[0], details[1], 0, details[5], details[3], details[2], restore_detail,restore_titles,restore_urls,self.owned,self.login)
 
 
     def showCard(self, url, title,len,details,spielbeschreibung_details,spielbeschreibung_title,spielbeschreibung_url):
@@ -88,7 +89,7 @@ class Spielcards:
         print(url, title)
         
 
-    #TODO: Umbennen zu showallOwnedGames
+ 
     def showAllOwnedGames(self, url, title,details):
         count=0
         self.frame.grid(row=1, column=1,pady=(1,1))
@@ -108,7 +109,14 @@ class Spielcards:
             count+=1
         
 
-    
+    def showALLWishlistGames(self, url, title,details):
+        count=0
+        self.frame.grid(row=1, column=1,pady=(1,1))
+        self.owned=None
+
+        for temp in url:
+            self.showCard(temp,title[count],count,details[count],details,title,url)
+            count+=1    
 
 
 

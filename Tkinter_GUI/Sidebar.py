@@ -59,7 +59,6 @@ class Sidebar:
                                      cursor="hand2",
                                      font=("Arial", 35))
         self.profile_btn.bind("<Button-1>", lambda e,:openProfile())
-        self.profile_btn.bind("<Button-1>", lambda e,:openProfile())
         pywinstyles.set_opacity(self.profile_btn, color="#000001")
         self.profile_btn.place(x=150, y=310, anchor=tkinter.CENTER)
 
@@ -98,7 +97,7 @@ class Sidebar:
                                       fg_color="#000001",
                                       cursor="hand2",
                                       font=("Arial", 35))
-        self.wishlist_btn.bind("<Button-1>", lambda e,:openHome())
+        self.wishlist_btn.bind("<Button-1>", lambda e,:openWishlist())
         pywinstyles.set_opacity(self.wishlist_btn, color="#000001")
         self.wishlist_btn.place(x=150, y=580, anchor=tkinter.CENTER)
 
@@ -120,22 +119,17 @@ class Sidebar:
         def openHome():
             from Tkinter_GUI.Startseite import Startpage
             app.destroy()
-            startpage = Startpage()
-
-        def openProfile():
-            from Tkinter_GUI.Profil import Profil
-            app.destroy()
-            profil = Profil()
+            startpage = Startpage(login)
 
         def openStore():
             from Tkinter_GUI.Bibliothek import Bibliothek
             app.destroy()
-            bibliothek = Bibliothek()
+            bibliothek = Bibliothek(2,False,None,None,None,login)
 
         def openMyGames():
             from Tkinter_GUI.Bibliothek import Bibliothek
             app.destroy()
-            home = Startpage(login)
+            bibliothek = Bibliothek(1, False, None, None, None,login)
         
         def openNotes():
             from Tkinter_GUI.Notes import Notes # Pfusch 4
@@ -146,3 +140,8 @@ class Sidebar:
             from Tkinter_GUI.Profil import Profil # Pfusch 5
             app.destroy()
             profile = Profil(login)
+
+        def openWishlist():
+            from Tkinter_GUI.Bibliothek import Bibliothek
+            app.destroy()
+            bibliothek = Bibliothek(3, False, None, None, None,login)

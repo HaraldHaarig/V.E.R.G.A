@@ -73,23 +73,6 @@ class Profil:
         pywinstyles.set_opacity(self.playtime_lbl, color="#000001")
         self.playtime_lbl.place(x=20, y=70, anchor=tkinter.W)
 
-        # # Label, ob der User mit Steam verbunden ist
-        # steam_lbl = CTkLabel(self.profile,
-        #                      text="Steam: ",
-        #                      text_color="White",
-        #                      bg_color="#000001",
-        #                      font=("Arial", 22))
-        # pywinstyles.set_opacity(steam_lbl, color="#000001")
-        # steam_lbl.place(x=20, y=105, anchor=tkinter.W)
-
-        # # Label, ob der User mit Riot Games verbunden ist
-        # riot_lbl = CTkLabel(self.profile,
-        #                     text="Riot Games: ",
-        #                     text_color="White",
-        #                     bg_color="#000001",
-        #                     font=("Arial", 22))
-        # pywinstyles.set_opacity(riot_lbl, color="#000001")
-        # riot_lbl.place(x=20, y=140, anchor=tkinter.W)
 
         # Label, welches die Anzahl der Games des Users anzeigt
         self.anzahlGames_lbl = CTkLabel(self.profile,

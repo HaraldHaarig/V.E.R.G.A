@@ -214,30 +214,18 @@ class Startpage:
     def Store(self,login):
         print("Store->")
         self.app.destroy()
-        bibliothek = Bibliothek(2, False, None, None, None)
+        bibliothek = Bibliothek(2, False, None, None, None,login)
     
     def Mygames(self,login):
-        print("My games->") # Temporär bis Bibliothek fertig ist
+        print("My games->")
         self.app.destroy()
-        spielcard=Spielcards()
-        
-        url,title,details=getSteamGamesbyID("76561199015522225")
-
-
-        count=0
-        for s in url:
-            if s == 0:
-                url[count]=getImg(title[count])
-                if(url[count]==0):
-                    url[count]="https://cdn-icons-png.flaticon.com/512/16/16096.png"
-            count+=1
-        spielcard.showallCards(url,title,details)
+        bibliothek = Bibliothek(1, False, None, None, None,login)
     
     
     def Wishlist(self,login):
         print("Wishlist->")
         self.app.destroy()
-        bibliothek = Bibliothek(3, False, None, None, None)
+        bibliothek = Bibliothek(3, False, None, None, None,login)
     
     def Notes(self,login):
         print("Notes->")

@@ -1,5 +1,6 @@
 from numpy import size
-from steam_web_api import Steam
+#from steam_web_api import Steam
+from steam import Steam
 from decouple import config
 import sys
 

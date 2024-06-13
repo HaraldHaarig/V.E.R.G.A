@@ -23,7 +23,10 @@ def getWishlist(login:Login):
         sql="""SELECT gamenname FROM wishlist WHERE steamid=%s"""
         cur.execute(sql, (steamid,))
         rows=cur.fetchall()
+        
         for row in rows:
             title.append(row[0])
-            img,details=getGame(row[0])
-        return title,img,details
+            tempimg,tempdetails=getGame(row[0])
+            img.append(tempimg)
+            details.append(tempdetails)
+        return img,title,details

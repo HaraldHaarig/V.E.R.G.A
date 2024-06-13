@@ -5,15 +5,18 @@ from PIL import Image
 from ctypes import windll
 import ctypes
 from pydantic import PositiveInt
+from sympy import det
 from Tkinter_GUI.Sidebar import Sidebar
 from Tkinter_GUI.Spielcards import Spielcards
 from API.SteamAPI import getSteamGamesbyID
 from API.GameAPI import getAllGames
 from tkinter import *
+from Tkinter_GUI.Login import Login
+from DB_Service.Wishlist import getWishlist
 
 
 class Bibliothek:
-    def __init__(self, open, bool, urls,titles,details):
+    def __init__(self, open, bool, urls,titles,details,login:Login):
         self.root_tk = CTk()
         self.opened = bool
         self.open = open
@@ -46,9 +49,9 @@ class Bibliothek:
         #Left side of the library
         # self.leftframe= CTkFrame(self.root_tk, width=300,height=720, fg_color="#ffffff") 
         # self.leftframe.place(anchor=tk.W, relx=0.0,rely=0.5)
-        self.Sidebar = Sidebar(self.root_tk)
+        self.Sidebar = Sidebar(self.root_tk,login)
 
-        self.spielcards = Spielcards(self.mainframe, self.root_tk)
+        self.spielcards = Spielcards(self.mainframe, self.root_tk,login)
 
         if self.opened == False and self.open == 1:
             print("Open owned Games first time")
@@ -62,21 +65,12 @@ class Bibliothek:
         elif self.opened == True and self.open == 2:
             print("Open owned Games after first time")
             self.callshowallCards(urls,titles,details)
-
-        # else:
-        #     self.callshowallCards()
-
-        # url,title,details=getSteamGamesbyID("76561199015522225")
-
-        # count=0
-        # for s in url:
-        #     if s == 0:
-        #         url[count]="https://cdn-icons-png.flaticon.com/512/16/16096.png"
-        #     count+=1
-        # self.spielcards.showallCards(url,title,details)
-        # self.spielcards.showCard(url[0],title[0], count)
-
-        #self.showCards()
+        if self.opened == False and self.open == 3:
+            print("Open Wishlisted Games first time")
+            self.showWishlistGames(login)
+        elif self.opened == True and self.open == 3:
+            print("Open Wishlisted Games after first time")    
+            self.callShowWishlistGames(urls,titles,details)
         
         self.root_tk.mainloop()
 
@@ -110,5 +104,18 @@ class Bibliothek:
     def callShowAllGames(self, urls, titles, details):
         self.spielcards.showGames(self, urls, titles, details)
 
+    def showWishlistGames(self,login):
+        print("showCards opened because bool is False")
 
-        
+        #fetching the games
+        url,title,details=getWishlist(login)
+        count=0
+        for s in url:
+            if s == 0:
+                url[count]="https://cdn-icons-png.flaticon.com/512/16/16096.png"
+            count += 1
+        #call spielcards Function with the fetched data    
+        self.spielcards.showALLWishlistGames(url,title,details)
+
+    def callShowWishlistGames(self, urls, titles, details):
+        self.spielcards.showALLWishlistGames(urls,titles,details)

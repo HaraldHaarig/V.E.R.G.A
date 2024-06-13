@@ -153,5 +153,5 @@ def getGame(title):
 
 
     img=data['results'][0]['background_image']
-    details=getMoreDetails(data['results'][0]['name'])    
+    details=getMoreDetailsALL(data['results'][0]['name'])    
     return img,details
