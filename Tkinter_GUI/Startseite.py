@@ -29,7 +29,10 @@ class Startpage:
 
         customtkinter.set_appearance_mode("dark")
         customtkinter.set_default_color_theme("blue")
-        self.app.title("Startpage")
+        self.app.title("Startseite")
+
+        self.app.iconbitmap(default="Design/Icon.png")
+        self.app.iconphoto(False, PhotoImage(master=self.app,file="Design/Icon.png"))
 
         image = Image.open("Design/Background.png")                                  #Image initialitieren
         imagebg = customtkinter.CTkImage(image,size=(1280,720))
@@ -53,8 +56,7 @@ class Startpage:
                                         fg_color="#250454",
                                         bg_color="#000001",text="",
                                         hover_color="#250454",
-                                        command=lambda login=login:self.Store(login)
-                                            )
+                                        command=lambda login=login:self.Store(login))
         pywinstyles.set_opacity(store, color="#000001")
         store.place(x=540,y=70)
 
@@ -79,8 +81,7 @@ class Startpage:
                                             bg_color="#000001",
                                             text="",
                                             hover_color="#250454",
-                                            command=lambda login=login:self.Mygames(login)
-                                            )
+                                            command=lambda login=login:self.Mygames(login))
         pywinstyles.set_opacity(mygames, color="#000001")
         mygames.place(x=830,y=70)
 
@@ -91,7 +92,7 @@ class Startpage:
         mygameslbl.bind("<Button-1>",lambda e:self.Mygames(login))
         mygameslbl.place(x=100,y=90,anchor=tkinter.CENTER)
 
-        mygamestxt = customtkinter.CTkLabel(mygames,text="Mygames",font=("Arial",25),text_color="#B886F8")
+        mygamestxt = customtkinter.CTkLabel(mygames,text="MyGames",font=("Arial",25),text_color="#B886F8")
         mygamestxt.place(x=100,y=180,anchor=tkinter.CENTER)
         mygamestxt.bind("<Button-1>",lambda e:self.Mygames(login))
 
@@ -105,10 +106,9 @@ class Startpage:
                                                 bg_color="#000001",
                                                 text="",
                                                 hover_color="#250454",
-                                                command=lambda login=login:self.Wishlist(login)
-                                                )
+                                                command=lambda login=login:self.Wishlist(login))
         pywinstyles.set_opacity(wishlist, color="#000001")
-        wishlist.place(x=830, y=370) 
+        wishlist.place(x=685, y=370) 
     
         image = Image.open("Tkinter_GUI/StartseiteIMG/geschenk.png")
         imagewishlist = customtkinter.CTkImage(image,size=(100,100))
@@ -130,10 +130,9 @@ class Startpage:
                                             bg_color="#000001",
                                             text="",
                                             hover_color="#250454",
-                                            command=lambda login=login:self.Notes(login)
-                                            )
+                                            command=lambda login=login:self.Notes(login))
         pywinstyles.set_opacity(notes, color="#000001")
-        notes.place(x=540, y=370)
+        notes.place(x=395, y=370)
         image = Image.open("Tkinter_GUI/StartseiteIMG/notes.png")
         imagenotes = customtkinter.CTkImage(image,size=(100,100))
 
@@ -155,8 +154,7 @@ class Startpage:
                                             bg_color="#000001",
                                             text="",
                                             hover_color="#250454",
-                                            command=lambda login=login:self.Profile(login)
-                                            )
+                                            command=lambda login=login:self.Profile(login))
         pywinstyles.set_opacity(profile, color="#000001")
         profile.place(x=250, y=70)
 

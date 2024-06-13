@@ -1,4 +1,5 @@
 import tkinter
+from tkinter import *
 from customtkinter import *
 from PIL import Image
 import pywinstyles
@@ -11,7 +12,9 @@ class Profil:
         
         set_appearance_mode("dark")
         self.app = CTk()
-        self.app.title("V.E.R.G.A GameLauncher")
+        self.app.title("Profil")
+        self.app.iconbitmap(default="Design/Icon.png")
+        self.app.iconphoto(False, PhotoImage(master=self.app,file="Design/Icon.png"))
         username,recPlayed,playtime,vac_ban,counter,sincelastban,steamlvl,id=getSteamProfile(login.getSteamId())
         # Zuständig für das zentrieren des Fensters in der Mitte des Monitors
         widh_of_window = 1280
@@ -90,7 +93,7 @@ class Profil:
         # Button, auf dem man klicken kann. Der Klappt dann aus und zeigt im besten Fall die Steam-Freunde an
         self.daysSinceLastBan_lbl = CTkLabel(self.profile,
                                 width=30,
-                                text="Days since last ban: "+str(sincelastban),
+                                text=" Days since last ban: "+str(sincelastban),
                                 text_color="White",
                                 fg_color="#250454",
                                 bg_color="#000001",
@@ -101,7 +104,7 @@ class Profil:
 
         self.steamLVL_lbl = CTkLabel(self.profile,
                             width=30,
-                            text="SteamLVL: "+str(steamlvl),
+                            text=" SteamLVL: "+str(steamlvl),
                             text_color="White",
                             fg_color="#250454",
                             bg_color="#000001",
@@ -112,7 +115,7 @@ class Profil:
 
         self.steamID_lbl = CTkLabel(self.profile,
                             width=30,
-                            text="SteamID: "+str(id),
+                            text=" SteamID: "+str(id),
                             text_color="White",
                             fg_color="#250454",
                             bg_color="#000001",

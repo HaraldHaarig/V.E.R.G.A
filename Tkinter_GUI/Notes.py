@@ -11,9 +11,12 @@ class Notes:
             
         set_appearance_mode("dark")
         self.app = CTk()
-        self.app.title("V.E.R.G.A GameLauncher")
+        self.app.title("Notes")
         self.steamid=login.getSteamId()
         self.connection=login.getConnection()
+
+        self.app.iconbitmap(default="Design/Icon.png")
+        self.app.iconphoto(False, PhotoImage(master=self.app,file="Design/Icon.png"))
 
         # Zuständig für das zentrieren des Fensters in der Mitte des Monitors
         widh_of_window = 1280
@@ -35,11 +38,11 @@ class Notes:
         sidebar = Sidebar(self.app,login)
 
         self.inputText = CTkTextbox(master=self.app,
-                               width=940,
-                               height=680,
-                               fg_color="#250454",
-                               bg_color="#000001",
-                               font=("Arial", 20))
+                                    width=940,
+                                    height=680,
+                                    fg_color="#250454",
+                                    bg_color="#000001",
+                                    font=("Arial", 20))
         pywinstyles.set_opacity(self.inputText, color="#000001")
         self.inputText.place(x=320, y=20)
         if(login.getNotes() is not None):
@@ -48,13 +51,13 @@ class Notes:
 
 
         self.button = CTkButton(master=self.app,
-                           text="Save",
-                           width=50,
-                           height=40,
-                           fg_color="#3B0F82",
-                           bg_color="#000001",
-                           font=("Arial", 30),
-                            command=self.setText)
+                                text="Save",
+                                width=50,
+                                height=40,
+                                fg_color="#3B0F82",
+                                bg_color="#000001",
+                                font=("Arial", 30),
+                                command=self.setText)
         pywinstyles.set_opacity(self.button, color="#000001")
         self.button.place(x=1170, y=650)
 

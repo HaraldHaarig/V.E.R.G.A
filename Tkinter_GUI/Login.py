@@ -1,4 +1,5 @@
 from customtkinter import *
+from tkinter import *
 from PIL import Image
 from sympy import false, true
 import bcrypt
@@ -10,11 +11,23 @@ from DB_Service.Connection import Connection
 class Login:
     def __init__(self,connection:Connection):
         self.app = CTk()
-        self.app.geometry("600x480")
+        self.app.title("Login")
+        self.app.iconbitmap(default="Design/Icon.png")
+        self.app.iconphoto(False, PhotoImage(master=self.app,file="Design/Icon.png"))
         self.app.resizable(0,0)
         self.connect=connection.connect()
         self.valuesteam=""
         self.valuenotes=""
+        
+
+        # Zuständig für das zentrieren des Fensters in der Mitte des Monitors
+        widh_of_window = 600
+        height_of_window = 480
+        scree_widh = self.app.winfo_screenwidth()
+        screen_height = self.app.winfo_screenheight()
+        x_cordinate = (scree_widh/2)-(widh_of_window/2)
+        y_cordinate = (screen_height/2)-(height_of_window/2)
+        self.app.geometry("%dx%d+%d+%d" %(widh_of_window,height_of_window,x_cordinate,y_cordinate))
         
 
         side_img_data = Image.open("Tkinter_GUI/Images/Background_frfr.png")
