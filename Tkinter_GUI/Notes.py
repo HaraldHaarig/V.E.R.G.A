@@ -1,7 +1,5 @@
-from cgitb import text
 from Tkinter_GUI.Login import Login
 from Tkinter_GUI.Sidebar import Sidebar
-import tkinter
 from tkinter import *
 from customtkinter import *
 from PIL import Image

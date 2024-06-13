@@ -1,11 +1,9 @@
-from turtle import bgcolor
 from customtkinter import *
 from PIL import Image
-from numpy import empty
 from sympy import false, true
 import bcrypt
 from DB_Service.Connection import Connection
-import psycopg2
+
 
 
 

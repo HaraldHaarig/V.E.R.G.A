@@ -1,6 +1,5 @@
 import threading, time
 import tkinter as tk
-#from API.SteamAPI import getSteamGamesbyID
 from PIL import ImageTk,Image
 from customtkinter import *
 import pywinstyles

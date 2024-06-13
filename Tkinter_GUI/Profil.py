@@ -1,16 +1,7 @@
-from cgitb import text
-from gc import disable
 import tkinter
-import arrow
-from click import command
 from customtkinter import *
 from PIL import Image
-import fontTools
-from matplotlib.backend_bases import cursors
-from pyparsing import col
 import pywinstyles
-import ctypes
-from sympy import false, im
 from Tkinter_GUI.Sidebar import Sidebar
 from Tkinter_GUI.Login import Login
 from API.SteamAPI import getSteamProfile
@@ -30,11 +21,6 @@ class Profil:
         x_cordinate = (scree_widh/2)-(widh_of_window/2)
         y_cordinate = (screen_height/2)-(height_of_window/2)
         self.app.geometry("%dx%d+%d+%d" %(widh_of_window,height_of_window,x_cordinate,y_cordinate))
-
-        # app.iconbitmap(default="Design/Icon.png")
-        # app.iconphoto(False, tkinter.PhotoImage(file="Design/Icon.png"))
-        # myappid = u'mycompany.myproduct.subproduct.version' # arbitrary string
-        # ctypes.windll.shell32.SetCurrentProcessExplicitAppUserModelID(myappid)
 
         # Background Image
         image = Image.open("Design/Background.png")

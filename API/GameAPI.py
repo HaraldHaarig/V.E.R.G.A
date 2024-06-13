@@ -1,4 +1,3 @@
-from ctypes import sizeof
 import requests
 from dotenv import load_dotenv
 import os
@@ -40,10 +39,6 @@ def getMoreDetailsALL(gamename):
                 ageRating=data['results'][0]['esrb_rating']['name']
             except TypeError:
                 ageRating="NAN"
-            # for theme in data['results'][0]:
-            #     print(theme)
-            #     print("\n")
-
             for platforms in data['results'][0]['platforms']:
                 all_Platforms.append(platforms['platform']['name'])
 

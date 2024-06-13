@@ -1,15 +1,9 @@
-from numpy import size
 #from steam_web_api import Steam
 from steam import Steam
 from decouple import config
 import sys
-
-from sympy import det, false, true
-from sympy import det
-from zmq import NULL
+from sympy import false, true
 from API.GameAPI import getMoreDetails
-from API.GameAPI import getAllGames
-from API.GameAPI import getImg
 sys.path.insert(1, "C:\gitRepos\V.E.R.G.A")
 
 

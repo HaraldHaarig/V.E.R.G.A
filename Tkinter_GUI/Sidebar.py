@@ -1,12 +1,7 @@
 import tkinter
-from turtle import bgcolor
 from customtkinter import *
 from PIL import Image
-from matplotlib.backend_bases import cursors
-from numpy import imag, size
-from pyparsing import col
 import pywinstyles
-from sympy import true
 from Tkinter_GUI.Login import Login
 
 class Sidebar:

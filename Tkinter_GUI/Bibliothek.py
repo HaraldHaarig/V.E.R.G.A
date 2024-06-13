@@ -1,11 +1,5 @@
 from customtkinter import* 
-#from tkinter import*
 import tkinter as tk
-from PIL import Image
-from ctypes import windll
-import ctypes
-from pydantic import PositiveInt
-from sympy import det
 from Tkinter_GUI.Sidebar import Sidebar
 from Tkinter_GUI.Spielcards import Spielcards
 from API.SteamAPI import getSteamGamesbyID
@@ -25,14 +19,6 @@ class Bibliothek:
         self.root_tk.iconbitmap(default="Design/Icon.png")
         self.root_tk.iconphoto(False, PhotoImage(master=self.root_tk,file="Design/Icon.png"))
 
-        # user32 = ctypes.windll.user32
-        # screenwidth = user32.GetSystemMetrics(0)
-        # screenheight=user32.GetSystemMetrics(1)
-        
-        # x = int(((screenwidth/40)))
-        # y = int(((screenheight/40)))
-
-        #self.root_tk.geometry("%dx%d+%d+%d" % (int(screenwidth),int(screenheight),int(x),int(y)))
         widh_of_window = 1280
         height_of_window = 720
         scree_widh = self.root_tk.winfo_screenwidth()
@@ -48,8 +34,6 @@ class Bibliothek:
         self.mainframe.place(anchor=tk.E, relx=1,rely=0.5)
 
         #Left side of the library
-        # self.leftframe= CTkFrame(self.root_tk, width=300,height=720, fg_color="#ffffff") 
-        # self.leftframe.place(anchor=tk.W, relx=0.0,rely=0.5)
         self.Sidebar = Sidebar(self.root_tk,login)
 
         self.spielcards = Spielcards(self.mainframe, self.root_tk,login)

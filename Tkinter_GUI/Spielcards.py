@@ -1,18 +1,11 @@
-from cProfile import label
-from cgitb import text
 from tkinter import *
-import black
 from customtkinter import *
-from numpy import empty
-from panel import Column, Row
 from scipy import io
 from PIL import Image
 import urllib.request
 import io
-import ctypes
-from ctypes import windll
 
-from sympy import det, false, true
+from sympy import false, true
 from Tkinter_GUI.Spielbeschreibung import spielbeschreibung_main
 from Tkinter_GUI.Login import Login
 
@@ -24,31 +17,16 @@ class Spielcards:
         set_default_color_theme("blue")
         self.owned=false
         self.login=login
-        # h = windll.user32.FindWindowA(b'Shell_TrayWnd', None)
-        # windll.user32.ShowWindow(h, 0) Taskbar disappears
-        # windll.user32.ShowWindow(h, 9) Taskbar reappears
-
-        # self.parent = CTk()  # create the CTk window like you normally do
-        # self.parent
         
         self.bibliothek_root = bibliothek_root
 
         self.parent = parent
         self.images = []
-
-        # user32 = ctypes.windll.user32
-        # screenwidth = user32.GetSystemMetrics(0)
-        # screenheight=user32.GetSystemMetrics(1)
-        
-        # x = int(((screenwidth/40)))
-        # y = int(((screenheight/40)))
         
         self.frame= CTkScrollableFrame(self.parent, width=940,height=720)
-        #self.frame.pack()
         self.frame.place(anchor='center', relx=0.5,rely=0.5)
-        #self.scrollbar=Scrollbar(self.frame)
 
-                # Background Image
+        # Background Image
         image = Image.open("Design/Background.png")
         background_image = CTkImage(image, size=(1280, 10000))
         #Background Image Label
@@ -58,10 +36,12 @@ class Spielcards:
     def onLabelClicked(self,title,details,restore_detail,restore_titles,restore_urls):
         self.bibliothek_root.destroy()
         print(self.owned)
-        x = len(details)
-        print(x)
-        for temp in details:
-            print(temp)
+        try:
+            x = len(details)
+            print(x)
+        except:
+            spielbeschreibung_main(title,"N/A", "N/A", "N/A", "N/A", 0, "N/A", "N/A", "N/A", restore_detail,restore_titles,restore_urls,self.owned,self.login)
+
         if(x == 9):
             spielbeschreibung_main(title,details[2],(details[1]/60),details[5],details[6],details[0],details[4],details[3],details[7],restore_detail,restore_titles,restore_urls,self.owned,self.login)
         else:

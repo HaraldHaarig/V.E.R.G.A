@@ -1,17 +1,12 @@
 import tkinter
 import customtkinter
 from tkinter import *
-#from screeninfo import get_monitors
 from PIL import Image
 import ctypes
 import pywinstyles
-from sympy import false
-from API.GameAPI import getImg
 from Tkinter_GUI.Login import Login
-from Tkinter_GUI.Spielcards import Spielcards
 from Tkinter_GUI.Profil import Profil
 from Tkinter_GUI.Notes import Notes
-from API.SteamAPI import getSteamGamesbyID
 from Tkinter_GUI.Bibliothek import Bibliothek
 from Tkinter_GUI.Profil import Profil
 
@@ -47,34 +42,6 @@ class Startpage:
 
         myappid = u'mycompany.myproduct.subproduct.version'
         ctypes.windll.shell32.SetCurrentProcessExplicitAppUserModelID(myappid)          #Icon festlegen
-
-
-        
-        # #settingsbutton
-        # settings = customtkinter.CTkButton(master=self.app,
-        #                                         width=200,
-        #                                         height=250,
-        #                                         corner_radius=20,
-        #                                         fg_color="#250454",
-        #                                         bg_color="#000001",
-        #                                         text="",
-        #                                         hover_color="#250454",
-        #                                         command=self.Settings
-        #                                         )
-        # pywinstyles.set_opacity(settings,color="#000001")
-        # settings.place(x=250,y=370)
-
-        # image = Image.open("Tkinter_GUI/StartseiteIMG/settings.png")
-        # imagesettings = customtkinter.CTkImage(image,size=(100,100))
-
-        # settingslbl = customtkinter.CTkLabel(settings,text="",image=imagesettings)
-        # settingslbl.bind("<Button-1>",lambda e,:self.Settings())
-        # settingslbl.place(x=100,y=90,anchor=tkinter.CENTER)
-
-        # settingstxt = customtkinter.CTkLabel(settings, text="Settings",font=("Arial",25),text_color="#B886F8")
-        # settingstxt.place(x=100,y=180,anchor=tkinter.CENTER)
-        # settingstxt.bind("<Button-1>",lambda e, :self.Settings())
-
 
 
 

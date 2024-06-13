@@ -1,11 +1,9 @@
 import tkinter
-from tkinter.font import Font
 from customtkinter import *
 from PIL import Image
 import re
 import pywinstyles
 from sympy import false
-#from referencing import Anchor
 from GameStarter import startGame
 from DB_Service.Wishlist import addToWishlist
 
@@ -179,5 +177,4 @@ def goback(app:CTk,details,titles,urls,login):
     app.destroy()
     print("goback clicked")
     bibliothek = Bibliothek(2, True,urls,titles,details,login)
-    # temp=Spielcards()
-    # temp.showallCards(urls,titles,details)
+ 
