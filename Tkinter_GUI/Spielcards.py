@@ -50,7 +50,7 @@ class Spielcards:
 
                 # Background Image
         image = Image.open("Design/Background.png")
-        background_image = CTkImage(image, size=(10000, 720))
+        background_image = CTkImage(image, size=(1280, 10000))
         #Background Image Label
         bg_lbl = CTkLabel(self.frame, text="", image = background_image)
         bg_lbl.place(x = 0, y = 0)

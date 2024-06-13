@@ -121,10 +121,10 @@ class Loadingscreen:
 
 
 
-    def loadmainapi(self):
+    def loadmainapi(self,function):
         loading_screen = self.show_loading_screen()
 
-        thread = threading.Thread(target=self.mainapiload)
+        thread = threading.Thread(target=function)
         thread.start()
 
         def check_thread():

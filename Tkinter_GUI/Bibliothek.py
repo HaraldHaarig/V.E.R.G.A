@@ -13,6 +13,7 @@ from API.GameAPI import getAllGames
 from tkinter import *
 from Tkinter_GUI.Login import Login
 from DB_Service.Wishlist import getWishlist
+from LoadingScreen import Loadingscreen
 
 
 class Bibliothek:
@@ -53,9 +54,11 @@ class Bibliothek:
 
         self.spielcards = Spielcards(self.mainframe, self.root_tk,login)
 
+        self.loading = Loadingscreen()
+
         if self.opened == False and self.open == 1:
             print("Open owned Games first time")
-            self.showAllOwnedGamesCards()
+            self.showAllOwnedGamesCards(login)
         elif self.open == True and self.open == 1:
             print("Open owned Games after first time")
             self.callshowallCards(urls,titles,details)
@@ -74,11 +77,11 @@ class Bibliothek:
         
         self.root_tk.mainloop()
 
-    def showAllOwnedGamesCards(self):
+    def showAllOwnedGamesCards(self,login:Login):
         print("showCards opened because bool is False")
 
         #fetching the games
-        url,title,details=getSteamGamesbyID("76561199015522225")
+        url,title,details=getSteamGamesbyID(login.getSteamId())
         count=0
         for s in url:
             if s == 0:

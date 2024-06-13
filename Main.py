@@ -7,9 +7,6 @@ from Tkinter_GUI.Login import Login
 from Tkinter_GUI.Startseite import Startpage
 from API.SteamAPI import getSteamProfile
 
-#Nachher Bei Startseite, Bibliothek, Spielcards, Spielbeschreibung Login objekt mitgeben
-# generate classes
-# bibliothek = Bibliothek(False, None, None, None)
 
 connection=Connection()
 login = Login(connection)
