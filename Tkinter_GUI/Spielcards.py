@@ -42,10 +42,17 @@ class Spielcards:
         # x = int(((screenwidth/40)))
         # y = int(((screenheight/40)))
         
-        self.frame= CTkScrollableFrame(self.parent, width=920,height=720)
+        self.frame= CTkScrollableFrame(self.parent, width=940,height=720)
         #self.frame.pack()
         self.frame.place(anchor='center', relx=0.5,rely=0.5)
         #self.scrollbar=Scrollbar(self.frame)
+
+                # Background Image
+        image = Image.open("Design/Background.png")
+        background_image = CTkImage(image, size=(10000, 720))
+        #Background Image Label
+        bg_lbl = CTkLabel(self.frame, text="", image = background_image)
+        bg_lbl.place(x = 0, y = 0)
         
     def onLabelClicked(self,title,details,restore_detail,restore_titles,restore_urls):
         self.bibliothek_root.destroy()
@@ -54,10 +61,10 @@ class Spielcards:
         print(x)
         for temp in details:
             print(temp)
-        if(x == 8):
+        if(x == 9):
             spielbeschreibung_main(title,details[2],(details[1]/60),details[5],details[6],details[0],details[4],details[3],details[7],restore_detail,restore_titles,restore_urls,self.owned)
         else:
-            spielbeschreibung_main(title,details[0],details[1],details[2],restore_detail,restore_titles,restore_urls,self.owned)
+            spielbeschreibung_main(title,details[4], "N/A", details[0], details[1], 0, details[5], details[3], details[2], restore_detail,restore_titles,restore_urls,self.owned)
 
 
     def showCard(self, url, title,len,details,spielbeschreibung_details,spielbeschreibung_title,spielbeschreibung_url):

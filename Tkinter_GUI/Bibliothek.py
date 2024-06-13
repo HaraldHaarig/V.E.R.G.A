@@ -40,7 +40,7 @@ class Bibliothek:
         self.root_tk.title("Bibliothek")
 
         #Right side of the libary
-        self.mainframe= CTkFrame(self.root_tk, width=920,height=720, fg_color="#555555") #originalfarbe #222234
+        self.mainframe= CTkFrame(self.root_tk, width=940,height=720, fg_color="#555555") #originalfarbe #222234
         self.mainframe.place(anchor=tk.E, relx=1,rely=0.5)
 
         #Left side of the library
@@ -59,7 +59,7 @@ class Bibliothek:
         if self.opened == False and self.open == 2:
             print("Open all Games first time")
             self.showAllGameCards()
-        elif self.open == True and self.open == 2:
+        elif self.opened == True and self.open == 2:
             print("Open owned Games after first time")
             self.callshowallCards(urls,titles,details)
 
