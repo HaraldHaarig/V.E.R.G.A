@@ -19,15 +19,29 @@ def getMoreDetailsALL(gamename):
     url+="&search_exact=true&search_precise=true&search="+gamename
     response = requests.get(url, headers=headers)
     data=response.json()
+
     
+    
+
+
     try:
         if(data!=[] and data['results']!=[]):
             all_Platforms=[]
+            url=f"https://api.rawg.io/api/games/{data['results'][0]['id']}?key="+raw_key
+            response=requests.get(url, headers=headers)
+            dataid=response.json()
+            for theme in dataid['slug']:
+                print(theme)
+                print("\n")
+            
+            # for theme in data['results'][0]:
+            #     print(theme)
+            #     print("\n")
 
             for platforms in data['results'][0]['platforms']:
                 all_Platforms.append(platforms['platform']['name'])
 
-            return(data['results'][0]['released'], data['results'][0]['metacritic'], all_Platforms,data['results'][0]['description'],data['results'][0]['esrb_rating'][0]['name'])
+            return(data['results'][0]['released'], data['results'][0]['metacritic'], all_Platforms, data['results'][0]['esrb_rating']['name'],dataid['description'])
         else:
             return NULL
     except KeyError:
