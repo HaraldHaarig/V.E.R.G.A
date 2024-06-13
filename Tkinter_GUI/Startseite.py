@@ -5,10 +5,14 @@ from tkinter import *
 from PIL import Image
 import ctypes
 import pywinstyles
+from sympy import false
 from API.GameAPI import getImg
 from Tkinter_GUI.Spielcards import Spielcards
 from Tkinter_GUI.Profil import Profil
 from API.SteamAPI import getSteamGamesbyID
+from Tkinter_GUI.Bibliothek import Bibliothek
+from Tkinter_GUI.Profil import Profil
+
 
 
 
@@ -204,41 +208,26 @@ class Startpage:
         self.app.mainloop()
 
 
-
-
-
-
-
     def Settings(self):
         print("Settings->") 
 
-        
     
     def Store(self):
         print("Store->")
-        #self.app.destroy()
+        self.app.destroy()
+        bibliothek = Bibliothek(2, False, None, None, None)
     
     def Mygames(self):
         print("My games->") # Temporär bis Bibliothek fertig ist
         self.app.destroy()
-        spielcard=Spielcards()
+        bibliothek = Bibliothek(1, False, None, None, None)
         
-        url,title,details=getSteamGamesbyID("76561199015522225")
-
-
-        count=0
-        for s in url:
-            if s == 0:
-                url[count]=getImg(title[count])
-                if(url[count]==0):
-                    url[count]="https://cdn-icons-png.flaticon.com/512/16/16096.png"
-            count+=1
-        spielcard.showallCards(url,title,details)
     
     
     def Wishlist(self):
         print("Wishlist->")
-        #self.app.destroy()
+        self.app.destroy()
+        bibliothek = Bibliothek(3, False, None, None, None)
     
     def Notes(self):
         print("Notes->")

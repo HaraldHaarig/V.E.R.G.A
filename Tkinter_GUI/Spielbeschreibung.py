@@ -3,7 +3,7 @@ from tkinter.font import Font
 from customtkinter import *
 from PIL import Image
 import pywinstyles
-from referencing import Anchor
+#from referencing import Anchor
 from GameStarter import startGame
 
 

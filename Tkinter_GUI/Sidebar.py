@@ -53,6 +53,7 @@ class Sidebar:
                                      fg_color="#000001",
                                      cursor="hand2",
                                      font=("Arial", 35))
+        self.home_btn.bind("<Button-1>", lambda e,:openProfile())
         pywinstyles.set_opacity(self.profile_btn, color="#000001")
         self.profile_btn.place(x=150, y=310, anchor=tkinter.CENTER)
 
@@ -65,6 +66,7 @@ class Sidebar:
                                    fg_color="#000001",
                                    cursor="hand2",
                                    font=("Arial", 35))
+        self.home_btn.bind("<Button-1>", lambda e,:openStore())
         pywinstyles.set_opacity(self.store_btn, color="#000001")
         self.store_btn.place(x=150, y=400, anchor=tkinter.CENTER)
 
@@ -77,6 +79,7 @@ class Sidebar:
                                      fg_color="#000001",
                                      cursor="hand2",
                                      font=("Arial", 35))
+        self.home_btn.bind("<Button-1>", lambda e,:openMyGames())
         pywinstyles.set_opacity(self.mygames_btn, color="#000001")
         self.mygames_btn.place(x=150, y=490, anchor=tkinter.CENTER)
 
@@ -89,6 +92,7 @@ class Sidebar:
                                       fg_color="#000001",
                                       cursor="hand2",
                                       font=("Arial", 35))
+        self.home_btn.bind("<Button-1>", lambda e,:openHome())
         pywinstyles.set_opacity(self.wishlist_btn, color="#000001")
         self.wishlist_btn.place(x=150, y=580, anchor=tkinter.CENTER)
 
@@ -101,10 +105,43 @@ class Sidebar:
                                    fg_color="#000001",
                                    cursor="hand2",
                                    font=("Arial", 35))
+        self.home_btn.bind("<Button-1>", lambda e,:openHome())
         pywinstyles.set_opacity(self.notes_btn, color="#000001")
         self.notes_btn.place(x=150, y=670, anchor=tkinter.CENTER)
 
+        #Each function for each button
+
         def openHome():
-            from Tkinter_GUI.Startseite import Startpage # Pfusch 3
+            from Tkinter_GUI.Startseite import Startpage
             app.destroy()
-            test = Startpage()
+            startpage = Startpage()
+
+        def openProfile():
+            from Tkinter_GUI.Profil import Profil
+            app.destroy()
+            profil = Profil()
+
+        def openStore():
+            from Tkinter_GUI.Bibliothek import Bibliothek
+            app.destroy()
+            bibliothek = Bibliothek()
+
+        def openMyGames():
+            from Tkinter_GUI.Bibliothek import Bibliothek
+            app.destroy()
+            bibliothek = Bibliothek()
+
+        # def openWishlist():
+        #     from Tkinter_GUI.Wishlist import Wishlist
+        #     app.destroy()
+        #     wishlist = Wishlist()
+
+        # def openNotes():
+        #     from Tkinter_GUI.Notes import Notes
+        #     app.destroy()
+        #     notes = Notes()
+
+        
+
+        
+
