@@ -71,7 +71,7 @@ class Profil:
 
         # Label, welches das zuletzt gespielte Spiel anzeigt
         self.recentlyPlayed_lbl = CTkLabel(self.profile,
-                                      text="Recently Played: "+str(recPlayed['games'][0]['name']),
+                                      text="Recently Played: "+str(recPlayed),
                                       text_color="White",
                                       bg_color="#000001",
                                       font=("Arial", 22))

@@ -140,7 +140,10 @@ def getSteamProfile(id):
      sincelastban=bans["players"][0]["DaysSinceLastBan"]
      steamlvl=steam.users.get_user_steam_level(id)
      print(steamlvl)
-
+     if len(recPlayed)==0:
+          recPlayed="Nothing"
+     else:
+          recPlayed=recPlayed['games'][0]['name']
 
      return username,recPlayed,playtime/60,vac_ban,count,sincelastban,steamlvl['player_level'],id
      
