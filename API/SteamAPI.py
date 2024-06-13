@@ -1,9 +1,9 @@
 from numpy import size
-from steam_web_api import Steam
+from steam import Steam
 from decouple import config
 import sys
 
-from sympy import det
+from sympy import det, false, true
 from sympy import det
 from zmq import NULL
 from API.GameAPI import getMoreDetails
@@ -22,7 +22,7 @@ def getSteamGamesbyID(id):
      try:
           int(id)
      except ValueError:
-          id=steam.users.get_steamid(id)
+          id=steam.users.get_steamid(id)['steamid']
 
      user=steam.users.get_user_details(id)
      
@@ -104,6 +104,48 @@ def getSteamGamesbyID(id):
      
      return web,names,details
     
+def getSteamProfile(id):
+     
+     KEY=config("STEAM_API_KEY")
+     steam=Steam(KEY)
 
 
+     try:
+          int(id)
+     except ValueError:
+          id=steam.users.get_steamid(id)['steamid']
 
+     
+     user=steam.users.get_user_details(id)
+
+     username=user["player"]["personaname"]
+     response=steam.users.get_owned_games(user['player']['steamid'])
+
+     
+     try:
+          recPlayed=steam.users.get_user_recently_played_games(id)
+     except:
+          recPlayed="Not Available"
+     
+     tempgames=steam.users.get_owned_games(id)
+     playtime=0
+     
+     for games in tempgames['games']:
+          playtime=playtime+int(games['playtime_forever'])
+     
+     try:
+          count=response['game_count']
+     except KeyError:
+          print("Attention:Steam Account must be public !")     
+
+     bans=steam.users.get_player_bans(id)
+     vac_ban=false
+     if(bans["players"][0]['VACBanned']):
+          vac_ban=true
+     sincelastban=bans["players"][0]["DaysSinceLastBan"]
+     steamlvl=steam.users.get_user_steam_level(id)
+     print(steamlvl)
+
+
+     return username,recPlayed,playtime/60,vac_ban,count,sincelastban,steamlvl['player_level'],id
+     

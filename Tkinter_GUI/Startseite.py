@@ -6,6 +6,7 @@ from PIL import Image
 import ctypes
 import pywinstyles
 from API.GameAPI import getImg
+from Tkinter_GUI.Login import Login
 from Tkinter_GUI.Spielcards import Spielcards
 from Tkinter_GUI.Profil import Profil
 from Tkinter_GUI.Notes import Notes
@@ -15,9 +16,10 @@ from API.SteamAPI import getSteamGamesbyID
 
 class Startpage:
 
-    def __init__(self):
+    def __init__(self, login:Login):
         self.app = customtkinter.CTk()
-
+        print(login)
+        print(login.getSteamId())
         widh_of_window = 1280
         height_of_window = 720                                                              #Code damit fesnter in der Mitte des Bildschirmes geöffnet wird
         scree_widh = self.app.winfo_screenwidth()
@@ -29,7 +31,6 @@ class Startpage:
         customtkinter.set_appearance_mode("dark")
         customtkinter.set_default_color_theme("blue")
         self.app.title("Startpage")
-
 
         image = Image.open("Design/Background.png")                                  #Image initialitieren
         imagebg = customtkinter.CTkImage(image,size=(1280,720))
@@ -45,30 +46,30 @@ class Startpage:
 
 
         
-        #settingsbutton
-        settings = customtkinter.CTkButton(master=self.app,
-                                                width=200,
-                                                height=250,
-                                                corner_radius=20,
-                                                fg_color="#250454",
-                                                bg_color="#000001",
-                                                text="",
-                                                hover_color="#250454",
-                                                command=self.Settings
-                                                )
-        pywinstyles.set_opacity(settings,color="#000001")
-        settings.place(x=250,y=370)
+        # #settingsbutton
+        # settings = customtkinter.CTkButton(master=self.app,
+        #                                         width=200,
+        #                                         height=250,
+        #                                         corner_radius=20,
+        #                                         fg_color="#250454",
+        #                                         bg_color="#000001",
+        #                                         text="",
+        #                                         hover_color="#250454",
+        #                                         command=self.Settings
+        #                                         )
+        # pywinstyles.set_opacity(settings,color="#000001")
+        # settings.place(x=250,y=370)
 
-        image = Image.open("Tkinter_GUI/StartseiteIMG/settings.png")
-        imagesettings = customtkinter.CTkImage(image,size=(100,100))
+        # image = Image.open("Tkinter_GUI/StartseiteIMG/settings.png")
+        # imagesettings = customtkinter.CTkImage(image,size=(100,100))
 
-        settingslbl = customtkinter.CTkLabel(settings,text="",image=imagesettings)
-        settingslbl.bind("<Button-1>",lambda e,:self.Settings())
-        settingslbl.place(x=100,y=90,anchor=tkinter.CENTER)
+        # settingslbl = customtkinter.CTkLabel(settings,text="",image=imagesettings)
+        # settingslbl.bind("<Button-1>",lambda e,:self.Settings())
+        # settingslbl.place(x=100,y=90,anchor=tkinter.CENTER)
 
-        settingstxt = customtkinter.CTkLabel(settings, text="Settings",font=("Arial",25),text_color="#B886F8")
-        settingstxt.place(x=100,y=180,anchor=tkinter.CENTER)
-        settingstxt.bind("<Button-1>",lambda e, :self.Settings())
+        # settingstxt = customtkinter.CTkLabel(settings, text="Settings",font=("Arial",25),text_color="#B886F8")
+        # settingstxt.place(x=100,y=180,anchor=tkinter.CENTER)
+        # settingstxt.bind("<Button-1>",lambda e, :self.Settings())
 
 
 
@@ -81,7 +82,7 @@ class Startpage:
                                         fg_color="#250454",
                                         bg_color="#000001",text="",
                                         hover_color="#250454",
-                                        command=self.Store
+                                        command=lambda login=login:self.Store(login)
                                             )
         pywinstyles.set_opacity(store, color="#000001")
         store.place(x=540,y=70)
@@ -90,12 +91,12 @@ class Startpage:
         imagestore = customtkinter.CTkImage(image,size=(100,100))
 
         storelbl = customtkinter.CTkLabel(store,text="",image=imagestore)
-        storelbl.bind("<Button-1>",lambda e,:self.Store())
+        storelbl.bind("<Button-1>",lambda e:self.Store(login))
         storelbl.place(x=100,y=90,anchor=tkinter.CENTER)
 
         storetxt = customtkinter.CTkLabel(store, text="Store",font=("Arial",25),text_color="#B886F8")
         storetxt.place(x=100,y=180,anchor=tkinter.CENTER)
-        storetxt.bind("<Button-1>",lambda e, :self.Store())
+        storetxt.bind("<Button-1>",lambda e:self.Store(login))
 
 
         #myGames
@@ -107,7 +108,7 @@ class Startpage:
                                             bg_color="#000001",
                                             text="",
                                             hover_color="#250454",
-                                            command=self.Mygames
+                                            command=lambda login=login:self.Mygames(login)
                                             )
         pywinstyles.set_opacity(mygames, color="#000001")
         mygames.place(x=830,y=70)
@@ -116,12 +117,12 @@ class Startpage:
         imagemygames = customtkinter.CTkImage(image,size=(100,100))
 
         mygameslbl = customtkinter.CTkLabel(mygames,text="",image=imagemygames)
-        mygameslbl.bind("<Button-1>",lambda e, :self.Mygames())
+        mygameslbl.bind("<Button-1>",lambda e:self.Mygames(login))
         mygameslbl.place(x=100,y=90,anchor=tkinter.CENTER)
 
         mygamestxt = customtkinter.CTkLabel(mygames,text="Mygames",font=("Arial",25),text_color="#B886F8")
         mygamestxt.place(x=100,y=180,anchor=tkinter.CENTER)
-        mygamestxt.bind("<Button-1>",lambda e, :self.Mygames())
+        mygamestxt.bind("<Button-1>",lambda e:self.Mygames(login))
 
 
          #wishlist
@@ -133,7 +134,7 @@ class Startpage:
                                                 bg_color="#000001",
                                                 text="",
                                                 hover_color="#250454",
-                                                command=self.Wishlist
+                                                command=lambda login=login:self.Wishlist(login)
                                                 )
         pywinstyles.set_opacity(wishlist, color="#000001")
         wishlist.place(x=830, y=370) 
@@ -142,11 +143,11 @@ class Startpage:
         imagewishlist = customtkinter.CTkImage(image,size=(100,100))
 
         wishlistlbl = customtkinter.CTkLabel(wishlist,text="",image=imagewishlist)
-        wishlistlbl.bind("<Button-1>",lambda e, :self.Wishlist())
+        wishlistlbl.bind("<Button-1>",lambda e:self.Wishlist(login))
         wishlistlbl.place(x=100,y=90,anchor=tkinter.CENTER)
 
         wishlisttxt = customtkinter.CTkLabel(wishlist,text="Wishlist",font=("Arial",25),text_color="#B886F8")
-        wishlisttxt.bind("<Button-1>",lambda e, :self.Wishlist())
+        wishlisttxt.bind("<Button-1>",lambda e:self.Wishlist(login))
         wishlisttxt.place(x=100,y=180,anchor=tkinter.CENTER)
 
         #notes
@@ -158,20 +159,19 @@ class Startpage:
                                             bg_color="#000001",
                                             text="",
                                             hover_color="#250454",
-                                            command=self.Notes
+                                            command=lambda login=login:self.Notes(login)
                                             )
         pywinstyles.set_opacity(notes, color="#000001")
         notes.place(x=540, y=370)
-
         image = Image.open("Tkinter_GUI/StartseiteIMG/notes.png")
         imagenotes = customtkinter.CTkImage(image,size=(100,100))
 
         noteslbl = customtkinter.CTkLabel(notes,text="",image=imagenotes)
-        noteslbl.bind("<Button-1>",lambda e, :self.Notes())
+        noteslbl.bind("<Button-1>",lambda e:self.Notes(login))
         noteslbl.place(x=100,y=90,anchor=tkinter.CENTER)
 
         notestxt = customtkinter.CTkLabel(notes,text="Notes",font=("Arial",25),text_color="#B886F8")
-        notestxt.bind("<Button-1>",lambda e, :self.Notes())
+        notestxt.bind("<Button-1>",lambda e:self.Notes(login))
         notestxt.place(x=100,y=180,anchor=tkinter.CENTER)
 
 
@@ -184,7 +184,7 @@ class Startpage:
                                             bg_color="#000001",
                                             text="",
                                             hover_color="#250454",
-                                            command=self.Profile
+                                            command=lambda login=login:self.Profile(login)
                                             )
         pywinstyles.set_opacity(profile, color="#000001")
         profile.place(x=250, y=70)
@@ -193,11 +193,11 @@ class Startpage:
         imageprofile = customtkinter.CTkImage(image,size=(100,100))
 
         profilelbl = customtkinter.CTkLabel(profile,text="",image=imageprofile)
-        profilelbl.bind("<Button-1>",lambda e, :self.Profile())
+        profilelbl.bind("<Button-1>",lambda e, :self.Profile(login))
         profilelbl.place(x=100,y=90,anchor=tkinter.CENTER)
 
         profiletxt = customtkinter.CTkLabel(profile,text="Profile",font=("Arial",25),text_color="#B886F8")
-        profiletxt.bind("<Button-1>",lambda e, :self.Profile())
+        profiletxt.bind("<Button-1>",lambda e, :self.Profile(login))
         profiletxt.place(x=100,y=180,anchor=tkinter.CENTER)
         
         
@@ -205,21 +205,13 @@ class Startpage:
         self.app.mainloop()
 
 
-
-
-
-
-
-    def Settings(self):
-        print("Settings->") 
-
         
     
-    def Store(self):
+    def Store(self,login):
         print("Store->")
         #self.app.destroy()
     
-    def Mygames(self):
+    def Mygames(self,login):
         print("My games->") # Temporär bis Bibliothek fertig ist
         self.app.destroy()
         spielcard=Spielcards()
@@ -237,16 +229,16 @@ class Startpage:
         spielcard.showallCards(url,title,details)
     
     
-    def Wishlist(self):
+    def Wishlist(self,login):
         print("Wishlist->")
         #self.app.destroy()
     
-    def Notes(self):
+    def Notes(self,login):
         print("Notes->")
         self.app.destroy()
-        notes = Notes()
+        notes = Notes(login)
 
-    def Profile(self):
+    def Profile(self,login):
         print("profile->")
         self.app.destroy()
-        profil = Profil()
+        profil = Profil(login)

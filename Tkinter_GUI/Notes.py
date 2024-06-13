@@ -1,22 +1,21 @@
 from cgitb import text
-import gettext
+from Tkinter_GUI.Login import Login
 from Tkinter_GUI.Sidebar import Sidebar
 import tkinter
 from tkinter import *
 from customtkinter import *
 from PIL import Image
 import pywinstyles
+from Tkinter_GUI.Login import Login
 
 class Notes:
-    def __init__(self):
-        
-        # Funktion, um den text aus der Textbox in der Konsole auszugeben
-        def getText():
-            print(inputText.get('1.0', END))
-        
+    def __init__(self, login:Login):
+            
         set_appearance_mode("dark")
         self.app = CTk()
         self.app.title("V.E.R.G.A GameLauncher")
+        self.steamid=login.getSteamId()
+        self.connection=login.getConnection()
 
         # Zuständig für das zentrieren des Fensters in der Mitte des Monitors
         widh_of_window = 1280
@@ -35,26 +34,42 @@ class Notes:
         bg_lbl.place(x = 0, y = 0)
 
         # Sidebar wird eingefügt
-        sidebar = Sidebar(self.app)
+        sidebar = Sidebar(self.app,login)
 
-        inputText = CTkTextbox(master=self.app,
+        self.inputText = CTkTextbox(master=self.app,
                                width=940,
                                height=680,
                                fg_color="#250454",
                                bg_color="#000001",
                                font=("Arial", 20))
-        pywinstyles.set_opacity(inputText, color="#000001")
-        inputText.place(x=320, y=20)
+        pywinstyles.set_opacity(self.inputText, color="#000001")
+        self.inputText.place(x=320, y=20)
+        if(login.getNotes() is not None):
+            print(login.getNotes())
+            self.inputText.insert("0.0",login.getNotes())
 
-        button = CTkButton(master=self.app,
+
+        self.button = CTkButton(master=self.app,
                            text="Save",
                            width=50,
                            height=40,
                            fg_color="#3B0F82",
                            bg_color="#000001",
                            font=("Arial", 30),
-                           command=getText)
-        pywinstyles.set_opacity(button, color="#000001")
-        button.place(x=1170, y=650)
+                            command=self.setText)
+        pywinstyles.set_opacity(self.button, color="#000001")
+        self.button.place(x=1170, y=650)
 
         self.app.mainloop()
+    
+     # Funktion, um den text in die DB zu schreiben
+    def setText(self):
+        if(len(self.inputText.get('1.0', END))<499):
+            with self.connection.cursor() as cur:
+                sql="""UPDATE account SET notes=%s WHERE steamid=%s"""
+                cur.execute(sql,(self.inputText.get('1.0',END),self.steamid,))
+                self.connection.commit()
+                #self.button.configure(color="green", text="Successfull) Mit Marko besprechen
+        else:
+            print("Error")
+            #self.button.configure(color="red", text="Failed")
