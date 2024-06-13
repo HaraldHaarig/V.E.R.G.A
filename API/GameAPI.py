@@ -30,10 +30,16 @@ def getMoreDetailsALL(gamename):
             url=f"https://api.rawg.io/api/games/{data['results'][0]['id']}?key="+raw_key
             response=requests.get(url, headers=headers)
             dataid=response.json()
-            for theme in dataid['slug']:
-                print(theme)
-                print("\n")
+            controllersupport="No Controller Support"
+            for i in range(len(dataid['tags'])):
+                if(dataid['tags'][i]['name']=="Full controller support"):
+                    controllersupport=dataid['tags'][i]['name']
             
+            
+            try:
+                ageRating=data['results'][0]['esrb_rating']['name']
+            except TypeError:
+                ageRating="NAN"
             # for theme in data['results'][0]:
             #     print(theme)
             #     print("\n")
@@ -41,7 +47,7 @@ def getMoreDetailsALL(gamename):
             for platforms in data['results'][0]['platforms']:
                 all_Platforms.append(platforms['platform']['name'])
 
-            return(data['results'][0]['released'], data['results'][0]['metacritic'], all_Platforms, data['results'][0]['esrb_rating']['name'],dataid['description'])
+            return(data['results'][0]['released'], data['results'][0]['metacritic'], all_Platforms, ageRating, dataid['description'], controllersupport)
         else:
             return NULL
     except KeyError:
