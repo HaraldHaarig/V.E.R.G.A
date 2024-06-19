@@ -1,5 +1,5 @@
-from steam_web_api import Steam
-#from steam import Steam
+#from steam_web_api import Steam
+from steam import Steam
 from decouple import config
 import sys
 from sympy import false, true
@@ -32,8 +32,7 @@ def getSteamGamesbyID(id):
      names=[]
      details=[[0 for x in range(9)] for y in range(count)] 
      #details=getMoreDetails("Minecraft") # Placeholder for Spielbeschreibung
-     details=[[0 for x in range(9)] for y in range(count)] 
-     #details=getMoreDetails("Minecraft") # Placeholder for Spielbeschreibung
+
 
      for i in range(count):
           

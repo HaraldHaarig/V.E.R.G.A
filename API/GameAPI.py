@@ -1,3 +1,4 @@
+from uu import Error
 import requests
 from dotenv import load_dotenv
 import os
@@ -28,12 +29,14 @@ def getMoreDetailsALL(gamename):
             all_Platforms=[]
             url=f"https://api.rawg.io/api/games/{data['results'][0]['id']}?key="+raw_key
             response=requests.get(url, headers=headers)
-            dataid=response.json()
-            controllersupport="No Controller Support"
-            for i in range(len(dataid['tags'])):
-                if(dataid['tags'][i]['name']=="Full controller support"):
-                    controllersupport=dataid['tags'][i]['name']
-            
+            try:
+                dataid=response.json()
+                controllersupport="No Controller Support"
+                for i in range(len(dataid['tags'])):
+                    if(dataid['tags'][i]['name']=="Full controller support"):
+                        controllersupport=dataid['tags'][i]['name']
+            except Error:
+                print("Error")
             
             try:
                 ageRating=data['results'][0]['esrb_rating']['name']
@@ -122,11 +125,14 @@ def getAllGames(pages_anz):
         response = requests.get(url, headers=headers)
         data=response.json()
         #print(data)
-        for result in data['results']:
-            count+=1
-            games.append(result['name'])
-            spareImg.append(result['background_image'])
-            details.append(getMoreDetailsALL(result['name']))
+        try:
+            for result in data['results']:
+                count+=1
+                games.append(result['name'])
+                spareImg.append(result['background_image'])
+                details.append(getMoreDetailsALL(result['name']))
+        except KeyError:
+            print("Error")
     print(count)
     return games,spareImg,details
 

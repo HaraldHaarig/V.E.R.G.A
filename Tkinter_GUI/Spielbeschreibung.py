@@ -43,7 +43,7 @@ def spielbeschreibung_main(title,gamedescription, playtime, reldate, metascore, 
     back = CTkLabel(app,text="",image=gobackimg, bg_color="#000001", cursor="hand2", height=50, width=50)
     pywinstyles.set_opacity(back, color="#000001")
     back.place(x=20,y=20)
-    back.bind("<Button-1>",lambda e:goback(app,restore_details,restore_titles,restore_urls,login))
+    back.bind("<Button-1>",lambda e:goback(app,restore_details,restore_titles,restore_urls,login,owned))
 
     # Frame für die Spielbeschreibung
     description = CTkFrame(master=app,
@@ -85,7 +85,7 @@ def spielbeschreibung_main(title,gamedescription, playtime, reldate, metascore, 
 
     #RegEx für Beschreibung weil sonst lore
     cleanedDescription = re.sub(r'</?p>', '', gamedescription)
-
+    
     # Leeres Label für die Spielbeschreibungen
     description_lbl = CTkLabel(description,
                                text=cleanedDescription,
@@ -94,7 +94,11 @@ def spielbeschreibung_main(title,gamedescription, playtime, reldate, metascore, 
                                font=("Arial", 22),
                                wraplength=690)
     pywinstyles.set_opacity(description_lbl, color="#000001")
-    description_lbl.place(x=10, y=105, anchor=tkinter.W)
+
+    if(len(cleanedDescription)>500):
+        description_lbl.place(x=10, y=150, anchor=tkinter.W)
+    else:
+        description_lbl.place(x=10, y=105, anchor=tkinter.W)
 
     try:
         time = "{:.2f}".format(playtime)
@@ -176,7 +180,7 @@ def spielbeschreibung_main(title,gamedescription, playtime, reldate, metascore, 
     if(owned):
         startGameBtn=CTkButton(master=stats, text="Start Game", fg_color="#3B0F82", command= lambda title=title:startGame(title), font=("Arial",22))
         startGameBtn.place(x=250,y=375, anchor=tkinter.W)
-    elif owned == false:
+    elif owned == false or owned == None:
         wishListBtn=CTkButton(master=stats, text="Add to Wishlist",font=("Arial",22),fg_color="#3B0F82",command= lambda title=title:addToWishlist(title,login)) #TODO: add command add to Wishlist
         wishListBtn.place(x=230, y=375, anchor=tkinter.W)    
     else:
@@ -184,11 +188,13 @@ def spielbeschreibung_main(title,gamedescription, playtime, reldate, metascore, 
 
     app.mainloop()
 
-def goback(app:CTk,details,titles,urls,login):
+def goback(app:CTk,details,titles,urls,login,owned):
     from Tkinter_GUI.Spielcards import Spielcards #PFUSCH
     from Tkinter_GUI.Bibliothek import Bibliothek #pfusch 2?
     from Tkinter_GUI.Login import Login
     app.destroy()
     print("goback clicked")
-    bibliothek = Bibliothek(2, True,urls,titles,details,login)
- 
+    if(owned):
+        bibliothek = Bibliothek(2, True,urls,titles,details,login)
+    else: 
+        bibliothek = Bibliothek(3,True,urls,titles,details,login)

@@ -38,7 +38,7 @@ class Bibliothek:
 
         self.spielcards = Spielcards(self.mainframe, self.root_tk,login)
 
-        self.loading = Loadingscreen()
+        #self.loading = Loadingscreen()
 
         if self.opened == False and self.open == 1:
             print("Open owned Games first time")

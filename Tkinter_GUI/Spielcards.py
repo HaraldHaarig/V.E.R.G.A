@@ -27,11 +27,11 @@ class Spielcards:
         self.frame.place(anchor='center', relx=0.5,rely=0.5)
 
         # Background Image
-        image = Image.open("Design/Background.png")
-        background_image = CTkImage(image, size=(1280, 10000))
-        #Background Image Label
-        bg_lbl = CTkLabel(self.frame, text="", image = background_image)
-        bg_lbl.place(x = 0, y = 0)
+        # image = Image.open("Design/Background.png")
+        # background_image = CTkImage(image, size=(1280, 10000))
+        # #Background Image Label
+        # bg_lbl = CTkLabel(self.frame, text="", image = background_image)
+        # bg_lbl.place(x = 0, y = 0)
         
     def onLabelClicked(self,title,details,restore_detail,restore_titles,restore_urls):
         self.bibliothek_root.destroy()
