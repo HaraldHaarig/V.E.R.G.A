@@ -1,0 +1,28 @@
+services:
+  backend:
+    build:
+      context: backend
+    restart: always
+    networks:
+      - backnet
+
+  backendv2:
+    build:
+      context: backendv2
+    restart: always
+    networks:
+      - backnet
+
+  proxy:
+    build: proxy
+    restart: always
+    ports:
+      - 80:80
+    depends_on: 
+      - backend
+      - backendv2
+    networks:
+      - backnet
+
+networks:
+  backnet:
